@@ -244,67 +244,7 @@
 			async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
 	</script>
 
-	<script>
-		function cp(txt)
-		{
-			if (navigator.userAgent.match (/ipad|ipod|iphone/i))
-			{
-				var e							= document.getElementById ('copybuf');
-				e.value							+= txt;
-			}
-			else
-			{
-				var a							= document.createElement ('textarea');
-				a.style.position				= 'fixed';
-				a.style.left					= '-100%';
-				a.value							= txt;
-				a.selectionStart				= 0;
-				a.selectionEnd					= a.value.length;
-
-				document.body.appendChild		(a);
-			//	a.focus							();		// 2017-11-02 del
-				a.select						();		// 2017-11-02 add
-				document.execCommand			('copy');
-				document.body.removeChild		(a);
-				var e							= document.getElementById ('copybuf');
-				e.value							+= txt;
-			}
-		};
-		function areacopy_ios()
-		{
-			var	box					= document.getElementById('copybuf');
-			var	range				= document.createRange();
-			range.selectNode		(box);
-			window.getSelection		().addRange (range);
-			document.execCommand	('copy');
-			alert					('Copied');
-    	}
-		function areaerase()
-		{
-			var a = document.activeElement;
-			var box							= document.getElementById ('copybuf');
-			box.readOnly					= true;
-			box.select						();
-			document.execCommand			('copy');
-			box.value						= '';
-		/*	document.body.focus				(); */
-			a.focus							();
-			box.readOnly					= false;
-		}
-		function jmpl(location)
-		{
-			var old_name	= document.getElementById (location).getAttribute('name');
-			document.getElementById (location).setAttribute('name', location);
-			window.location.hash			= location;
-			var ret = window.scrollBy		(0, -62);
-			document.getElementById (location).setAttribute('name', old_name);
-		}
-		function jmphome()
-		{
-			window.location.hash				= '';
-		    document.body.scrollTop				= 0; // For Chrome, Safari and Opera
-		    document.documentElement.scrollTop	= 0; // For IE and Firefox
-		}
+	<script src="./copier.js">
 	</script>
 </head>
 <body>
