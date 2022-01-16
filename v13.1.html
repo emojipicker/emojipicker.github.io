@@ -239,6 +239,34 @@
 								padding-bottom:		0px;
 								margin-bottom:		4px;
 							}
+
+		/* Cmap Ad  2022-01-16 */
+		.cmap-ad						{
+											background-color	: #E8E8E8;
+											border				: 1px solid gray;
+											width				: 98%;
+											margin				: 8px 1%;
+											padding				: 2px 2px;
+											text-align			: left;
+											vertical-align		: middle;
+											line-height			: 1.2em;
+										}
+		.cmap-img						{
+											border				: solid 0px;
+											border-radius		: 40%;
+											margin				: 4px 16px 4px 4px;
+										}
+		.cmap-ad > *:hover				{
+											background-color	: #CCC;
+										}
+		.cmap-txt						{
+											color				: #447;
+											background-color	: transparent;
+											border				: none;
+											text-decoration		: none;
+											text-align			: left;
+											vertical-align		: middle;
+										}
 	</style>
 
 		<!-- 2021-08-05 update -->
@@ -332,6 +360,31 @@
 		<td><a class="verbtn" href="v13.1.html"	>Emoji 13.1</a></td>
 	</tr>
 </table>
+
+											<!--- CMAP AD --->
+		<table class="cmap-ad" id="cmap-frame" style="visibility: collapse;">
+			<tr>
+				<td class="cmap-td">
+					<a href="https://play.google.com/store/apps/details?id=com.treeshade.cmap" target="_blank">
+					<img class="cmap-img" src="../img/ep_ad_for_cmap.png">
+					</a>
+				</td>
+				<td			class="cmap-td"
+							style="width:100%;"
+							onClick="window.open('https://play.google.com/store/apps/details?id=com.treeshade.cmap', '_blank')" >
+					<a class="cmap-txt" href="https://play.google.com/store/apps/details?id=com.treeshade.cmap" target="_blank">
+						<span style="color: red"><strong>New app of 2022 January!</strong></span><br>
+						<strong>Unicode Character Map</strong><br>
+						- The latest emoji and much more!<br>
+					</a>
+				</td>
+			</tr>
+		</table>
+
+		<script>
+			if (navigator.userAgent.indexOf ('Android 1') != -1)
+				document.getElementById("cmap-frame").style.visibility = "visible"; 
+		</script>
 
 									<H1>😃 Emoji Picker 🚀</H1>
 
