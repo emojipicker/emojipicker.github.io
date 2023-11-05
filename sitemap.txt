@@ -1,8 +1,6 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-<url><loc>https://emojipicker.com/</loc><priority>6.0</priority></url>
-<url><loc>https://emojipicker.com/v12.html</loc><priority>0.9</priority></url>
-<url><loc>https://emojipicker.com/v11.html</loc><priority>0.9</priority></url>
-<url><loc>https://emojipicker.com/v5.html</loc><priority>0.5</priority></url>
-<url><loc>https://emojipicker.com/v4.html</loc><priority>0.4</priority></url>
-</urlset>
+https://emojipicker.com/
+https://emojipicker.com/v13.1html
+https://emojipicker.com/v12.html
+https://emojipicker.com/v11.html
+https://emojipicker.com/v5.html
+https://emojipicker.com/v4.html
