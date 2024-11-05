@@ -1,0 +1,2569 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<!--src/src/pt/head-top.x BEGIN ( -->
+	<meta charset="utf-8">
+	<title>🙂 Emoji Picker 🚀</title>
+	<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1">
+	<meta name="description" content="Emoji Picker 🚀☕🙂❤💞 Find Unicode 16.0 emojis quickly and copy to clipboard! 🙂❤💞💯📘⚽🍊🤗😅🎃😻👢☂🌸⛄⭐🙈🍍☕🚚🏰👣">
+	<meta name="keywords"
+		content="emoji, picker, emojipicker, unicode, 15.1, 16.0, clipboard, list, copy, smiley, emoticon, face, symbol, paste, select, find">
+	<!-- <link rel="icon" href="/favicon.ico" /> -->
+	<!--src/src/pt/head-top.x ) END -->
+	<!--src/src/pt/emojipicker.css.x BEGIN ( -->
+	<style>
+		table,th,tr,td	{	padding:			0px;
+							border:				0px;
+							border-spacing:		0px;
+						}
+		body			{
+							margin-left:		0px;
+							margin-right:		0px;
+							padding-left:		0px;
+							padding-right:		0px;
+							background-color:	#fcfcfc;
+						}
+		.margined_hdr	{
+							margin:				10px;
+						}
+		.margined		{
+							margin:				10px;
+						}
+		.wholearea		{
+							margin:				0px;
+							padding:			0px;
+						}
+		.wholearea		{	line-height: 		1em;	font-family:	sans-serif;	font-family: "Segoe UI Emoji"; }
+		.titlearea		{	line-height: 		1.4em;	font-family:	sans-serif; font-family: "Segoe UI Emoji"; }
+		.hbar_area		{	line-height: 		1em;	font-family:	sans-serif; font-family: "Segoe UI Emoji"; }
+		.xcopyarea		{	line-height: 		1.2em;	font-family:	sans-serif; font-family: "Segoe UI Emoji"; }
+		.appendix		{	line-height:		30px;	font-family:	sans-serif; font-family: "Segoe UI Emoji"; }
+		h2				{	padding-left:		10px;	font-family:	serif;		font-family: "Segoe UI Emoji"; }
+		h3				{								font-family:	sans-serif; font-family: "Segoe UI Emoji"; }
+		.keypadarea		{															}
+
+		.hbar_table		{	background-color:	#64f;
+							position:			fixed;
+							top:				0px;
+							left:				0px;
+
+							width:				100%;
+							height:				60px;
+							border:				1px solid #64f;
+							border-spacing:		0px;
+
+							margin:				0px;
+							padding:			0px;
+							padding-left:		4px;
+							padding-right:		4px;
+						}
+		.xcopyarea		{
+							box-sizing:			border-box;
+							outline:			none;
+							font-family:		sans-serif;	font-family: "Segoe UI Emoji";
+							font-size:			20px;
+
+							width:				100%;
+							height:				56px;
+							border:				0px;
+							border:				1px solid #64f;
+							border:				1px solid black;
+							border:				0px;
+							border-spacing:		0px;
+
+							margin:				0px;
+							margin-left:		0px;
+							margin-right:		0px;
+							padding:			0px;
+						}
+
+		.xcopyarea:focus
+						{
+							background-color:	lightblue;
+						}
+
+		.xbutton		{
+							line-height:		1;
+						/*	line-spacing:		0;	*/
+
+							height:				54px;
+
+							margin:				0px;
+							margin-right:		2px;
+							margin-top:			0px;
+						}
+		.box			{
+							float:				left;
+
+							line-height:		1;
+						/*	line-spacing:		0;	*/
+
+							height:				30px;
+							height:				50px;
+						}
+		.box, .xbutton
+						{
+							box-sizing:			border-box;
+
+							font-family:		"Segoe UI Emoji";
+
+						    cursor:				pointer;
+						    text-decoration:	none;
+
+						    background-color:	#eeeeee;
+						    color:				black;
+
+						    text-align:			center;
+							vertical-align:		middle;
+						    font-size:			24px;
+
+						    border:				1px solid #000000;
+						    margin:				0px 0px 0px 0px;
+						    padding:			5px 5px 5px 5px;
+
+						    border:				1px solid #aaa;
+						    padding:			10px 5px;
+						}
+		.box:hover, .xbutton:hover
+						{
+							background-color: #ffffff
+						}
+		.box:active, .xbutton:active
+						{
+							background-color:	#eeeeee;
+							box-shadow:			0 4px #666;
+							transform:			translateY(-4px);
+						}
+
+		cl				{
+							clear:				left;
+						}
+
+		.xbar			{	display:			table;
+							box-sizing:			border-box;
+
+							background-color:	#64f;
+
+							position:			fixed;
+							top:				0px;
+							left:				0px;
+
+							width:				100%;
+							height:				60px;
+							margin:				0px;
+							border:				0px;
+							border-spacing:		0px;
+							padding:			2px 1px 2px 1px;
+						}
+		.underxbar		{
+							height:				60px;
+						}
+		.xcella,
+		.xcellb,
+		.xcellc,
+		.xcelld			{
+							box-sizing:			border-box;
+							display:			table-cell;
+							line-height:		1;
+						/*	line-spacing:		0;	*/
+
+							background-color:	#64f;
+
+							text-align:			center;
+							vertical-align:		middle;
+
+							margin:				0px;
+							border:				0px;
+							border-spacing:		0px;
+							padding:			0px 0px 0px 0px;
+						}
+		.xcella			{	width:	45px;	padding:	0px 2px 0px 3px;	}
+		.xcellb			{		 			padding:	0px 0px 0px 0px;	background-color: white; }
+		.xcellc			{	width:	46px;	padding:	0px 2px 0px 2px;	}
+		.xcelld			{	width:	70px;	padding:	0px 5px 0px 0px;	}
+
+		/* -------------------------------------------------*/
+		/* CATEGORY JUMP BUTTON (INDEX)						*/
+		/* -------------------------------------------------*/
+		.topbtn			{
+							font-family:		"Segoe UI Emoji";
+							text-decoration:	none;
+						    cursor:				pointer;
+							font-size:			32px;
+
+							box-sizing:			border-box;
+
+							line-height:		1.5; /* 2017-12-10 */
+						/*	height:				46px; */
+							width:				auto;
+
+							margin-bottom:		3px;
+							padding-left:		3px; /* 2017-12-10 */
+							padding-right:		3px; /* 2017-12-10 */
+
+							background-color:	#e1e1e1; /* 2017-12-10 */
+							border:				1px solid #adadad;  /* 2017-12-10 */
+							box-shadow:			0 4px 6px 0 rgba(0, 0, 0, 0.2);
+						}
+
+		/* -------------------------------------------------*/
+		/* CATEGORY HEADERS									*/
+		/* -------------------------------------------------*/
+		/* MAJOR CATEGORY */
+		#Smileys_People		{	background-color:	#63a;		}
+		#Smileys_People		{	background-color:	#25f;		}
+		#Animals_Nature		{	background-color:	green;		}
+		#Food_Drink			{	background-color:	orangered;	}
+		#Travel_Places		{	background-color:	#27e;		}
+		#Activities			{	background-color:	#f44;		}
+		#Objects			{	background-color:	#222;		}
+		#Symbols			{	background-color:	#666;		}
+		h2					{
+								font-family:		serif;
+
+								color:				white;
+								background-color:	blue;
+
+								left:				0;
+								text-align:			center;
+								text-align:			left;
+
+								margin-top:			10px;
+								padding-top:		8px;
+								padding-bottom:		8px;
+								margin-bottom:		0px;
+							}
+		/* SUBCATEGORY */
+		h3					{ 
+								margin-top:			10px;
+								padding-top:		0px;
+								padding-bottom:		0px;
+								margin-bottom:		4px;
+							}
+
+		/* Cmap Ad  2022-01-16 */
+		.cmap-ad						{
+											background-color	: #E8E8E8;
+											border				: 1px solid gray;
+											width				: 98%;
+											margin				: 8px 1%;
+											padding				: 2px 2px;
+											text-align			: left;
+											vertical-align		: middle;
+											line-height			: 1.2em;
+										}
+		.cmap-img						{
+											border				: solid 0px;
+											border-radius		: 40%;
+											margin				: 4px 16px 4px 4px;
+										}
+		.cmap-ad > *:hover				{
+											background-color	: #CCC;
+										}
+		.cmap-txt						{
+											color				: #447;
+											background-color	: transparent;
+											border				: none;
+											text-decoration		: none;
+											text-align			: left;
+											vertical-align		: middle;
+										}
+	</style>
+	<!--src/src/pt/emojipicker.css.x ) END -->
+	<!-- No ads -->
+	<!--src/src/pt/copier.js.x BEGIN ( -->
+	<script>
+		function cp(txt)
+		{
+			if (! navigator.userAgent.match (/ipad|ipod|iphone/i))
+			{
+				var			a					= document.createElement ('textarea');
+				a.style.position				= 'fixed';
+				a.style.left					= '-100%';
+				a.value							= txt;
+				a.selectionStart				= 0;
+				a.selectionEnd					= a.value.length;
+
+				document.body.appendChild		(a);
+				copy_element_to_clip			(a);
+				document.body.removeChild		(a);
+			}
+
+			// Add emoji to box
+			var				e					= document.getElementById ('copybuf');
+			e.value								+= txt;
+		}
+		function copy_element_to_clip(box)
+		{
+			box.readOnly						= true;
+			box.select							( );
+			document.execCommand				('copy');
+			box.readOnly						= false;
+		}
+		function areacopy_sub(erase_sw)
+		{
+			var 	a 							= document.activeElement;
+			var 	box							= document.getElementById ('copybuf');
+			copy_element_to_clip				(box);
+			a.focus								( );
+			if (erase_sw)
+			{
+				box.value						= '';
+			}
+		}
+		function areaerase()
+		{
+			areacopy_sub						(true);	// erase = true
+		}
+		function areacopy()
+		{
+			areacopy_sub						(false);	// erase = false
+		}
+		function jmpl(location)
+		{
+			var		old_name					= document.getElementById (location).getAttribute('name');
+			document.getElementById				(location).setAttribute('name', location);
+			window.location.hash				= location;
+			var		ret							= window.scrollBy (0, -62);
+			document.getElementById				(location).setAttribute('name', old_name);
+		}
+		function jmphome()
+		{
+			window.location.hash				= '';
+		    document.body.scrollTop				= 0; // For Chrome, Safari and Opera
+		    document.documentElement.scrollTop	= 0; // For IE and Firefox
+		}
+	</script>
+	<!--src/src/pt/copier.js.x ) END -->
+</head>
+
+<body>
+<div class="wholearea">
+	<div class="titlearea">
+		<div class="underxbar">
+			<br>
+			<br>
+		</div>
+		<div style="text-align: center">
+									<!--src/src/pt/noscript.x BEGIN ( -->
+	<noscript><br>⚠️Javascript is required to view this website. Please enable Javascript on your browser.💡<br></noscript>
+	<!--src/src/pt/noscript.x ) END -->
+									<!-- No version bar -->
+									<!-- No ads -->
+									<!--src/src/pt/title.x BEGIN ( -->
+<H1>😃 Emoji Picker 🚀</H1>
+	<!--src/src/pt/title.x ) END -->
+<!--			Emoji 15.1<br><br>		-->
+									
+									<!-- suspend <$:pt/after-title.x> -->
+		</div>
+		<div class="margined_hdr">
+									<!--src/src/pt/icon-idx-from-v12.x BEGIN ( -->
+	<strong>Quick Shortcuts:</strong><br>
+
+	<a class="topbtn" onClick="jmpl('Smileys_People');"			title="Smileys & People">😂</a>
+	<a class="topbtn" onClick="jmpl('family')"					title="family">👪</a>
+	<a class="topbtn" onClick="jmpl('hand-fingers-open')"		title="hand-fingers-open">👋</a>
+	<a class="topbtn" onClick="jmpl('hand-fingers-closed')"		title="hand-fingers-closed">👍</a>
+	<a class="topbtn" onClick="jmpl('emotion')"					title="emotion">💕</a>
+	<a class="topbtn" onClick="jmpl('emotion')"					title="emotion">💯</a>
+	<a class="topbtn" onClick="jmpl('clothing')"				title="clothing">👕</a>
+	<a class="topbtn" onClick="jmpl('monkey-face')"				title="monkey-face">🙈</a>
+	<a class="topbtn" onClick="jmpl('Animals_Nature')"			title="Animals & Nature">🐕</a>
+	<a class="topbtn" onClick="jmpl('animal-marine')"			title="animal-marine">🐟</a>
+	<a class="topbtn" onClick="jmpl('plant-flower')"			title="flower">🌺</a>
+	<a class="topbtn" onClick="jmpl('Food_Drink')"				title="Food & Drink">🍊</a>
+	<a class="topbtn" onClick="jmpl('drink')"					title="drink">🍸</a>
+	<a class="topbtn" onClick="jmpl('Travel_Places')"			title="Travel & Places">🌍</a>
+	<a class="topbtn" onClick="jmpl('place-building')"			title="place-building">🏠</a>
+	<a class="topbtn" onClick="jmpl('transport-ground')"		title="transport-ground">🚗</a>
+	<a class="topbtn" onClick="jmpl('transport-air')"			title="transport-air">🚀</a>
+	<a class="topbtn" onClick="jmpl('time')"					title="time">🕒</a>
+	<a class="topbtn" onClick="jmpl('sky_weather')"				title="sky & weather">🌙</a>
+	<a class="topbtn" onClick="jmpl('Activities')"				title="Activities">🎁</a>
+	<a class="topbtn" onClick="jmpl('sport')"					title="sport">⚽</a>
+	<a class="topbtn" onClick="jmpl('Objects')"					title="Objects">🎶</a>
+	<a class="topbtn" onClick="jmpl('light_video')"				title="light & video">🎬</a>
+	<a class="topbtn" onClick="jmpl('book-paper')"				title="book-paper">📘</a>
+	<a class="topbtn" onClick="jmpl('mail')"					title="mail">📧</a>
+	<a class="topbtn" onClick="jmpl('writing')"					title="writing">📝</a>
+	<a class="topbtn" onClick="jmpl('Symbols')"					title="Symbols">🛅</a>
+	<a class="topbtn" onClick="jmpl('arrow')"					title="arrow">🔜</a>
+	<a class="topbtn" onClick="jmpl('zodiac')"					title="zodiac">♒</a>
+	<a class="topbtn" onClick="jmpl('other-symbol')"			title="other-symbol">♻️</a>
+	<a class="topbtn" onClick="jmpl('geometric')"				title="geometric">🟨</a>
+	<a class="topbtn" onClick="jmpl('flag')"					title="flag">🚩</a>
+	<!--src/src/pt/icon-idx-from-v12.x ) END -->
+		</div>
+		<br>
+	</div>
+
+									<!--src/src/pt/hbar.x BEGIN ( -->
+	<div class="hbar_area"> <!-- hbar_area ( -->
+		<div class="xbar">
+			<div class="xcella"><a  class="xbutton" onclick="jmphome('');">🏠</a></div>
+			<div class="xcellb"><textarea id="copybuf" class="xcopyarea"></textarea></div>
+			<div class="xcellc"><a  class="xbutton" onclick="areaerase();"> ✂️</a></div>
+			<div class="xcelld"><a  class="xbutton" onclick="areacopy();">Copy</a></div>
+		</div>
+	</div> <!-- END hbar_area )-->
+	<!--src/src/pt/hbar.x ) END -->
+
+	<div>
+									<!--src/src/body/emdata.v15.1.app.x BEGIN ( -->
+<h2 id="Smileys_Emotion">Smileys &amp; Emotion</h2>
+<div class="margined">
+	<h3 id="face-smiling">face-smiling</h3>
+	<a class="box" onClick="cp('😀')" title="grinning face">😀</a>
+	<a class="box" onClick="cp('😃')" title="grinning face with big eyes">😃</a>
+	<a class="box" onClick="cp('😄')" title="grinning face with smiling eyes">😄</a>
+	<a class="box" onClick="cp('😁')" title="beaming face with smiling eyes">😁</a>
+	<a class="box" onClick="cp('😆')" title="grinning squinting face">😆</a>
+	<a class="box" onClick="cp('😅')" title="grinning face with sweat">😅</a>
+	<a class="box" onClick="cp('🤣')" title="rolling on the floor laughing">🤣</a>
+	<a class="box" onClick="cp('😂')" title="face with tears of joy">😂</a>
+	<a class="box" onClick="cp('🙂')" title="slightly smiling face">🙂</a>
+	<a class="box" onClick="cp('🙃')" title="upside-down face">🙃</a>
+	<a class="box" onClick="cp('🫠')" title="melting face">🫠</a>
+	<a class="box" onClick="cp('😉')" title="winking face">😉</a>
+	<a class="box" onClick="cp('😊')" title="smiling face with smiling eyes">😊</a>
+	<a class="box" onClick="cp('😇')" title="smiling face with halo">😇</a>
+	<div style="clear:left;"></div>
+	<h3 id="face-affection">face-affection</h3>
+	<a class="box" onClick="cp('🥰')" title="smiling face with hearts">🥰</a>
+	<a class="box" onClick="cp('😍')" title="smiling face with heart-eyes">😍</a>
+	<a class="box" onClick="cp('🤩')" title="star-struck">🤩</a>
+	<a class="box" onClick="cp('😘')" title="face blowing a kiss">😘</a>
+	<a class="box" onClick="cp('😗')" title="kissing face">😗</a>
+	<a class="box" onClick="cp('☺️')" title="smiling face">☺️</a>
+	<a class="box" onClick="cp('😚')" title="kissing face with closed eyes">😚</a>
+	<a class="box" onClick="cp('😙')" title="kissing face with smiling eyes">😙</a>
+	<a class="box" onClick="cp('🥲')" title="smiling face with tear">🥲</a>
+	<div style="clear:left;"></div>
+	<h3 id="face-tongue">face-tongue</h3>
+	<a class="box" onClick="cp('😋')" title="face savoring food">😋</a>
+	<a class="box" onClick="cp('😛')" title="face with tongue">😛</a>
+	<a class="box" onClick="cp('😜')" title="winking face with tongue">😜</a>
+	<a class="box" onClick="cp('🤪')" title="zany face">🤪</a>
+	<a class="box" onClick="cp('😝')" title="squinting face with tongue">😝</a>
+	<a class="box" onClick="cp('🤑')" title="money-mouth face">🤑</a>
+	<div style="clear:left;"></div>
+	<h3 id="face-hand">face-hand</h3>
+	<a class="box" onClick="cp('🤗')" title="smiling face with open hands">🤗</a>
+	<a class="box" onClick="cp('🤭')" title="face with hand over mouth">🤭</a>
+	<a class="box" onClick="cp('🫢')" title="face with open eyes and hand over mouth">🫢</a>
+	<a class="box" onClick="cp('🫣')" title="face with peeking eye">🫣</a>
+	<a class="box" onClick="cp('🤫')" title="shushing face">🤫</a>
+	<a class="box" onClick="cp('🤔')" title="thinking face">🤔</a>
+	<a class="box" onClick="cp('🫡')" title="saluting face">🫡</a>
+	<div style="clear:left;"></div>
+	<h3 id="face-neutral-skeptical">face-neutral-skeptical</h3>
+	<a class="box" onClick="cp('🤐')" title="zipper-mouth face">🤐</a>
+	<a class="box" onClick="cp('🤨')" title="face with raised eyebrow">🤨</a>
+	<a class="box" onClick="cp('😐')" title="neutral face">😐</a>
+	<a class="box" onClick="cp('😑')" title="expressionless face">😑</a>
+	<a class="box" onClick="cp('😶')" title="face without mouth">😶</a>
+	<a class="box" onClick="cp('🫥')" title="dotted line face">🫥</a>
+	<a class="box" onClick="cp('😶‍🌫️')" title="face in clouds">😶‍🌫️</a>
+	<a class="box" onClick="cp('😏')" title="smirking face">😏</a>
+	<a class="box" onClick="cp('😒')" title="unamused face">😒</a>
+	<a class="box" onClick="cp('🙄')" title="face with rolling eyes">🙄</a>
+	<a class="box" onClick="cp('😬')" title="grimacing face">😬</a>
+	<a class="box" onClick="cp('😮‍💨')" title="face exhaling">😮‍💨</a>
+	<a class="box" onClick="cp('🤥')" title="lying face">🤥</a>
+	<a class="box" onClick="cp('🫨')" title="shaking face">🫨</a>
+	<a class="box" onClick="cp('🙂‍↔️')" title="head shaking horizontally">🙂‍↔️</a>
+	<a class="box" onClick="cp('🙂‍↕️')" title="head shaking vertically">🙂‍↕️</a>
+	<div style="clear:left;"></div>
+	<h3 id="face-sleepy">face-sleepy</h3>
+	<a class="box" onClick="cp('😌')" title="relieved face">😌</a>
+	<a class="box" onClick="cp('😔')" title="pensive face">😔</a>
+	<a class="box" onClick="cp('😪')" title="sleepy face">😪</a>
+	<a class="box" onClick="cp('🤤')" title="drooling face">🤤</a>
+	<a class="box" onClick="cp('😴')" title="sleeping face">😴</a>
+	<div style="clear:left;"></div>
+	<h3 id="face-unwell">face-unwell</h3>
+	<a class="box" onClick="cp('😷')" title="face with medical mask">😷</a>
+	<a class="box" onClick="cp('🤒')" title="face with thermometer">🤒</a>
+	<a class="box" onClick="cp('🤕')" title="face with head-bandage">🤕</a>
+	<a class="box" onClick="cp('🤢')" title="nauseated face">🤢</a>
+	<a class="box" onClick="cp('🤮')" title="face vomiting">🤮</a>
+	<a class="box" onClick="cp('🤧')" title="sneezing face">🤧</a>
+	<a class="box" onClick="cp('🥵')" title="hot face">🥵</a>
+	<a class="box" onClick="cp('🥶')" title="cold face">🥶</a>
+	<a class="box" onClick="cp('🥴')" title="woozy face">🥴</a>
+	<a class="box" onClick="cp('😵')" title="face with crossed-out eyes">😵</a>
+	<a class="box" onClick="cp('😵‍💫')" title="face with spiral eyes">😵‍💫</a>
+	<a class="box" onClick="cp('🤯')" title="exploding head">🤯</a>
+	<div style="clear:left;"></div>
+	<h3 id="face-hat">face-hat</h3>
+	<a class="box" onClick="cp('🤠')" title="cowboy hat face">🤠</a>
+	<a class="box" onClick="cp('🥳')" title="partying face">🥳</a>
+	<a class="box" onClick="cp('🥸')" title="disguised face">🥸</a>
+	<div style="clear:left;"></div>
+	<h3 id="face-glasses">face-glasses</h3>
+	<a class="box" onClick="cp('😎')" title="smiling face with sunglasses">😎</a>
+	<a class="box" onClick="cp('🤓')" title="nerd face">🤓</a>
+	<a class="box" onClick="cp('🧐')" title="face with monocle">🧐</a>
+	<div style="clear:left;"></div>
+	<h3 id="face-concerned">face-concerned</h3>
+	<a class="box" onClick="cp('😕')" title="confused face">😕</a>
+	<a class="box" onClick="cp('🫤')" title="face with diagonal mouth">🫤</a>
+	<a class="box" onClick="cp('😟')" title="worried face">😟</a>
+	<a class="box" onClick="cp('🙁')" title="slightly frowning face">🙁</a>
+	<a class="box" onClick="cp('☹️')" title="frowning face">☹️</a>
+	<a class="box" onClick="cp('😮')" title="face with open mouth">😮</a>
+	<a class="box" onClick="cp('😯')" title="hushed face">😯</a>
+	<a class="box" onClick="cp('😲')" title="astonished face">😲</a>
+	<a class="box" onClick="cp('😳')" title="flushed face">😳</a>
+	<a class="box" onClick="cp('🥺')" title="pleading face">🥺</a>
+	<a class="box" onClick="cp('🥹')" title="face holding back tears">🥹</a>
+	<a class="box" onClick="cp('😦')" title="frowning face with open mouth">😦</a>
+	<a class="box" onClick="cp('😧')" title="anguished face">😧</a>
+	<a class="box" onClick="cp('😨')" title="fearful face">😨</a>
+	<a class="box" onClick="cp('😰')" title="anxious face with sweat">😰</a>
+	<a class="box" onClick="cp('😥')" title="sad but relieved face">😥</a>
+	<a class="box" onClick="cp('😢')" title="crying face">😢</a>
+	<a class="box" onClick="cp('😭')" title="loudly crying face">😭</a>
+	<a class="box" onClick="cp('😱')" title="face screaming in fear">😱</a>
+	<a class="box" onClick="cp('😖')" title="confounded face">😖</a>
+	<a class="box" onClick="cp('😣')" title="persevering face">😣</a>
+	<a class="box" onClick="cp('😞')" title="disappointed face">😞</a>
+	<a class="box" onClick="cp('😓')" title="downcast face with sweat">😓</a>
+	<a class="box" onClick="cp('😩')" title="weary face">😩</a>
+	<a class="box" onClick="cp('😫')" title="tired face">😫</a>
+	<a class="box" onClick="cp('🥱')" title="yawning face">🥱</a>
+	<div style="clear:left;"></div>
+	<h3 id="face-negative">face-negative</h3>
+	<a class="box" onClick="cp('😤')" title="face with steam from nose">😤</a>
+	<a class="box" onClick="cp('😡')" title="enraged face">😡</a>
+	<a class="box" onClick="cp('😠')" title="angry face">😠</a>
+	<a class="box" onClick="cp('🤬')" title="face with symbols on mouth">🤬</a>
+	<a class="box" onClick="cp('😈')" title="smiling face with horns">😈</a>
+	<a class="box" onClick="cp('👿')" title="angry face with horns">👿</a>
+	<a class="box" onClick="cp('💀')" title="skull">💀</a>
+	<a class="box" onClick="cp('☠️')" title="skull and crossbones">☠️</a>
+	<div style="clear:left;"></div>
+	<h3 id="face-costume">face-costume</h3>
+	<a class="box" onClick="cp('💩')" title="pile of poo">💩</a>
+	<a class="box" onClick="cp('🤡')" title="clown face">🤡</a>
+	<a class="box" onClick="cp('👹')" title="ogre">👹</a>
+	<a class="box" onClick="cp('👺')" title="goblin">👺</a>
+	<a class="box" onClick="cp('👻')" title="ghost">👻</a>
+	<a class="box" onClick="cp('👽')" title="alien">👽</a>
+	<a class="box" onClick="cp('👾')" title="alien monster">👾</a>
+	<a class="box" onClick="cp('🤖')" title="robot">🤖</a>
+	<div style="clear:left;"></div>
+	<h3 id="cat-face">cat-face</h3>
+	<a class="box" onClick="cp('😺')" title="grinning cat">😺</a>
+	<a class="box" onClick="cp('😸')" title="grinning cat with smiling eyes">😸</a>
+	<a class="box" onClick="cp('😹')" title="cat with tears of joy">😹</a>
+	<a class="box" onClick="cp('😻')" title="smiling cat with heart-eyes">😻</a>
+	<a class="box" onClick="cp('😼')" title="cat with wry smile">😼</a>
+	<a class="box" onClick="cp('😽')" title="kissing cat">😽</a>
+	<a class="box" onClick="cp('🙀')" title="weary cat">🙀</a>
+	<a class="box" onClick="cp('😿')" title="crying cat">😿</a>
+	<a class="box" onClick="cp('😾')" title="pouting cat">😾</a>
+	<div style="clear:left;"></div>
+	<h3 id="monkey-face">monkey-face</h3>
+	<a class="box" onClick="cp('🙈')" title="see-no-evil monkey">🙈</a>
+	<a class="box" onClick="cp('🙉')" title="hear-no-evil monkey">🙉</a>
+	<a class="box" onClick="cp('🙊')" title="speak-no-evil monkey">🙊</a>
+	<div style="clear:left;"></div>
+	<h3 id="heart">heart</h3>
+	<a class="box" onClick="cp('💌')" title="love letter">💌</a>
+	<a class="box" onClick="cp('💘')" title="heart with arrow">💘</a>
+	<a class="box" onClick="cp('💝')" title="heart with ribbon">💝</a>
+	<a class="box" onClick="cp('💖')" title="sparkling heart">💖</a>
+	<a class="box" onClick="cp('💗')" title="growing heart">💗</a>
+	<a class="box" onClick="cp('💓')" title="beating heart">💓</a>
+	<a class="box" onClick="cp('💞')" title="revolving hearts">💞</a>
+	<a class="box" onClick="cp('💕')" title="two hearts">💕</a>
+	<a class="box" onClick="cp('💟')" title="heart decoration">💟</a>
+	<a class="box" onClick="cp('❣️')" title="heart exclamation">❣️</a>
+	<a class="box" onClick="cp('💔')" title="broken heart">💔</a>
+	<a class="box" onClick="cp('❤️‍🔥')" title="heart on fire">❤️‍🔥</a>
+	<a class="box" onClick="cp('❤️‍🩹')" title="mending heart">❤️‍🩹</a>
+	<a class="box" onClick="cp('❤️')" title="red heart">❤️</a>
+	<a class="box" onClick="cp('🩷')" title="pink heart">🩷</a>
+	<a class="box" onClick="cp('🧡')" title="orange heart">🧡</a>
+	<a class="box" onClick="cp('💛')" title="yellow heart">💛</a>
+	<a class="box" onClick="cp('💚')" title="green heart">💚</a>
+	<a class="box" onClick="cp('💙')" title="blue heart">💙</a>
+	<a class="box" onClick="cp('🩵')" title="light blue heart">🩵</a>
+	<a class="box" onClick="cp('💜')" title="purple heart">💜</a>
+	<a class="box" onClick="cp('🤎')" title="brown heart">🤎</a>
+	<a class="box" onClick="cp('🖤')" title="black heart">🖤</a>
+	<a class="box" onClick="cp('🩶')" title="grey heart">🩶</a>
+	<a class="box" onClick="cp('🤍')" title="white heart">🤍</a>
+	<div style="clear:left;"></div>
+	<h3 id="emotion">emotion</h3>
+	<a class="box" onClick="cp('💋')" title="kiss mark">💋</a>
+	<a class="box" onClick="cp('💯')" title="hundred points">💯</a>
+	<a class="box" onClick="cp('💢')" title="anger symbol">💢</a>
+	<a class="box" onClick="cp('💥')" title="collision">💥</a>
+	<a class="box" onClick="cp('💫')" title="dizzy">💫</a>
+	<a class="box" onClick="cp('💦')" title="sweat droplets">💦</a>
+	<a class="box" onClick="cp('💨')" title="dashing away">💨</a>
+	<a class="box" onClick="cp('🕳️')" title="hole">🕳️</a>
+	<a class="box" onClick="cp('💬')" title="speech balloon">💬</a>
+	<a class="box" onClick="cp('👁️‍🗨️')" title="eye in speech bubble">👁️‍🗨️</a>
+	<a class="box" onClick="cp('🗨️')" title="left speech bubble">🗨️</a>
+	<a class="box" onClick="cp('🗯️')" title="right anger bubble">🗯️</a>
+	<a class="box" onClick="cp('💭')" title="thought balloon">💭</a>
+	<a class="box" onClick="cp('💤')" title="ZZZ">💤</a>
+	<div style="clear:left;"></div>
+</div>
+<h2 id="People_Body">People &amp; Body</h2>
+<div class="margined">
+	<h3 id="hand-fingers-open">hand-fingers-open</h3>
+	<a class="box" onClick="cp('👋')" title="waving hand">👋</a>
+	<a class="box" onClick="cp('🤚')" title="raised back of hand">🤚</a>
+	<a class="box" onClick="cp('🖐️')" title="hand with fingers splayed">🖐️</a>
+	<a class="box" onClick="cp('✋')" title="raised hand">✋</a>
+	<a class="box" onClick="cp('🖖')" title="vulcan salute">🖖</a>
+	<a class="box" onClick="cp('🫱')" title="rightwards hand">🫱</a>
+	<a class="box" onClick="cp('🫲')" title="leftwards hand">🫲</a>
+	<a class="box" onClick="cp('🫳')" title="palm down hand">🫳</a>
+	<a class="box" onClick="cp('🫴')" title="palm up hand">🫴</a>
+	<a class="box" onClick="cp('🫷')" title="leftwards pushing hand">🫷</a>
+	<a class="box" onClick="cp('🫸')" title="rightwards pushing hand">🫸</a>
+	<div style="clear:left;"></div>
+	<h3 id="hand-fingers-partial">hand-fingers-partial</h3>
+	<a class="box" onClick="cp('👌')" title="OK hand">👌</a>
+	<a class="box" onClick="cp('🤌')" title="pinched fingers">🤌</a>
+	<a class="box" onClick="cp('🤏')" title="pinching hand">🤏</a>
+	<a class="box" onClick="cp('✌️')" title="victory hand">✌️</a>
+	<a class="box" onClick="cp('🤞')" title="crossed fingers">🤞</a>
+	<a class="box" onClick="cp('🫰')" title="hand with index finger and thumb crossed">🫰</a>
+	<a class="box" onClick="cp('🤟')" title="love-you gesture">🤟</a>
+	<a class="box" onClick="cp('🤘')" title="sign of the horns">🤘</a>
+	<a class="box" onClick="cp('🤙')" title="call me hand">🤙</a>
+	<div style="clear:left;"></div>
+	<h3 id="hand-single-finger">hand-single-finger</h3>
+	<a class="box" onClick="cp('👈')" title="backhand index pointing left">👈</a>
+	<a class="box" onClick="cp('👉')" title="backhand index pointing right">👉</a>
+	<a class="box" onClick="cp('👆')" title="backhand index pointing up">👆</a>
+	<a class="box" onClick="cp('👇')" title="backhand index pointing down">👇</a>
+	<a class="box" onClick="cp('☝️')" title="index pointing up">☝️</a>
+	<a class="box" onClick="cp('🫵')" title="index pointing at the viewer">🫵</a>
+	<div style="clear:left;"></div>
+	<h3 id="hand-fingers-closed">hand-fingers-closed</h3>
+	<a class="box" onClick="cp('👍')" title="thumbs up">👍</a>
+	<a class="box" onClick="cp('👎')" title="thumbs down">👎</a>
+	<a class="box" onClick="cp('✊')" title="raised fist">✊</a>
+	<a class="box" onClick="cp('👊')" title="oncoming fist">👊</a>
+	<a class="box" onClick="cp('🤛')" title="left-facing fist">🤛</a>
+	<a class="box" onClick="cp('🤜')" title="right-facing fist">🤜</a>
+	<div style="clear:left;"></div>
+	<h3 id="hands">hands</h3>
+	<a class="box" onClick="cp('👏')" title="clapping hands">👏</a>
+	<a class="box" onClick="cp('🙌')" title="raising hands">🙌</a>
+	<a class="box" onClick="cp('🫶')" title="heart hands">🫶</a>
+	<a class="box" onClick="cp('👐')" title="open hands">👐</a>
+	<a class="box" onClick="cp('🤲')" title="palms up together">🤲</a>
+	<a class="box" onClick="cp('🤝')" title="handshake">🤝</a>
+	<a class="box" onClick="cp('🙏')" title="folded hands">🙏</a>
+	<div style="clear:left;"></div>
+	<h3 id="hand-prop">hand-prop</h3>
+	<a class="box" onClick="cp('✍️')" title="writing hand">✍️</a>
+	<a class="box" onClick="cp('💅')" title="nail polish">💅</a>
+	<a class="box" onClick="cp('🤳')" title="selfie">🤳</a>
+	<div style="clear:left;"></div>
+	<h3 id="body-parts">body-parts</h3>
+	<a class="box" onClick="cp('💪')" title="flexed biceps">💪</a>
+	<a class="box" onClick="cp('🦾')" title="mechanical arm">🦾</a>
+	<a class="box" onClick="cp('🦿')" title="mechanical leg">🦿</a>
+	<a class="box" onClick="cp('🦵')" title="leg">🦵</a>
+	<a class="box" onClick="cp('🦶')" title="foot">🦶</a>
+	<a class="box" onClick="cp('👂')" title="ear">👂</a>
+	<a class="box" onClick="cp('🦻')" title="ear with hearing aid">🦻</a>
+	<a class="box" onClick="cp('👃')" title="nose">👃</a>
+	<a class="box" onClick="cp('🧠')" title="brain">🧠</a>
+	<a class="box" onClick="cp('🫀')" title="anatomical heart">🫀</a>
+	<a class="box" onClick="cp('🫁')" title="lungs">🫁</a>
+	<a class="box" onClick="cp('🦷')" title="tooth">🦷</a>
+	<a class="box" onClick="cp('🦴')" title="bone">🦴</a>
+	<a class="box" onClick="cp('👀')" title="eyes">👀</a>
+	<a class="box" onClick="cp('👁️')" title="eye">👁️</a>
+	<a class="box" onClick="cp('👅')" title="tongue">👅</a>
+	<a class="box" onClick="cp('👄')" title="mouth">👄</a>
+	<a class="box" onClick="cp('🫦')" title="biting lip">🫦</a>
+	<div style="clear:left;"></div>
+	<h3 id="person">person</h3>
+	<a class="box" onClick="cp('👶')" title="baby">👶</a>
+	<a class="box" onClick="cp('🧒')" title="child">🧒</a>
+	<a class="box" onClick="cp('👦')" title="boy">👦</a>
+	<a class="box" onClick="cp('👧')" title="girl">👧</a>
+	<a class="box" onClick="cp('🧑')" title="person">🧑</a>
+	<a class="box" onClick="cp('👱')" title="person: blond hair">👱</a>
+	<a class="box" onClick="cp('👨')" title="man">👨</a>
+	<a class="box" onClick="cp('🧔')" title="person: beard">🧔</a>
+	<a class="box" onClick="cp('🧔‍♂️')" title="man: beard">🧔‍♂️</a>
+	<a class="box" onClick="cp('🧔‍♀️')" title="woman: beard">🧔‍♀️</a>
+	<a class="box" onClick="cp('👨‍🦰')" title="man: red hair">👨‍🦰</a>
+	<a class="box" onClick="cp('👨‍🦱')" title="man: curly hair">👨‍🦱</a>
+	<a class="box" onClick="cp('👨‍🦳')" title="man: white hair">👨‍🦳</a>
+	<a class="box" onClick="cp('👨‍🦲')" title="man: bald">👨‍🦲</a>
+	<a class="box" onClick="cp('👩')" title="woman">👩</a>
+	<a class="box" onClick="cp('👩‍🦰')" title="woman: red hair">👩‍🦰</a>
+	<a class="box" onClick="cp('🧑‍🦰')" title="person: red hair">🧑‍🦰</a>
+	<a class="box" onClick="cp('👩‍🦱')" title="woman: curly hair">👩‍🦱</a>
+	<a class="box" onClick="cp('🧑‍🦱')" title="person: curly hair">🧑‍🦱</a>
+	<a class="box" onClick="cp('👩‍🦳')" title="woman: white hair">👩‍🦳</a>
+	<a class="box" onClick="cp('🧑‍🦳')" title="person: white hair">🧑‍🦳</a>
+	<a class="box" onClick="cp('👩‍🦲')" title="woman: bald">👩‍🦲</a>
+	<a class="box" onClick="cp('🧑‍🦲')" title="person: bald">🧑‍🦲</a>
+	<a class="box" onClick="cp('👱‍♀️')" title="woman: blond hair">👱‍♀️</a>
+	<a class="box" onClick="cp('👱‍♂️')" title="man: blond hair">👱‍♂️</a>
+	<a class="box" onClick="cp('🧓')" title="older person">🧓</a>
+	<a class="box" onClick="cp('👴')" title="old man">👴</a>
+	<a class="box" onClick="cp('👵')" title="old woman">👵</a>
+	<div style="clear:left;"></div>
+	<h3 id="person-gesture">person-gesture</h3>
+	<a class="box" onClick="cp('🙍')" title="person frowning">🙍</a>
+	<a class="box" onClick="cp('🙍‍♂️')" title="man frowning">🙍‍♂️</a>
+	<a class="box" onClick="cp('🙍‍♀️')" title="woman frowning">🙍‍♀️</a>
+	<a class="box" onClick="cp('🙎')" title="person pouting">🙎</a>
+	<a class="box" onClick="cp('🙎‍♂️')" title="man pouting">🙎‍♂️</a>
+	<a class="box" onClick="cp('🙎‍♀️')" title="woman pouting">🙎‍♀️</a>
+	<a class="box" onClick="cp('🙅')" title="person gesturing NO">🙅</a>
+	<a class="box" onClick="cp('🙅‍♂️')" title="man gesturing NO">🙅‍♂️</a>
+	<a class="box" onClick="cp('🙅‍♀️')" title="woman gesturing NO">🙅‍♀️</a>
+	<a class="box" onClick="cp('🙆')" title="person gesturing OK">🙆</a>
+	<a class="box" onClick="cp('🙆‍♂️')" title="man gesturing OK">🙆‍♂️</a>
+	<a class="box" onClick="cp('🙆‍♀️')" title="woman gesturing OK">🙆‍♀️</a>
+	<a class="box" onClick="cp('💁')" title="person tipping hand">💁</a>
+	<a class="box" onClick="cp('💁‍♂️')" title="man tipping hand">💁‍♂️</a>
+	<a class="box" onClick="cp('💁‍♀️')" title="woman tipping hand">💁‍♀️</a>
+	<a class="box" onClick="cp('🙋')" title="person raising hand">🙋</a>
+	<a class="box" onClick="cp('🙋‍♂️')" title="man raising hand">🙋‍♂️</a>
+	<a class="box" onClick="cp('🙋‍♀️')" title="woman raising hand">🙋‍♀️</a>
+	<a class="box" onClick="cp('🧏')" title="deaf person">🧏</a>
+	<a class="box" onClick="cp('🧏‍♂️')" title="deaf man">🧏‍♂️</a>
+	<a class="box" onClick="cp('🧏‍♀️')" title="deaf woman">🧏‍♀️</a>
+	<a class="box" onClick="cp('🙇')" title="person bowing">🙇</a>
+	<a class="box" onClick="cp('🙇‍♂️')" title="man bowing">🙇‍♂️</a>
+	<a class="box" onClick="cp('🙇‍♀️')" title="woman bowing">🙇‍♀️</a>
+	<a class="box" onClick="cp('🤦')" title="person facepalming">🤦</a>
+	<a class="box" onClick="cp('🤦‍♂️')" title="man facepalming">🤦‍♂️</a>
+	<a class="box" onClick="cp('🤦‍♀️')" title="woman facepalming">🤦‍♀️</a>
+	<a class="box" onClick="cp('🤷')" title="person shrugging">🤷</a>
+	<a class="box" onClick="cp('🤷‍♂️')" title="man shrugging">🤷‍♂️</a>
+	<a class="box" onClick="cp('🤷‍♀️')" title="woman shrugging">🤷‍♀️</a>
+	<div style="clear:left;"></div>
+	<h3 id="person-role">person-role</h3>
+	<a class="box" onClick="cp('🧑‍⚕️')" title="health worker">🧑‍⚕️</a>
+	<a class="box" onClick="cp('👨‍⚕️')" title="man health worker">👨‍⚕️</a>
+	<a class="box" onClick="cp('👩‍⚕️')" title="woman health worker">👩‍⚕️</a>
+	<a class="box" onClick="cp('🧑‍🎓')" title="student">🧑‍🎓</a>
+	<a class="box" onClick="cp('👨‍🎓')" title="man student">👨‍🎓</a>
+	<a class="box" onClick="cp('👩‍🎓')" title="woman student">👩‍🎓</a>
+	<a class="box" onClick="cp('🧑‍🏫')" title="teacher">🧑‍🏫</a>
+	<a class="box" onClick="cp('👨‍🏫')" title="man teacher">👨‍🏫</a>
+	<a class="box" onClick="cp('👩‍🏫')" title="woman teacher">👩‍🏫</a>
+	<a class="box" onClick="cp('🧑‍⚖️')" title="judge">🧑‍⚖️</a>
+	<a class="box" onClick="cp('👨‍⚖️')" title="man judge">👨‍⚖️</a>
+	<a class="box" onClick="cp('👩‍⚖️')" title="woman judge">👩‍⚖️</a>
+	<a class="box" onClick="cp('🧑‍🌾')" title="farmer">🧑‍🌾</a>
+	<a class="box" onClick="cp('👨‍🌾')" title="man farmer">👨‍🌾</a>
+	<a class="box" onClick="cp('👩‍🌾')" title="woman farmer">👩‍🌾</a>
+	<a class="box" onClick="cp('🧑‍🍳')" title="cook">🧑‍🍳</a>
+	<a class="box" onClick="cp('👨‍🍳')" title="man cook">👨‍🍳</a>
+	<a class="box" onClick="cp('👩‍🍳')" title="woman cook">👩‍🍳</a>
+	<a class="box" onClick="cp('🧑‍🔧')" title="mechanic">🧑‍🔧</a>
+	<a class="box" onClick="cp('👨‍🔧')" title="man mechanic">👨‍🔧</a>
+	<a class="box" onClick="cp('👩‍🔧')" title="woman mechanic">👩‍🔧</a>
+	<a class="box" onClick="cp('🧑‍🏭')" title="factory worker">🧑‍🏭</a>
+	<a class="box" onClick="cp('👨‍🏭')" title="man factory worker">👨‍🏭</a>
+	<a class="box" onClick="cp('👩‍🏭')" title="woman factory worker">👩‍🏭</a>
+	<a class="box" onClick="cp('🧑‍💼')" title="office worker">🧑‍💼</a>
+	<a class="box" onClick="cp('👨‍💼')" title="man office worker">👨‍💼</a>
+	<a class="box" onClick="cp('👩‍💼')" title="woman office worker">👩‍💼</a>
+	<a class="box" onClick="cp('🧑‍🔬')" title="scientist">🧑‍🔬</a>
+	<a class="box" onClick="cp('👨‍🔬')" title="man scientist">👨‍🔬</a>
+	<a class="box" onClick="cp('👩‍🔬')" title="woman scientist">👩‍🔬</a>
+	<a class="box" onClick="cp('🧑‍💻')" title="technologist">🧑‍💻</a>
+	<a class="box" onClick="cp('👨‍💻')" title="man technologist">👨‍💻</a>
+	<a class="box" onClick="cp('👩‍💻')" title="woman technologist">👩‍💻</a>
+	<a class="box" onClick="cp('🧑‍🎤')" title="singer">🧑‍🎤</a>
+	<a class="box" onClick="cp('👨‍🎤')" title="man singer">👨‍🎤</a>
+	<a class="box" onClick="cp('👩‍🎤')" title="woman singer">👩‍🎤</a>
+	<a class="box" onClick="cp('🧑‍🎨')" title="artist">🧑‍🎨</a>
+	<a class="box" onClick="cp('👨‍🎨')" title="man artist">👨‍🎨</a>
+	<a class="box" onClick="cp('👩‍🎨')" title="woman artist">👩‍🎨</a>
+	<a class="box" onClick="cp('🧑‍✈️')" title="pilot">🧑‍✈️</a>
+	<a class="box" onClick="cp('👨‍✈️')" title="man pilot">👨‍✈️</a>
+	<a class="box" onClick="cp('👩‍✈️')" title="woman pilot">👩‍✈️</a>
+	<a class="box" onClick="cp('🧑‍🚀')" title="astronaut">🧑‍🚀</a>
+	<a class="box" onClick="cp('👨‍🚀')" title="man astronaut">👨‍🚀</a>
+	<a class="box" onClick="cp('👩‍🚀')" title="woman astronaut">👩‍🚀</a>
+	<a class="box" onClick="cp('🧑‍🚒')" title="firefighter">🧑‍🚒</a>
+	<a class="box" onClick="cp('👨‍🚒')" title="man firefighter">👨‍🚒</a>
+	<a class="box" onClick="cp('👩‍🚒')" title="woman firefighter">👩‍🚒</a>
+	<a class="box" onClick="cp('👮')" title="police officer">👮</a>
+	<a class="box" onClick="cp('👮‍♂️')" title="man police officer">👮‍♂️</a>
+	<a class="box" onClick="cp('👮‍♀️')" title="woman police officer">👮‍♀️</a>
+	<a class="box" onClick="cp('🕵️')" title="detective">🕵️</a>
+	<a class="box" onClick="cp('🕵️‍♂️')" title="man detective">🕵️‍♂️</a>
+	<a class="box" onClick="cp('🕵️‍♀️')" title="woman detective">🕵️‍♀️</a>
+	<a class="box" onClick="cp('💂')" title="guard">💂</a>
+	<a class="box" onClick="cp('💂‍♂️')" title="man guard">💂‍♂️</a>
+	<a class="box" onClick="cp('💂‍♀️')" title="woman guard">💂‍♀️</a>
+	<a class="box" onClick="cp('🥷')" title="ninja">🥷</a>
+	<a class="box" onClick="cp('👷')" title="construction worker">👷</a>
+	<a class="box" onClick="cp('👷‍♂️')" title="man construction worker">👷‍♂️</a>
+	<a class="box" onClick="cp('👷‍♀️')" title="woman construction worker">👷‍♀️</a>
+	<a class="box" onClick="cp('🫅')" title="person with crown">🫅</a>
+	<a class="box" onClick="cp('🤴')" title="prince">🤴</a>
+	<a class="box" onClick="cp('👸')" title="princess">👸</a>
+	<a class="box" onClick="cp('👳')" title="person wearing turban">👳</a>
+	<a class="box" onClick="cp('👳‍♂️')" title="man wearing turban">👳‍♂️</a>
+	<a class="box" onClick="cp('👳‍♀️')" title="woman wearing turban">👳‍♀️</a>
+	<a class="box" onClick="cp('👲')" title="person with skullcap">👲</a>
+	<a class="box" onClick="cp('🧕')" title="woman with headscarf">🧕</a>
+	<a class="box" onClick="cp('🤵')" title="person in tuxedo">🤵</a>
+	<a class="box" onClick="cp('🤵‍♂️')" title="man in tuxedo">🤵‍♂️</a>
+	<a class="box" onClick="cp('🤵‍♀️')" title="woman in tuxedo">🤵‍♀️</a>
+	<a class="box" onClick="cp('👰')" title="person with veil">👰</a>
+	<a class="box" onClick="cp('👰‍♂️')" title="man with veil">👰‍♂️</a>
+	<a class="box" onClick="cp('👰‍♀️')" title="woman with veil">👰‍♀️</a>
+	<a class="box" onClick="cp('🤰')" title="pregnant woman">🤰</a>
+	<a class="box" onClick="cp('🫃')" title="pregnant man">🫃</a>
+	<a class="box" onClick="cp('🫄')" title="pregnant person">🫄</a>
+	<a class="box" onClick="cp('🤱')" title="breast-feeding">🤱</a>
+	<a class="box" onClick="cp('👩‍🍼')" title="woman feeding baby">👩‍🍼</a>
+	<a class="box" onClick="cp('👨‍🍼')" title="man feeding baby">👨‍🍼</a>
+	<a class="box" onClick="cp('🧑‍🍼')" title="person feeding baby">🧑‍🍼</a>
+	<div style="clear:left;"></div>
+	<h3 id="person-fantasy">person-fantasy</h3>
+	<a class="box" onClick="cp('👼')" title="baby angel">👼</a>
+	<a class="box" onClick="cp('🎅')" title="Santa Claus">🎅</a>
+	<a class="box" onClick="cp('🤶')" title="Mrs. Claus">🤶</a>
+	<a class="box" onClick="cp('🧑‍🎄')" title="mx claus">🧑‍🎄</a>
+	<a class="box" onClick="cp('🦸')" title="superhero">🦸</a>
+	<a class="box" onClick="cp('🦸‍♂️')" title="man superhero">🦸‍♂️</a>
+	<a class="box" onClick="cp('🦸‍♀️')" title="woman superhero">🦸‍♀️</a>
+	<a class="box" onClick="cp('🦹')" title="supervillain">🦹</a>
+	<a class="box" onClick="cp('🦹‍♂️')" title="man supervillain">🦹‍♂️</a>
+	<a class="box" onClick="cp('🦹‍♀️')" title="woman supervillain">🦹‍♀️</a>
+	<a class="box" onClick="cp('🧙')" title="mage">🧙</a>
+	<a class="box" onClick="cp('🧙‍♂️')" title="man mage">🧙‍♂️</a>
+	<a class="box" onClick="cp('🧙‍♀️')" title="woman mage">🧙‍♀️</a>
+	<a class="box" onClick="cp('🧚')" title="fairy">🧚</a>
+	<a class="box" onClick="cp('🧚‍♂️')" title="man fairy">🧚‍♂️</a>
+	<a class="box" onClick="cp('🧚‍♀️')" title="woman fairy">🧚‍♀️</a>
+	<a class="box" onClick="cp('🧛')" title="vampire">🧛</a>
+	<a class="box" onClick="cp('🧛‍♂️')" title="man vampire">🧛‍♂️</a>
+	<a class="box" onClick="cp('🧛‍♀️')" title="woman vampire">🧛‍♀️</a>
+	<a class="box" onClick="cp('🧜')" title="merperson">🧜</a>
+	<a class="box" onClick="cp('🧜‍♂️')" title="merman">🧜‍♂️</a>
+	<a class="box" onClick="cp('🧜‍♀️')" title="mermaid">🧜‍♀️</a>
+	<a class="box" onClick="cp('🧝')" title="elf">🧝</a>
+	<a class="box" onClick="cp('🧝‍♂️')" title="man elf">🧝‍♂️</a>
+	<a class="box" onClick="cp('🧝‍♀️')" title="woman elf">🧝‍♀️</a>
+	<a class="box" onClick="cp('🧞')" title="genie">🧞</a>
+	<a class="box" onClick="cp('🧞‍♂️')" title="man genie">🧞‍♂️</a>
+	<a class="box" onClick="cp('🧞‍♀️')" title="woman genie">🧞‍♀️</a>
+	<a class="box" onClick="cp('🧟')" title="zombie">🧟</a>
+	<a class="box" onClick="cp('🧟‍♂️')" title="man zombie">🧟‍♂️</a>
+	<a class="box" onClick="cp('🧟‍♀️')" title="woman zombie">🧟‍♀️</a>
+	<a class="box" onClick="cp('🧌')" title="troll">🧌</a>
+	<div style="clear:left;"></div>
+	<h3 id="person-activity">person-activity</h3>
+	<a class="box" onClick="cp('💆')" title="person getting massage">💆</a>
+	<a class="box" onClick="cp('💆‍♂️')" title="man getting massage">💆‍♂️</a>
+	<a class="box" onClick="cp('💆‍♀️')" title="woman getting massage">💆‍♀️</a>
+	<a class="box" onClick="cp('💇')" title="person getting haircut">💇</a>
+	<a class="box" onClick="cp('💇‍♂️')" title="man getting haircut">💇‍♂️</a>
+	<a class="box" onClick="cp('💇‍♀️')" title="woman getting haircut">💇‍♀️</a>
+	<a class="box" onClick="cp('🚶')" title="person walking">🚶</a>
+	<a class="box" onClick="cp('🚶‍♂️')" title="man walking">🚶‍♂️</a>
+	<a class="box" onClick="cp('🚶‍♀️')" title="woman walking">🚶‍♀️</a>
+	<a class="box" onClick="cp('🚶‍➡️')" title="person walking facing right">🚶‍➡️</a>
+	<a class="box" onClick="cp('🚶‍♀️‍➡️')" title="woman walking facing right">🚶‍♀️‍➡️</a>
+	<a class="box" onClick="cp('🚶‍♂️‍➡️')" title="man walking facing right">🚶‍♂️‍➡️</a>
+	<a class="box" onClick="cp('🧍')" title="person standing">🧍</a>
+	<a class="box" onClick="cp('🧍‍♂️')" title="man standing">🧍‍♂️</a>
+	<a class="box" onClick="cp('🧍‍♀️')" title="woman standing">🧍‍♀️</a>
+	<a class="box" onClick="cp('🧎')" title="person kneeling">🧎</a>
+	<a class="box" onClick="cp('🧎‍♂️')" title="man kneeling">🧎‍♂️</a>
+	<a class="box" onClick="cp('🧎‍♀️')" title="woman kneeling">🧎‍♀️</a>
+	<a class="box" onClick="cp('🧎‍➡️')" title="person kneeling facing right">🧎‍➡️</a>
+	<a class="box" onClick="cp('🧎‍♀️‍➡️')" title="woman kneeling facing right">🧎‍♀️‍➡️</a>
+	<a class="box" onClick="cp('🧎‍♂️‍➡️')" title="man kneeling facing right">🧎‍♂️‍➡️</a>
+	<a class="box" onClick="cp('🧑‍🦯')" title="person with white cane">🧑‍🦯</a>
+	<a class="box" onClick="cp('🧑‍🦯‍➡️')" title="person with white cane facing right">🧑‍🦯‍➡️</a>
+	<a class="box" onClick="cp('👨‍🦯')" title="man with white cane">👨‍🦯</a>
+	<a class="box" onClick="cp('👨‍🦯‍➡️')" title="man with white cane facing right">👨‍🦯‍➡️</a>
+	<a class="box" onClick="cp('👩‍🦯')" title="woman with white cane">👩‍🦯</a>
+	<a class="box" onClick="cp('👩‍🦯‍➡️')" title="woman with white cane facing right">👩‍🦯‍➡️</a>
+	<a class="box" onClick="cp('🧑‍🦼')" title="person in motorized wheelchair">🧑‍🦼</a>
+	<a class="box" onClick="cp('🧑‍🦼‍➡️')" title="person in motorized wheelchair facing right">🧑‍🦼‍➡️</a>
+	<a class="box" onClick="cp('👨‍🦼')" title="man in motorized wheelchair">👨‍🦼</a>
+	<a class="box" onClick="cp('👨‍🦼‍➡️')" title="man in motorized wheelchair facing right">👨‍🦼‍➡️</a>
+	<a class="box" onClick="cp('👩‍🦼')" title="woman in motorized wheelchair">👩‍🦼</a>
+	<a class="box" onClick="cp('👩‍🦼‍➡️')" title="woman in motorized wheelchair facing right">👩‍🦼‍➡️</a>
+	<a class="box" onClick="cp('🧑‍🦽')" title="person in manual wheelchair">🧑‍🦽</a>
+	<a class="box" onClick="cp('🧑‍🦽‍➡️')" title="person in manual wheelchair facing right">🧑‍🦽‍➡️</a>
+	<a class="box" onClick="cp('👨‍🦽')" title="man in manual wheelchair">👨‍🦽</a>
+	<a class="box" onClick="cp('👨‍🦽‍➡️')" title="man in manual wheelchair facing right">👨‍🦽‍➡️</a>
+	<a class="box" onClick="cp('👩‍🦽')" title="woman in manual wheelchair">👩‍🦽</a>
+	<a class="box" onClick="cp('👩‍🦽‍➡️')" title="woman in manual wheelchair facing right">👩‍🦽‍➡️</a>
+	<a class="box" onClick="cp('🏃')" title="person running">🏃</a>
+	<a class="box" onClick="cp('🏃‍♂️')" title="man running">🏃‍♂️</a>
+	<a class="box" onClick="cp('🏃‍♀️')" title="woman running">🏃‍♀️</a>
+	<a class="box" onClick="cp('🏃‍➡️')" title="person running facing right">🏃‍➡️</a>
+	<a class="box" onClick="cp('🏃‍♀️‍➡️')" title="woman running facing right">🏃‍♀️‍➡️</a>
+	<a class="box" onClick="cp('🏃‍♂️‍➡️')" title="man running facing right">🏃‍♂️‍➡️</a>
+	<a class="box" onClick="cp('💃')" title="woman dancing">💃</a>
+	<a class="box" onClick="cp('🕺')" title="man dancing">🕺</a>
+	<a class="box" onClick="cp('🕴️')" title="person in suit levitating">🕴️</a>
+	<a class="box" onClick="cp('👯')" title="people with bunny ears">👯</a>
+	<a class="box" onClick="cp('👯‍♂️')" title="men with bunny ears">👯‍♂️</a>
+	<a class="box" onClick="cp('👯‍♀️')" title="women with bunny ears">👯‍♀️</a>
+	<a class="box" onClick="cp('🧖')" title="person in steamy room">🧖</a>
+	<a class="box" onClick="cp('🧖‍♂️')" title="man in steamy room">🧖‍♂️</a>
+	<a class="box" onClick="cp('🧖‍♀️')" title="woman in steamy room">🧖‍♀️</a>
+	<a class="box" onClick="cp('🧗')" title="person climbing">🧗</a>
+	<a class="box" onClick="cp('🧗‍♂️')" title="man climbing">🧗‍♂️</a>
+	<a class="box" onClick="cp('🧗‍♀️')" title="woman climbing">🧗‍♀️</a>
+	<div style="clear:left;"></div>
+	<h3 id="person-sport">person-sport</h3>
+	<a class="box" onClick="cp('🤺')" title="person fencing">🤺</a>
+	<a class="box" onClick="cp('🏇')" title="horse racing">🏇</a>
+	<a class="box" onClick="cp('⛷️')" title="skier">⛷️</a>
+	<a class="box" onClick="cp('🏂')" title="snowboarder">🏂</a>
+	<a class="box" onClick="cp('🏌️')" title="person golfing">🏌️</a>
+	<a class="box" onClick="cp('🏌️‍♂️')" title="man golfing">🏌️‍♂️</a>
+	<a class="box" onClick="cp('🏌️‍♀️')" title="woman golfing">🏌️‍♀️</a>
+	<a class="box" onClick="cp('🏄')" title="person surfing">🏄</a>
+	<a class="box" onClick="cp('🏄‍♂️')" title="man surfing">🏄‍♂️</a>
+	<a class="box" onClick="cp('🏄‍♀️')" title="woman surfing">🏄‍♀️</a>
+	<a class="box" onClick="cp('🚣')" title="person rowing boat">🚣</a>
+	<a class="box" onClick="cp('🚣‍♂️')" title="man rowing boat">🚣‍♂️</a>
+	<a class="box" onClick="cp('🚣‍♀️')" title="woman rowing boat">🚣‍♀️</a>
+	<a class="box" onClick="cp('🏊')" title="person swimming">🏊</a>
+	<a class="box" onClick="cp('🏊‍♂️')" title="man swimming">🏊‍♂️</a>
+	<a class="box" onClick="cp('🏊‍♀️')" title="woman swimming">🏊‍♀️</a>
+	<a class="box" onClick="cp('⛹️')" title="person bouncing ball">⛹️</a>
+	<a class="box" onClick="cp('⛹️‍♂️')" title="man bouncing ball">⛹️‍♂️</a>
+	<a class="box" onClick="cp('⛹️‍♀️')" title="woman bouncing ball">⛹️‍♀️</a>
+	<a class="box" onClick="cp('🏋️')" title="person lifting weights">🏋️</a>
+	<a class="box" onClick="cp('🏋️‍♂️')" title="man lifting weights">🏋️‍♂️</a>
+	<a class="box" onClick="cp('🏋️‍♀️')" title="woman lifting weights">🏋️‍♀️</a>
+	<a class="box" onClick="cp('🚴')" title="person biking">🚴</a>
+	<a class="box" onClick="cp('🚴‍♂️')" title="man biking">🚴‍♂️</a>
+	<a class="box" onClick="cp('🚴‍♀️')" title="woman biking">🚴‍♀️</a>
+	<a class="box" onClick="cp('🚵')" title="person mountain biking">🚵</a>
+	<a class="box" onClick="cp('🚵‍♂️')" title="man mountain biking">🚵‍♂️</a>
+	<a class="box" onClick="cp('🚵‍♀️')" title="woman mountain biking">🚵‍♀️</a>
+	<a class="box" onClick="cp('🤸')" title="person cartwheeling">🤸</a>
+	<a class="box" onClick="cp('🤸‍♂️')" title="man cartwheeling">🤸‍♂️</a>
+	<a class="box" onClick="cp('🤸‍♀️')" title="woman cartwheeling">🤸‍♀️</a>
+	<a class="box" onClick="cp('🤼')" title="people wrestling">🤼</a>
+	<a class="box" onClick="cp('🤼‍♂️')" title="men wrestling">🤼‍♂️</a>
+	<a class="box" onClick="cp('🤼‍♀️')" title="women wrestling">🤼‍♀️</a>
+	<a class="box" onClick="cp('🤽')" title="person playing water polo">🤽</a>
+	<a class="box" onClick="cp('🤽‍♂️')" title="man playing water polo">🤽‍♂️</a>
+	<a class="box" onClick="cp('🤽‍♀️')" title="woman playing water polo">🤽‍♀️</a>
+	<a class="box" onClick="cp('🤾')" title="person playing handball">🤾</a>
+	<a class="box" onClick="cp('🤾‍♂️')" title="man playing handball">🤾‍♂️</a>
+	<a class="box" onClick="cp('🤾‍♀️')" title="woman playing handball">🤾‍♀️</a>
+	<a class="box" onClick="cp('🤹')" title="person juggling">🤹</a>
+	<a class="box" onClick="cp('🤹‍♂️')" title="man juggling">🤹‍♂️</a>
+	<a class="box" onClick="cp('🤹‍♀️')" title="woman juggling">🤹‍♀️</a>
+	<div style="clear:left;"></div>
+	<h3 id="person-resting">person-resting</h3>
+	<a class="box" onClick="cp('🧘')" title="person in lotus position">🧘</a>
+	<a class="box" onClick="cp('🧘‍♂️')" title="man in lotus position">🧘‍♂️</a>
+	<a class="box" onClick="cp('🧘‍♀️')" title="woman in lotus position">🧘‍♀️</a>
+	<a class="box" onClick="cp('🛀')" title="person taking bath">🛀</a>
+	<a class="box" onClick="cp('🛌')" title="person in bed">🛌</a>
+	<div style="clear:left;"></div>
+	<h3 id="family">family</h3>
+	<a class="box" onClick="cp('🧑‍🤝‍🧑')" title="people holding hands">🧑‍🤝‍🧑</a>
+	<a class="box" onClick="cp('👭')" title="women holding hands">👭</a>
+	<a class="box" onClick="cp('👫')" title="woman and man holding hands">👫</a>
+	<a class="box" onClick="cp('👬')" title="men holding hands">👬</a>
+	<a class="box" onClick="cp('💏')" title="kiss">💏</a>
+	<a class="box" onClick="cp('👩‍❤️‍💋‍👨')" title="kiss: woman, man">👩‍❤️‍💋‍👨</a>
+	<a class="box" onClick="cp('👨‍❤️‍💋‍👨')" title="kiss: man, man">👨‍❤️‍💋‍👨</a>
+	<a class="box" onClick="cp('👩‍❤️‍💋‍👩')" title="kiss: woman, woman">👩‍❤️‍💋‍👩</a>
+	<a class="box" onClick="cp('💑')" title="couple with heart">💑</a>
+	<a class="box" onClick="cp('👩‍❤️‍👨')" title="couple with heart: woman, man">👩‍❤️‍👨</a>
+	<a class="box" onClick="cp('👨‍❤️‍👨')" title="couple with heart: man, man">👨‍❤️‍👨</a>
+	<a class="box" onClick="cp('👩‍❤️‍👩')" title="couple with heart: woman, woman">👩‍❤️‍👩</a>
+	<a class="box" onClick="cp('👨‍👩‍👦')" title="family: man, woman, boy">👨‍👩‍👦</a>
+	<a class="box" onClick="cp('👨‍👩‍👧')" title="family: man, woman, girl">👨‍👩‍👧</a>
+	<a class="box" onClick="cp('👨‍👩‍👧‍👦')" title="family: man, woman, girl, boy">👨‍👩‍👧‍👦</a>
+	<a class="box" onClick="cp('👨‍👩‍👦‍👦')" title="family: man, woman, boy, boy">👨‍👩‍👦‍👦</a>
+	<a class="box" onClick="cp('👨‍👩‍👧‍👧')" title="family: man, woman, girl, girl">👨‍👩‍👧‍👧</a>
+	<a class="box" onClick="cp('👨‍👨‍👦')" title="family: man, man, boy">👨‍👨‍👦</a>
+	<a class="box" onClick="cp('👨‍👨‍👧')" title="family: man, man, girl">👨‍👨‍👧</a>
+	<a class="box" onClick="cp('👨‍👨‍👧‍👦')" title="family: man, man, girl, boy">👨‍👨‍👧‍👦</a>
+	<a class="box" onClick="cp('👨‍👨‍👦‍👦')" title="family: man, man, boy, boy">👨‍👨‍👦‍👦</a>
+	<a class="box" onClick="cp('👨‍👨‍👧‍👧')" title="family: man, man, girl, girl">👨‍👨‍👧‍👧</a>
+	<a class="box" onClick="cp('👩‍👩‍👦')" title="family: woman, woman, boy">👩‍👩‍👦</a>
+	<a class="box" onClick="cp('👩‍👩‍👧')" title="family: woman, woman, girl">👩‍👩‍👧</a>
+	<a class="box" onClick="cp('👩‍👩‍👧‍👦')" title="family: woman, woman, girl, boy">👩‍👩‍👧‍👦</a>
+	<a class="box" onClick="cp('👩‍👩‍👦‍👦')" title="family: woman, woman, boy, boy">👩‍👩‍👦‍👦</a>
+	<a class="box" onClick="cp('👩‍👩‍👧‍👧')" title="family: woman, woman, girl, girl">👩‍👩‍👧‍👧</a>
+	<a class="box" onClick="cp('👨‍👦')" title="family: man, boy">👨‍👦</a>
+	<a class="box" onClick="cp('👨‍👦‍👦')" title="family: man, boy, boy">👨‍👦‍👦</a>
+	<a class="box" onClick="cp('👨‍👧')" title="family: man, girl">👨‍👧</a>
+	<a class="box" onClick="cp('👨‍👧‍👦')" title="family: man, girl, boy">👨‍👧‍👦</a>
+	<a class="box" onClick="cp('👨‍👧‍👧')" title="family: man, girl, girl">👨‍👧‍👧</a>
+	<a class="box" onClick="cp('👩‍👦')" title="family: woman, boy">👩‍👦</a>
+	<a class="box" onClick="cp('👩‍👦‍👦')" title="family: woman, boy, boy">👩‍👦‍👦</a>
+	<a class="box" onClick="cp('👩‍👧')" title="family: woman, girl">👩‍👧</a>
+	<a class="box" onClick="cp('👩‍👧‍👦')" title="family: woman, girl, boy">👩‍👧‍👦</a>
+	<a class="box" onClick="cp('👩‍👧‍👧')" title="family: woman, girl, girl">👩‍👧‍👧</a>
+	<div style="clear:left;"></div>
+	<h3 id="person-symbol">person-symbol</h3>
+	<a class="box" onClick="cp('🗣️')" title="speaking head">🗣️</a>
+	<a class="box" onClick="cp('👤')" title="bust in silhouette">👤</a>
+	<a class="box" onClick="cp('👥')" title="busts in silhouette">👥</a>
+	<a class="box" onClick="cp('🫂')" title="people hugging">🫂</a>
+	<a class="box" onClick="cp('👪')" title="family">👪</a>
+	<a class="box" onClick="cp('🧑‍🧑‍🧒')" title="family: adult, adult, child">🧑‍🧑‍🧒</a>
+	<a class="box" onClick="cp('🧑‍🧑‍🧒‍🧒')" title="family: adult, adult, child, child">🧑‍🧑‍🧒‍🧒</a>
+	<a class="box" onClick="cp('🧑‍🧒')" title="family: adult, child">🧑‍🧒</a>
+	<a class="box" onClick="cp('🧑‍🧒‍🧒')" title="family: adult, child, child">🧑‍🧒‍🧒</a>
+	<a class="box" onClick="cp('👣')" title="footprints">👣</a>
+	<div style="clear:left;"></div>
+</div>
+<h2 id="Component">Component</h2>
+<div class="margined">
+	<h3 id="skin-tone">skin-tone</h3>
+	<a class="box" onClick="cp('🏻')" title="light skin tone">🏻</a>
+	<a class="box" onClick="cp('🏼')" title="medium-light skin tone">🏼</a>
+	<a class="box" onClick="cp('🏽')" title="medium skin tone">🏽</a>
+	<a class="box" onClick="cp('🏾')" title="medium-dark skin tone">🏾</a>
+	<a class="box" onClick="cp('🏿')" title="dark skin tone">🏿</a>
+	<div style="clear:left;"></div>
+	<h3 id="hair-style">hair-style</h3>
+	<a class="box" onClick="cp('🦰')" title="red hair">🦰</a>
+	<a class="box" onClick="cp('🦱')" title="curly hair">🦱</a>
+	<a class="box" onClick="cp('🦳')" title="white hair">🦳</a>
+	<a class="box" onClick="cp('🦲')" title="bald">🦲</a>
+	<div style="clear:left;"></div>
+</div>
+<h2 id="Animals_Nature">Animals &amp; Nature</h2>
+<div class="margined">
+	<h3 id="animal-mammal">animal-mammal</h3>
+	<a class="box" onClick="cp('🐵')" title="monkey face">🐵</a>
+	<a class="box" onClick="cp('🐒')" title="monkey">🐒</a>
+	<a class="box" onClick="cp('🦍')" title="gorilla">🦍</a>
+	<a class="box" onClick="cp('🦧')" title="orangutan">🦧</a>
+	<a class="box" onClick="cp('🐶')" title="dog face">🐶</a>
+	<a class="box" onClick="cp('🐕')" title="dog">🐕</a>
+	<a class="box" onClick="cp('🦮')" title="guide dog">🦮</a>
+	<a class="box" onClick="cp('🐕‍🦺')" title="service dog">🐕‍🦺</a>
+	<a class="box" onClick="cp('🐩')" title="poodle">🐩</a>
+	<a class="box" onClick="cp('🐺')" title="wolf">🐺</a>
+	<a class="box" onClick="cp('🦊')" title="fox">🦊</a>
+	<a class="box" onClick="cp('🦝')" title="raccoon">🦝</a>
+	<a class="box" onClick="cp('🐱')" title="cat face">🐱</a>
+	<a class="box" onClick="cp('🐈')" title="cat">🐈</a>
+	<a class="box" onClick="cp('🐈‍⬛')" title="black cat">🐈‍⬛</a>
+	<a class="box" onClick="cp('🦁')" title="lion">🦁</a>
+	<a class="box" onClick="cp('🐯')" title="tiger face">🐯</a>
+	<a class="box" onClick="cp('🐅')" title="tiger">🐅</a>
+	<a class="box" onClick="cp('🐆')" title="leopard">🐆</a>
+	<a class="box" onClick="cp('🐴')" title="horse face">🐴</a>
+	<a class="box" onClick="cp('🫎')" title="moose">🫎</a>
+	<a class="box" onClick="cp('🫏')" title="donkey">🫏</a>
+	<a class="box" onClick="cp('🐎')" title="horse">🐎</a>
+	<a class="box" onClick="cp('🦄')" title="unicorn">🦄</a>
+	<a class="box" onClick="cp('🦓')" title="zebra">🦓</a>
+	<a class="box" onClick="cp('🦌')" title="deer">🦌</a>
+	<a class="box" onClick="cp('🦬')" title="bison">🦬</a>
+	<a class="box" onClick="cp('🐮')" title="cow face">🐮</a>
+	<a class="box" onClick="cp('🐂')" title="ox">🐂</a>
+	<a class="box" onClick="cp('🐃')" title="water buffalo">🐃</a>
+	<a class="box" onClick="cp('🐄')" title="cow">🐄</a>
+	<a class="box" onClick="cp('🐷')" title="pig face">🐷</a>
+	<a class="box" onClick="cp('🐖')" title="pig">🐖</a>
+	<a class="box" onClick="cp('🐗')" title="boar">🐗</a>
+	<a class="box" onClick="cp('🐽')" title="pig nose">🐽</a>
+	<a class="box" onClick="cp('🐏')" title="ram">🐏</a>
+	<a class="box" onClick="cp('🐑')" title="ewe">🐑</a>
+	<a class="box" onClick="cp('🐐')" title="goat">🐐</a>
+	<a class="box" onClick="cp('🐪')" title="camel">🐪</a>
+	<a class="box" onClick="cp('🐫')" title="two-hump camel">🐫</a>
+	<a class="box" onClick="cp('🦙')" title="llama">🦙</a>
+	<a class="box" onClick="cp('🦒')" title="giraffe">🦒</a>
+	<a class="box" onClick="cp('🐘')" title="elephant">🐘</a>
+	<a class="box" onClick="cp('🦣')" title="mammoth">🦣</a>
+	<a class="box" onClick="cp('🦏')" title="rhinoceros">🦏</a>
+	<a class="box" onClick="cp('🦛')" title="hippopotamus">🦛</a>
+	<a class="box" onClick="cp('🐭')" title="mouse face">🐭</a>
+	<a class="box" onClick="cp('🐁')" title="mouse">🐁</a>
+	<a class="box" onClick="cp('🐀')" title="rat">🐀</a>
+	<a class="box" onClick="cp('🐹')" title="hamster">🐹</a>
+	<a class="box" onClick="cp('🐰')" title="rabbit face">🐰</a>
+	<a class="box" onClick="cp('🐇')" title="rabbit">🐇</a>
+	<a class="box" onClick="cp('🐿️')" title="chipmunk">🐿️</a>
+	<a class="box" onClick="cp('🦫')" title="beaver">🦫</a>
+	<a class="box" onClick="cp('🦔')" title="hedgehog">🦔</a>
+	<a class="box" onClick="cp('🦇')" title="bat">🦇</a>
+	<a class="box" onClick="cp('🐻')" title="bear">🐻</a>
+	<a class="box" onClick="cp('🐻‍❄️')" title="polar bear">🐻‍❄️</a>
+	<a class="box" onClick="cp('🐨')" title="koala">🐨</a>
+	<a class="box" onClick="cp('🐼')" title="panda">🐼</a>
+	<a class="box" onClick="cp('🦥')" title="sloth">🦥</a>
+	<a class="box" onClick="cp('🦦')" title="otter">🦦</a>
+	<a class="box" onClick="cp('🦨')" title="skunk">🦨</a>
+	<a class="box" onClick="cp('🦘')" title="kangaroo">🦘</a>
+	<a class="box" onClick="cp('🦡')" title="badger">🦡</a>
+	<a class="box" onClick="cp('🐾')" title="paw prints">🐾</a>
+	<div style="clear:left;"></div>
+	<h3 id="animal-bird">animal-bird</h3>
+	<a class="box" onClick="cp('🦃')" title="turkey">🦃</a>
+	<a class="box" onClick="cp('🐔')" title="chicken">🐔</a>
+	<a class="box" onClick="cp('🐓')" title="rooster">🐓</a>
+	<a class="box" onClick="cp('🐣')" title="hatching chick">🐣</a>
+	<a class="box" onClick="cp('🐤')" title="baby chick">🐤</a>
+	<a class="box" onClick="cp('🐥')" title="front-facing baby chick">🐥</a>
+	<a class="box" onClick="cp('🐦')" title="bird">🐦</a>
+	<a class="box" onClick="cp('🐧')" title="penguin">🐧</a>
+	<a class="box" onClick="cp('🕊️')" title="dove">🕊️</a>
+	<a class="box" onClick="cp('🦅')" title="eagle">🦅</a>
+	<a class="box" onClick="cp('🦆')" title="duck">🦆</a>
+	<a class="box" onClick="cp('🦢')" title="swan">🦢</a>
+	<a class="box" onClick="cp('🦉')" title="owl">🦉</a>
+	<a class="box" onClick="cp('🦤')" title="dodo">🦤</a>
+	<a class="box" onClick="cp('🪶')" title="feather">🪶</a>
+	<a class="box" onClick="cp('🦩')" title="flamingo">🦩</a>
+	<a class="box" onClick="cp('🦚')" title="peacock">🦚</a>
+	<a class="box" onClick="cp('🦜')" title="parrot">🦜</a>
+	<a class="box" onClick="cp('🪽')" title="wing">🪽</a>
+	<a class="box" onClick="cp('🐦‍⬛')" title="black bird">🐦‍⬛</a>
+	<a class="box" onClick="cp('🪿')" title="goose">🪿</a>
+	<a class="box" onClick="cp('🐦‍🔥')" title="phoenix">🐦‍🔥</a>
+	<div style="clear:left;"></div>
+	<h3 id="animal-amphibian">animal-amphibian</h3>
+	<a class="box" onClick="cp('🐸')" title="frog">🐸</a>
+	<div style="clear:left;"></div>
+	<h3 id="animal-reptile">animal-reptile</h3>
+	<a class="box" onClick="cp('🐊')" title="crocodile">🐊</a>
+	<a class="box" onClick="cp('🐢')" title="turtle">🐢</a>
+	<a class="box" onClick="cp('🦎')" title="lizard">🦎</a>
+	<a class="box" onClick="cp('🐍')" title="snake">🐍</a>
+	<a class="box" onClick="cp('🐲')" title="dragon face">🐲</a>
+	<a class="box" onClick="cp('🐉')" title="dragon">🐉</a>
+	<a class="box" onClick="cp('🦕')" title="sauropod">🦕</a>
+	<a class="box" onClick="cp('🦖')" title="T-Rex">🦖</a>
+	<div style="clear:left;"></div>
+	<h3 id="animal-marine">animal-marine</h3>
+	<a class="box" onClick="cp('🐳')" title="spouting whale">🐳</a>
+	<a class="box" onClick="cp('🐋')" title="whale">🐋</a>
+	<a class="box" onClick="cp('🐬')" title="dolphin">🐬</a>
+	<a class="box" onClick="cp('🦭')" title="seal">🦭</a>
+	<a class="box" onClick="cp('🐟')" title="fish">🐟</a>
+	<a class="box" onClick="cp('🐠')" title="tropical fish">🐠</a>
+	<a class="box" onClick="cp('🐡')" title="blowfish">🐡</a>
+	<a class="box" onClick="cp('🦈')" title="shark">🦈</a>
+	<a class="box" onClick="cp('🐙')" title="octopus">🐙</a>
+	<a class="box" onClick="cp('🐚')" title="spiral shell">🐚</a>
+	<a class="box" onClick="cp('🪸')" title="coral">🪸</a>
+	<a class="box" onClick="cp('🪼')" title="jellyfish">🪼</a>
+	<div style="clear:left;"></div>
+	<h3 id="animal-bug">animal-bug</h3>
+	<a class="box" onClick="cp('🐌')" title="snail">🐌</a>
+	<a class="box" onClick="cp('🦋')" title="butterfly">🦋</a>
+	<a class="box" onClick="cp('🐛')" title="bug">🐛</a>
+	<a class="box" onClick="cp('🐜')" title="ant">🐜</a>
+	<a class="box" onClick="cp('🐝')" title="honeybee">🐝</a>
+	<a class="box" onClick="cp('🪲')" title="beetle">🪲</a>
+	<a class="box" onClick="cp('🐞')" title="lady beetle">🐞</a>
+	<a class="box" onClick="cp('🦗')" title="cricket">🦗</a>
+	<a class="box" onClick="cp('🪳')" title="cockroach">🪳</a>
+	<a class="box" onClick="cp('🕷️')" title="spider">🕷️</a>
+	<a class="box" onClick="cp('🕸️')" title="spider web">🕸️</a>
+	<a class="box" onClick="cp('🦂')" title="scorpion">🦂</a>
+	<a class="box" onClick="cp('🦟')" title="mosquito">🦟</a>
+	<a class="box" onClick="cp('🪰')" title="fly">🪰</a>
+	<a class="box" onClick="cp('🪱')" title="worm">🪱</a>
+	<a class="box" onClick="cp('🦠')" title="microbe">🦠</a>
+	<div style="clear:left;"></div>
+	<h3 id="plant-flower">plant-flower</h3>
+	<a class="box" onClick="cp('💐')" title="bouquet">💐</a>
+	<a class="box" onClick="cp('🌸')" title="cherry blossom">🌸</a>
+	<a class="box" onClick="cp('💮')" title="white flower">💮</a>
+	<a class="box" onClick="cp('🪷')" title="lotus">🪷</a>
+	<a class="box" onClick="cp('🏵️')" title="rosette">🏵️</a>
+	<a class="box" onClick="cp('🌹')" title="rose">🌹</a>
+	<a class="box" onClick="cp('🥀')" title="wilted flower">🥀</a>
+	<a class="box" onClick="cp('🌺')" title="hibiscus">🌺</a>
+	<a class="box" onClick="cp('🌻')" title="sunflower">🌻</a>
+	<a class="box" onClick="cp('🌼')" title="blossom">🌼</a>
+	<a class="box" onClick="cp('🌷')" title="tulip">🌷</a>
+	<a class="box" onClick="cp('🪻')" title="hyacinth">🪻</a>
+	<div style="clear:left;"></div>
+	<h3 id="plant-other">plant-other</h3>
+	<a class="box" onClick="cp('🌱')" title="seedling">🌱</a>
+	<a class="box" onClick="cp('🪴')" title="potted plant">🪴</a>
+	<a class="box" onClick="cp('🌲')" title="evergreen tree">🌲</a>
+	<a class="box" onClick="cp('🌳')" title="deciduous tree">🌳</a>
+	<a class="box" onClick="cp('🌴')" title="palm tree">🌴</a>
+	<a class="box" onClick="cp('🌵')" title="cactus">🌵</a>
+	<a class="box" onClick="cp('🌾')" title="sheaf of rice">🌾</a>
+	<a class="box" onClick="cp('🌿')" title="herb">🌿</a>
+	<a class="box" onClick="cp('☘️')" title="shamrock">☘️</a>
+	<a class="box" onClick="cp('🍀')" title="four leaf clover">🍀</a>
+	<a class="box" onClick="cp('🍁')" title="maple leaf">🍁</a>
+	<a class="box" onClick="cp('🍂')" title="fallen leaf">🍂</a>
+	<a class="box" onClick="cp('🍃')" title="leaf fluttering in wind">🍃</a>
+	<a class="box" onClick="cp('🪹')" title="empty nest">🪹</a>
+	<a class="box" onClick="cp('🪺')" title="nest with eggs">🪺</a>
+	<a class="box" onClick="cp('🍄')" title="mushroom">🍄</a>
+	<div style="clear:left;"></div>
+</div>
+<h2 id="Food_Drink">Food &amp; Drink</h2>
+<div class="margined">
+	<h3 id="food-fruit">food-fruit</h3>
+	<a class="box" onClick="cp('🍇')" title="grapes">🍇</a>
+	<a class="box" onClick="cp('🍈')" title="melon">🍈</a>
+	<a class="box" onClick="cp('🍉')" title="watermelon">🍉</a>
+	<a class="box" onClick="cp('🍊')" title="tangerine">🍊</a>
+	<a class="box" onClick="cp('🍋')" title="lemon">🍋</a>
+	<a class="box" onClick="cp('🍋‍🟩')" title="lime">🍋‍🟩</a>
+	<a class="box" onClick="cp('🍌')" title="banana">🍌</a>
+	<a class="box" onClick="cp('🍍')" title="pineapple">🍍</a>
+	<a class="box" onClick="cp('🥭')" title="mango">🥭</a>
+	<a class="box" onClick="cp('🍎')" title="red apple">🍎</a>
+	<a class="box" onClick="cp('🍏')" title="green apple">🍏</a>
+	<a class="box" onClick="cp('🍐')" title="pear">🍐</a>
+	<a class="box" onClick="cp('🍑')" title="peach">🍑</a>
+	<a class="box" onClick="cp('🍒')" title="cherries">🍒</a>
+	<a class="box" onClick="cp('🍓')" title="strawberry">🍓</a>
+	<a class="box" onClick="cp('🫐')" title="blueberries">🫐</a>
+	<a class="box" onClick="cp('🥝')" title="kiwi fruit">🥝</a>
+	<a class="box" onClick="cp('🍅')" title="tomato">🍅</a>
+	<a class="box" onClick="cp('🫒')" title="olive">🫒</a>
+	<a class="box" onClick="cp('🥥')" title="coconut">🥥</a>
+	<div style="clear:left;"></div>
+	<h3 id="food-vegetable">food-vegetable</h3>
+	<a class="box" onClick="cp('🥑')" title="avocado">🥑</a>
+	<a class="box" onClick="cp('🍆')" title="eggplant">🍆</a>
+	<a class="box" onClick="cp('🥔')" title="potato">🥔</a>
+	<a class="box" onClick="cp('🥕')" title="carrot">🥕</a>
+	<a class="box" onClick="cp('🌽')" title="ear of corn">🌽</a>
+	<a class="box" onClick="cp('🌶️')" title="hot pepper">🌶️</a>
+	<a class="box" onClick="cp('🫑')" title="bell pepper">🫑</a>
+	<a class="box" onClick="cp('🥒')" title="cucumber">🥒</a>
+	<a class="box" onClick="cp('🥬')" title="leafy green">🥬</a>
+	<a class="box" onClick="cp('🥦')" title="broccoli">🥦</a>
+	<a class="box" onClick="cp('🧄')" title="garlic">🧄</a>
+	<a class="box" onClick="cp('🧅')" title="onion">🧅</a>
+	<a class="box" onClick="cp('🥜')" title="peanuts">🥜</a>
+	<a class="box" onClick="cp('🫘')" title="beans">🫘</a>
+	<a class="box" onClick="cp('🌰')" title="chestnut">🌰</a>
+	<a class="box" onClick="cp('🫚')" title="ginger root">🫚</a>
+	<a class="box" onClick="cp('🫛')" title="pea pod">🫛</a>
+	<a class="box" onClick="cp('🍄‍🟫')" title="brown mushroom">🍄‍🟫</a>
+	<div style="clear:left;"></div>
+	<h3 id="food-prepared">food-prepared</h3>
+	<a class="box" onClick="cp('🍞')" title="bread">🍞</a>
+	<a class="box" onClick="cp('🥐')" title="croissant">🥐</a>
+	<a class="box" onClick="cp('🥖')" title="baguette bread">🥖</a>
+	<a class="box" onClick="cp('🫓')" title="flatbread">🫓</a>
+	<a class="box" onClick="cp('🥨')" title="pretzel">🥨</a>
+	<a class="box" onClick="cp('🥯')" title="bagel">🥯</a>
+	<a class="box" onClick="cp('🥞')" title="pancakes">🥞</a>
+	<a class="box" onClick="cp('🧇')" title="waffle">🧇</a>
+	<a class="box" onClick="cp('🧀')" title="cheese wedge">🧀</a>
+	<a class="box" onClick="cp('🍖')" title="meat on bone">🍖</a>
+	<a class="box" onClick="cp('🍗')" title="poultry leg">🍗</a>
+	<a class="box" onClick="cp('🥩')" title="cut of meat">🥩</a>
+	<a class="box" onClick="cp('🥓')" title="bacon">🥓</a>
+	<a class="box" onClick="cp('🍔')" title="hamburger">🍔</a>
+	<a class="box" onClick="cp('🍟')" title="french fries">🍟</a>
+	<a class="box" onClick="cp('🍕')" title="pizza">🍕</a>
+	<a class="box" onClick="cp('🌭')" title="hot dog">🌭</a>
+	<a class="box" onClick="cp('🥪')" title="sandwich">🥪</a>
+	<a class="box" onClick="cp('🌮')" title="taco">🌮</a>
+	<a class="box" onClick="cp('🌯')" title="burrito">🌯</a>
+	<a class="box" onClick="cp('🫔')" title="tamale">🫔</a>
+	<a class="box" onClick="cp('🥙')" title="stuffed flatbread">🥙</a>
+	<a class="box" onClick="cp('🧆')" title="falafel">🧆</a>
+	<a class="box" onClick="cp('🥚')" title="egg">🥚</a>
+	<a class="box" onClick="cp('🍳')" title="cooking">🍳</a>
+	<a class="box" onClick="cp('🥘')" title="shallow pan of food">🥘</a>
+	<a class="box" onClick="cp('🍲')" title="pot of food">🍲</a>
+	<a class="box" onClick="cp('🫕')" title="fondue">🫕</a>
+	<a class="box" onClick="cp('🥣')" title="bowl with spoon">🥣</a>
+	<a class="box" onClick="cp('🥗')" title="green salad">🥗</a>
+	<a class="box" onClick="cp('🍿')" title="popcorn">🍿</a>
+	<a class="box" onClick="cp('🧈')" title="butter">🧈</a>
+	<a class="box" onClick="cp('🧂')" title="salt">🧂</a>
+	<a class="box" onClick="cp('🥫')" title="canned food">🥫</a>
+	<div style="clear:left;"></div>
+	<h3 id="food-asian">food-asian</h3>
+	<a class="box" onClick="cp('🍱')" title="bento box">🍱</a>
+	<a class="box" onClick="cp('🍘')" title="rice cracker">🍘</a>
+	<a class="box" onClick="cp('🍙')" title="rice ball">🍙</a>
+	<a class="box" onClick="cp('🍚')" title="cooked rice">🍚</a>
+	<a class="box" onClick="cp('🍛')" title="curry rice">🍛</a>
+	<a class="box" onClick="cp('🍜')" title="steaming bowl">🍜</a>
+	<a class="box" onClick="cp('🍝')" title="spaghetti">🍝</a>
+	<a class="box" onClick="cp('🍠')" title="roasted sweet potato">🍠</a>
+	<a class="box" onClick="cp('🍢')" title="oden">🍢</a>
+	<a class="box" onClick="cp('🍣')" title="sushi">🍣</a>
+	<a class="box" onClick="cp('🍤')" title="fried shrimp">🍤</a>
+	<a class="box" onClick="cp('🍥')" title="fish cake with swirl">🍥</a>
+	<a class="box" onClick="cp('🥮')" title="moon cake">🥮</a>
+	<a class="box" onClick="cp('🍡')" title="dango">🍡</a>
+	<a class="box" onClick="cp('🥟')" title="dumpling">🥟</a>
+	<a class="box" onClick="cp('🥠')" title="fortune cookie">🥠</a>
+	<a class="box" onClick="cp('🥡')" title="takeout box">🥡</a>
+	<div style="clear:left;"></div>
+	<h3 id="food-marine">food-marine</h3>
+	<a class="box" onClick="cp('🦀')" title="crab">🦀</a>
+	<a class="box" onClick="cp('🦞')" title="lobster">🦞</a>
+	<a class="box" onClick="cp('🦐')" title="shrimp">🦐</a>
+	<a class="box" onClick="cp('🦑')" title="squid">🦑</a>
+	<a class="box" onClick="cp('🦪')" title="oyster">🦪</a>
+	<div style="clear:left;"></div>
+	<h3 id="food-sweet">food-sweet</h3>
+	<a class="box" onClick="cp('🍦')" title="soft ice cream">🍦</a>
+	<a class="box" onClick="cp('🍧')" title="shaved ice">🍧</a>
+	<a class="box" onClick="cp('🍨')" title="ice cream">🍨</a>
+	<a class="box" onClick="cp('🍩')" title="doughnut">🍩</a>
+	<a class="box" onClick="cp('🍪')" title="cookie">🍪</a>
+	<a class="box" onClick="cp('🎂')" title="birthday cake">🎂</a>
+	<a class="box" onClick="cp('🍰')" title="shortcake">🍰</a>
+	<a class="box" onClick="cp('🧁')" title="cupcake">🧁</a>
+	<a class="box" onClick="cp('🥧')" title="pie">🥧</a>
+	<a class="box" onClick="cp('🍫')" title="chocolate bar">🍫</a>
+	<a class="box" onClick="cp('🍬')" title="candy">🍬</a>
+	<a class="box" onClick="cp('🍭')" title="lollipop">🍭</a>
+	<a class="box" onClick="cp('🍮')" title="custard">🍮</a>
+	<a class="box" onClick="cp('🍯')" title="honey pot">🍯</a>
+	<div style="clear:left;"></div>
+	<h3 id="drink">drink</h3>
+	<a class="box" onClick="cp('🍼')" title="baby bottle">🍼</a>
+	<a class="box" onClick="cp('🥛')" title="glass of milk">🥛</a>
+	<a class="box" onClick="cp('☕')" title="hot beverage">☕</a>
+	<a class="box" onClick="cp('🫖')" title="teapot">🫖</a>
+	<a class="box" onClick="cp('🍵')" title="teacup without handle">🍵</a>
+	<a class="box" onClick="cp('🍶')" title="sake">🍶</a>
+	<a class="box" onClick="cp('🍾')" title="bottle with popping cork">🍾</a>
+	<a class="box" onClick="cp('🍷')" title="wine glass">🍷</a>
+	<a class="box" onClick="cp('🍸')" title="cocktail glass">🍸</a>
+	<a class="box" onClick="cp('🍹')" title="tropical drink">🍹</a>
+	<a class="box" onClick="cp('🍺')" title="beer mug">🍺</a>
+	<a class="box" onClick="cp('🍻')" title="clinking beer mugs">🍻</a>
+	<a class="box" onClick="cp('🥂')" title="clinking glasses">🥂</a>
+	<a class="box" onClick="cp('🥃')" title="tumbler glass">🥃</a>
+	<a class="box" onClick="cp('🫗')" title="pouring liquid">🫗</a>
+	<a class="box" onClick="cp('🥤')" title="cup with straw">🥤</a>
+	<a class="box" onClick="cp('🧋')" title="bubble tea">🧋</a>
+	<a class="box" onClick="cp('🧃')" title="beverage box">🧃</a>
+	<a class="box" onClick="cp('🧉')" title="mate">🧉</a>
+	<a class="box" onClick="cp('🧊')" title="ice">🧊</a>
+	<div style="clear:left;"></div>
+	<h3 id="dishware">dishware</h3>
+	<a class="box" onClick="cp('🥢')" title="chopsticks">🥢</a>
+	<a class="box" onClick="cp('🍽️')" title="fork and knife with plate">🍽️</a>
+	<a class="box" onClick="cp('🍴')" title="fork and knife">🍴</a>
+	<a class="box" onClick="cp('🥄')" title="spoon">🥄</a>
+	<a class="box" onClick="cp('🔪')" title="kitchen knife">🔪</a>
+	<a class="box" onClick="cp('🫙')" title="jar">🫙</a>
+	<a class="box" onClick="cp('🏺')" title="amphora">🏺</a>
+	<div style="clear:left;"></div>
+</div>
+<h2 id="Travel_Places">Travel &amp; Places</h2>
+<div class="margined">
+	<h3 id="place-map">place-map</h3>
+	<a class="box" onClick="cp('🌍')" title="globe showing Europe-Africa">🌍</a>
+	<a class="box" onClick="cp('🌎')" title="globe showing Americas">🌎</a>
+	<a class="box" onClick="cp('🌏')" title="globe showing Asia-Australia">🌏</a>
+	<a class="box" onClick="cp('🌐')" title="globe with meridians">🌐</a>
+	<a class="box" onClick="cp('🗺️')" title="world map">🗺️</a>
+	<a class="box" onClick="cp('🗾')" title="map of Japan">🗾</a>
+	<a class="box" onClick="cp('🧭')" title="compass">🧭</a>
+	<div style="clear:left;"></div>
+	<h3 id="place-geographic">place-geographic</h3>
+	<a class="box" onClick="cp('🏔️')" title="snow-capped mountain">🏔️</a>
+	<a class="box" onClick="cp('⛰️')" title="mountain">⛰️</a>
+	<a class="box" onClick="cp('🌋')" title="volcano">🌋</a>
+	<a class="box" onClick="cp('🗻')" title="mount fuji">🗻</a>
+	<a class="box" onClick="cp('🏕️')" title="camping">🏕️</a>
+	<a class="box" onClick="cp('🏖️')" title="beach with umbrella">🏖️</a>
+	<a class="box" onClick="cp('🏜️')" title="desert">🏜️</a>
+	<a class="box" onClick="cp('🏝️')" title="desert island">🏝️</a>
+	<a class="box" onClick="cp('🏞️')" title="national park">🏞️</a>
+	<div style="clear:left;"></div>
+	<h3 id="place-building">place-building</h3>
+	<a class="box" onClick="cp('🏟️')" title="stadium">🏟️</a>
+	<a class="box" onClick="cp('🏛️')" title="classical building">🏛️</a>
+	<a class="box" onClick="cp('🏗️')" title="building construction">🏗️</a>
+	<a class="box" onClick="cp('🧱')" title="brick">🧱</a>
+	<a class="box" onClick="cp('🪨')" title="rock">🪨</a>
+	<a class="box" onClick="cp('🪵')" title="wood">🪵</a>
+	<a class="box" onClick="cp('🛖')" title="hut">🛖</a>
+	<a class="box" onClick="cp('🏘️')" title="houses">🏘️</a>
+	<a class="box" onClick="cp('🏚️')" title="derelict house">🏚️</a>
+	<a class="box" onClick="cp('🏠')" title="house">🏠</a>
+	<a class="box" onClick="cp('🏡')" title="house with garden">🏡</a>
+	<a class="box" onClick="cp('🏢')" title="office building">🏢</a>
+	<a class="box" onClick="cp('🏣')" title="Japanese post office">🏣</a>
+	<a class="box" onClick="cp('🏤')" title="post office">🏤</a>
+	<a class="box" onClick="cp('🏥')" title="hospital">🏥</a>
+	<a class="box" onClick="cp('🏦')" title="bank">🏦</a>
+	<a class="box" onClick="cp('🏨')" title="hotel">🏨</a>
+	<a class="box" onClick="cp('🏩')" title="love hotel">🏩</a>
+	<a class="box" onClick="cp('🏪')" title="convenience store">🏪</a>
+	<a class="box" onClick="cp('🏫')" title="school">🏫</a>
+	<a class="box" onClick="cp('🏬')" title="department store">🏬</a>
+	<a class="box" onClick="cp('🏭')" title="factory">🏭</a>
+	<a class="box" onClick="cp('🏯')" title="Japanese castle">🏯</a>
+	<a class="box" onClick="cp('🏰')" title="castle">🏰</a>
+	<a class="box" onClick="cp('💒')" title="wedding">💒</a>
+	<a class="box" onClick="cp('🗼')" title="Tokyo tower">🗼</a>
+	<a class="box" onClick="cp('🗽')" title="Statue of Liberty">🗽</a>
+	<div style="clear:left;"></div>
+	<h3 id="place-religious">place-religious</h3>
+	<a class="box" onClick="cp('⛪')" title="church">⛪</a>
+	<a class="box" onClick="cp('🕌')" title="mosque">🕌</a>
+	<a class="box" onClick="cp('🛕')" title="hindu temple">🛕</a>
+	<a class="box" onClick="cp('🕍')" title="synagogue">🕍</a>
+	<a class="box" onClick="cp('⛩️')" title="shinto shrine">⛩️</a>
+	<a class="box" onClick="cp('🕋')" title="kaaba">🕋</a>
+	<div style="clear:left;"></div>
+	<h3 id="place-other">place-other</h3>
+	<a class="box" onClick="cp('⛲')" title="fountain">⛲</a>
+	<a class="box" onClick="cp('⛺')" title="tent">⛺</a>
+	<a class="box" onClick="cp('🌁')" title="foggy">🌁</a>
+	<a class="box" onClick="cp('🌃')" title="night with stars">🌃</a>
+	<a class="box" onClick="cp('🏙️')" title="cityscape">🏙️</a>
+	<a class="box" onClick="cp('🌄')" title="sunrise over mountains">🌄</a>
+	<a class="box" onClick="cp('🌅')" title="sunrise">🌅</a>
+	<a class="box" onClick="cp('🌆')" title="cityscape at dusk">🌆</a>
+	<a class="box" onClick="cp('🌇')" title="sunset">🌇</a>
+	<a class="box" onClick="cp('🌉')" title="bridge at night">🌉</a>
+	<a class="box" onClick="cp('♨️')" title="hot springs">♨️</a>
+	<a class="box" onClick="cp('🎠')" title="carousel horse">🎠</a>
+	<a class="box" onClick="cp('🛝')" title="playground slide">🛝</a>
+	<a class="box" onClick="cp('🎡')" title="ferris wheel">🎡</a>
+	<a class="box" onClick="cp('🎢')" title="roller coaster">🎢</a>
+	<a class="box" onClick="cp('💈')" title="barber pole">💈</a>
+	<a class="box" onClick="cp('🎪')" title="circus tent">🎪</a>
+	<div style="clear:left;"></div>
+	<h3 id="transport-ground">transport-ground</h3>
+	<a class="box" onClick="cp('🚂')" title="locomotive">🚂</a>
+	<a class="box" onClick="cp('🚃')" title="railway car">🚃</a>
+	<a class="box" onClick="cp('🚄')" title="high-speed train">🚄</a>
+	<a class="box" onClick="cp('🚅')" title="bullet train">🚅</a>
+	<a class="box" onClick="cp('🚆')" title="train">🚆</a>
+	<a class="box" onClick="cp('🚇')" title="metro">🚇</a>
+	<a class="box" onClick="cp('🚈')" title="light rail">🚈</a>
+	<a class="box" onClick="cp('🚉')" title="station">🚉</a>
+	<a class="box" onClick="cp('🚊')" title="tram">🚊</a>
+	<a class="box" onClick="cp('🚝')" title="monorail">🚝</a>
+	<a class="box" onClick="cp('🚞')" title="mountain railway">🚞</a>
+	<a class="box" onClick="cp('🚋')" title="tram car">🚋</a>
+	<a class="box" onClick="cp('🚌')" title="bus">🚌</a>
+	<a class="box" onClick="cp('🚍')" title="oncoming bus">🚍</a>
+	<a class="box" onClick="cp('🚎')" title="trolleybus">🚎</a>
+	<a class="box" onClick="cp('🚐')" title="minibus">🚐</a>
+	<a class="box" onClick="cp('🚑')" title="ambulance">🚑</a>
+	<a class="box" onClick="cp('🚒')" title="fire engine">🚒</a>
+	<a class="box" onClick="cp('🚓')" title="police car">🚓</a>
+	<a class="box" onClick="cp('🚔')" title="oncoming police car">🚔</a>
+	<a class="box" onClick="cp('🚕')" title="taxi">🚕</a>
+	<a class="box" onClick="cp('🚖')" title="oncoming taxi">🚖</a>
+	<a class="box" onClick="cp('🚗')" title="automobile">🚗</a>
+	<a class="box" onClick="cp('🚘')" title="oncoming automobile">🚘</a>
+	<a class="box" onClick="cp('🚙')" title="sport utility vehicle">🚙</a>
+	<a class="box" onClick="cp('🛻')" title="pickup truck">🛻</a>
+	<a class="box" onClick="cp('🚚')" title="delivery truck">🚚</a>
+	<a class="box" onClick="cp('🚛')" title="articulated lorry">🚛</a>
+	<a class="box" onClick="cp('🚜')" title="tractor">🚜</a>
+	<a class="box" onClick="cp('🏎️')" title="racing car">🏎️</a>
+	<a class="box" onClick="cp('🏍️')" title="motorcycle">🏍️</a>
+	<a class="box" onClick="cp('🛵')" title="motor scooter">🛵</a>
+	<a class="box" onClick="cp('🦽')" title="manual wheelchair">🦽</a>
+	<a class="box" onClick="cp('🦼')" title="motorized wheelchair">🦼</a>
+	<a class="box" onClick="cp('🛺')" title="auto rickshaw">🛺</a>
+	<a class="box" onClick="cp('🚲')" title="bicycle">🚲</a>
+	<a class="box" onClick="cp('🛴')" title="kick scooter">🛴</a>
+	<a class="box" onClick="cp('🛹')" title="skateboard">🛹</a>
+	<a class="box" onClick="cp('🛼')" title="roller skate">🛼</a>
+	<a class="box" onClick="cp('🚏')" title="bus stop">🚏</a>
+	<a class="box" onClick="cp('🛣️')" title="motorway">🛣️</a>
+	<a class="box" onClick="cp('🛤️')" title="railway track">🛤️</a>
+	<a class="box" onClick="cp('🛢️')" title="oil drum">🛢️</a>
+	<a class="box" onClick="cp('⛽')" title="fuel pump">⛽</a>
+	<a class="box" onClick="cp('🛞')" title="wheel">🛞</a>
+	<a class="box" onClick="cp('🚨')" title="police car light">🚨</a>
+	<a class="box" onClick="cp('🚥')" title="horizontal traffic light">🚥</a>
+	<a class="box" onClick="cp('🚦')" title="vertical traffic light">🚦</a>
+	<a class="box" onClick="cp('🛑')" title="stop sign">🛑</a>
+	<a class="box" onClick="cp('🚧')" title="construction">🚧</a>
+	<div style="clear:left;"></div>
+	<h3 id="transport-water">transport-water</h3>
+	<a class="box" onClick="cp('⚓')" title="anchor">⚓</a>
+	<a class="box" onClick="cp('🛟')" title="ring buoy">🛟</a>
+	<a class="box" onClick="cp('⛵')" title="sailboat">⛵</a>
+	<a class="box" onClick="cp('🛶')" title="canoe">🛶</a>
+	<a class="box" onClick="cp('🚤')" title="speedboat">🚤</a>
+	<a class="box" onClick="cp('🛳️')" title="passenger ship">🛳️</a>
+	<a class="box" onClick="cp('⛴️')" title="ferry">⛴️</a>
+	<a class="box" onClick="cp('🛥️')" title="motor boat">🛥️</a>
+	<a class="box" onClick="cp('🚢')" title="ship">🚢</a>
+	<div style="clear:left;"></div>
+	<h3 id="transport-air">transport-air</h3>
+	<a class="box" onClick="cp('✈️')" title="airplane">✈️</a>
+	<a class="box" onClick="cp('🛩️')" title="small airplane">🛩️</a>
+	<a class="box" onClick="cp('🛫')" title="airplane departure">🛫</a>
+	<a class="box" onClick="cp('🛬')" title="airplane arrival">🛬</a>
+	<a class="box" onClick="cp('🪂')" title="parachute">🪂</a>
+	<a class="box" onClick="cp('💺')" title="seat">💺</a>
+	<a class="box" onClick="cp('🚁')" title="helicopter">🚁</a>
+	<a class="box" onClick="cp('🚟')" title="suspension railway">🚟</a>
+	<a class="box" onClick="cp('🚠')" title="mountain cableway">🚠</a>
+	<a class="box" onClick="cp('🚡')" title="aerial tramway">🚡</a>
+	<a class="box" onClick="cp('🛰️')" title="satellite">🛰️</a>
+	<a class="box" onClick="cp('🚀')" title="rocket">🚀</a>
+	<a class="box" onClick="cp('🛸')" title="flying saucer">🛸</a>
+	<div style="clear:left;"></div>
+	<h3 id="hotel">hotel</h3>
+	<a class="box" onClick="cp('🛎️')" title="bellhop bell">🛎️</a>
+	<a class="box" onClick="cp('🧳')" title="luggage">🧳</a>
+	<div style="clear:left;"></div>
+	<h3 id="time">time</h3>
+	<a class="box" onClick="cp('⌛')" title="hourglass done">⌛</a>
+	<a class="box" onClick="cp('⏳')" title="hourglass not done">⏳</a>
+	<a class="box" onClick="cp('⌚')" title="watch">⌚</a>
+	<a class="box" onClick="cp('⏰')" title="alarm clock">⏰</a>
+	<a class="box" onClick="cp('⏱️')" title="stopwatch">⏱️</a>
+	<a class="box" onClick="cp('⏲️')" title="timer clock">⏲️</a>
+	<a class="box" onClick="cp('🕰️')" title="mantelpiece clock">🕰️</a>
+	<a class="box" onClick="cp('🕛')" title="twelve o’clock">🕛</a>
+	<a class="box" onClick="cp('🕧')" title="twelve-thirty">🕧</a>
+	<a class="box" onClick="cp('🕐')" title="one o’clock">🕐</a>
+	<a class="box" onClick="cp('🕜')" title="one-thirty">🕜</a>
+	<a class="box" onClick="cp('🕑')" title="two o’clock">🕑</a>
+	<a class="box" onClick="cp('🕝')" title="two-thirty">🕝</a>
+	<a class="box" onClick="cp('🕒')" title="three o’clock">🕒</a>
+	<a class="box" onClick="cp('🕞')" title="three-thirty">🕞</a>
+	<a class="box" onClick="cp('🕓')" title="four o’clock">🕓</a>
+	<a class="box" onClick="cp('🕟')" title="four-thirty">🕟</a>
+	<a class="box" onClick="cp('🕔')" title="five o’clock">🕔</a>
+	<a class="box" onClick="cp('🕠')" title="five-thirty">🕠</a>
+	<a class="box" onClick="cp('🕕')" title="six o’clock">🕕</a>
+	<a class="box" onClick="cp('🕡')" title="six-thirty">🕡</a>
+	<a class="box" onClick="cp('🕖')" title="seven o’clock">🕖</a>
+	<a class="box" onClick="cp('🕢')" title="seven-thirty">🕢</a>
+	<a class="box" onClick="cp('🕗')" title="eight o’clock">🕗</a>
+	<a class="box" onClick="cp('🕣')" title="eight-thirty">🕣</a>
+	<a class="box" onClick="cp('🕘')" title="nine o’clock">🕘</a>
+	<a class="box" onClick="cp('🕤')" title="nine-thirty">🕤</a>
+	<a class="box" onClick="cp('🕙')" title="ten o’clock">🕙</a>
+	<a class="box" onClick="cp('🕥')" title="ten-thirty">🕥</a>
+	<a class="box" onClick="cp('🕚')" title="eleven o’clock">🕚</a>
+	<a class="box" onClick="cp('🕦')" title="eleven-thirty">🕦</a>
+	<div style="clear:left;"></div>
+	<h3 id="sky_weather">sky &amp; weather</h3>
+	<a class="box" onClick="cp('🌑')" title="new moon">🌑</a>
+	<a class="box" onClick="cp('🌒')" title="waxing crescent moon">🌒</a>
+	<a class="box" onClick="cp('🌓')" title="first quarter moon">🌓</a>
+	<a class="box" onClick="cp('🌔')" title="waxing gibbous moon">🌔</a>
+	<a class="box" onClick="cp('🌕')" title="full moon">🌕</a>
+	<a class="box" onClick="cp('🌖')" title="waning gibbous moon">🌖</a>
+	<a class="box" onClick="cp('🌗')" title="last quarter moon">🌗</a>
+	<a class="box" onClick="cp('🌘')" title="waning crescent moon">🌘</a>
+	<a class="box" onClick="cp('🌙')" title="crescent moon">🌙</a>
+	<a class="box" onClick="cp('🌚')" title="new moon face">🌚</a>
+	<a class="box" onClick="cp('🌛')" title="first quarter moon face">🌛</a>
+	<a class="box" onClick="cp('🌜')" title="last quarter moon face">🌜</a>
+	<a class="box" onClick="cp('🌡️')" title="thermometer">🌡️</a>
+	<a class="box" onClick="cp('☀️')" title="sun">☀️</a>
+	<a class="box" onClick="cp('🌝')" title="full moon face">🌝</a>
+	<a class="box" onClick="cp('🌞')" title="sun with face">🌞</a>
+	<a class="box" onClick="cp('🪐')" title="ringed planet">🪐</a>
+	<a class="box" onClick="cp('⭐')" title="star">⭐</a>
+	<a class="box" onClick="cp('🌟')" title="glowing star">🌟</a>
+	<a class="box" onClick="cp('🌠')" title="shooting star">🌠</a>
+	<a class="box" onClick="cp('🌌')" title="milky way">🌌</a>
+	<a class="box" onClick="cp('☁️')" title="cloud">☁️</a>
+	<a class="box" onClick="cp('⛅')" title="sun behind cloud">⛅</a>
+	<a class="box" onClick="cp('⛈️')" title="cloud with lightning and rain">⛈️</a>
+	<a class="box" onClick="cp('🌤️')" title="sun behind small cloud">🌤️</a>
+	<a class="box" onClick="cp('🌥️')" title="sun behind large cloud">🌥️</a>
+	<a class="box" onClick="cp('🌦️')" title="sun behind rain cloud">🌦️</a>
+	<a class="box" onClick="cp('🌧️')" title="cloud with rain">🌧️</a>
+	<a class="box" onClick="cp('🌨️')" title="cloud with snow">🌨️</a>
+	<a class="box" onClick="cp('🌩️')" title="cloud with lightning">🌩️</a>
+	<a class="box" onClick="cp('🌪️')" title="tornado">🌪️</a>
+	<a class="box" onClick="cp('🌫️')" title="fog">🌫️</a>
+	<a class="box" onClick="cp('🌬️')" title="wind face">🌬️</a>
+	<a class="box" onClick="cp('🌀')" title="cyclone">🌀</a>
+	<a class="box" onClick="cp('🌈')" title="rainbow">🌈</a>
+	<a class="box" onClick="cp('🌂')" title="closed umbrella">🌂</a>
+	<a class="box" onClick="cp('☂️')" title="umbrella">☂️</a>
+	<a class="box" onClick="cp('☔')" title="umbrella with rain drops">☔</a>
+	<a class="box" onClick="cp('⛱️')" title="umbrella on ground">⛱️</a>
+	<a class="box" onClick="cp('⚡')" title="high voltage">⚡</a>
+	<a class="box" onClick="cp('❄️')" title="snowflake">❄️</a>
+	<a class="box" onClick="cp('☃️')" title="snowman">☃️</a>
+	<a class="box" onClick="cp('⛄')" title="snowman without snow">⛄</a>
+	<a class="box" onClick="cp('☄️')" title="comet">☄️</a>
+	<a class="box" onClick="cp('🔥')" title="fire">🔥</a>
+	<a class="box" onClick="cp('💧')" title="droplet">💧</a>
+	<a class="box" onClick="cp('🌊')" title="water wave">🌊</a>
+	<div style="clear:left;"></div>
+</div>
+<h2 id="Activities">Activities</h2>
+<div class="margined">
+	<h3 id="event">event</h3>
+	<a class="box" onClick="cp('🎃')" title="jack-o-lantern">🎃</a>
+	<a class="box" onClick="cp('🎄')" title="Christmas tree">🎄</a>
+	<a class="box" onClick="cp('🎆')" title="fireworks">🎆</a>
+	<a class="box" onClick="cp('🎇')" title="sparkler">🎇</a>
+	<a class="box" onClick="cp('🧨')" title="firecracker">🧨</a>
+	<a class="box" onClick="cp('✨')" title="sparkles">✨</a>
+	<a class="box" onClick="cp('🎈')" title="balloon">🎈</a>
+	<a class="box" onClick="cp('🎉')" title="party popper">🎉</a>
+	<a class="box" onClick="cp('🎊')" title="confetti ball">🎊</a>
+	<a class="box" onClick="cp('🎋')" title="tanabata tree">🎋</a>
+	<a class="box" onClick="cp('🎍')" title="pine decoration">🎍</a>
+	<a class="box" onClick="cp('🎎')" title="Japanese dolls">🎎</a>
+	<a class="box" onClick="cp('🎏')" title="carp streamer">🎏</a>
+	<a class="box" onClick="cp('🎐')" title="wind chime">🎐</a>
+	<a class="box" onClick="cp('🎑')" title="moon viewing ceremony">🎑</a>
+	<a class="box" onClick="cp('🧧')" title="red envelope">🧧</a>
+	<a class="box" onClick="cp('🎀')" title="ribbon">🎀</a>
+	<a class="box" onClick="cp('🎁')" title="wrapped gift">🎁</a>
+	<a class="box" onClick="cp('🎗️')" title="reminder ribbon">🎗️</a>
+	<a class="box" onClick="cp('🎟️')" title="admission tickets">🎟️</a>
+	<a class="box" onClick="cp('🎫')" title="ticket">🎫</a>
+	<div style="clear:left;"></div>
+	<h3 id="award-medal">award-medal</h3>
+	<a class="box" onClick="cp('🎖️')" title="military medal">🎖️</a>
+	<a class="box" onClick="cp('🏆')" title="trophy">🏆</a>
+	<a class="box" onClick="cp('🏅')" title="sports medal">🏅</a>
+	<a class="box" onClick="cp('🥇')" title="1st place medal">🥇</a>
+	<a class="box" onClick="cp('🥈')" title="2nd place medal">🥈</a>
+	<a class="box" onClick="cp('🥉')" title="3rd place medal">🥉</a>
+	<div style="clear:left;"></div>
+	<h3 id="sport">sport</h3>
+	<a class="box" onClick="cp('⚽')" title="soccer ball">⚽</a>
+	<a class="box" onClick="cp('⚾')" title="baseball">⚾</a>
+	<a class="box" onClick="cp('🥎')" title="softball">🥎</a>
+	<a class="box" onClick="cp('🏀')" title="basketball">🏀</a>
+	<a class="box" onClick="cp('🏐')" title="volleyball">🏐</a>
+	<a class="box" onClick="cp('🏈')" title="american football">🏈</a>
+	<a class="box" onClick="cp('🏉')" title="rugby football">🏉</a>
+	<a class="box" onClick="cp('🎾')" title="tennis">🎾</a>
+	<a class="box" onClick="cp('🥏')" title="flying disc">🥏</a>
+	<a class="box" onClick="cp('🎳')" title="bowling">🎳</a>
+	<a class="box" onClick="cp('🏏')" title="cricket game">🏏</a>
+	<a class="box" onClick="cp('🏑')" title="field hockey">🏑</a>
+	<a class="box" onClick="cp('🏒')" title="ice hockey">🏒</a>
+	<a class="box" onClick="cp('🥍')" title="lacrosse">🥍</a>
+	<a class="box" onClick="cp('🏓')" title="ping pong">🏓</a>
+	<a class="box" onClick="cp('🏸')" title="badminton">🏸</a>
+	<a class="box" onClick="cp('🥊')" title="boxing glove">🥊</a>
+	<a class="box" onClick="cp('🥋')" title="martial arts uniform">🥋</a>
+	<a class="box" onClick="cp('🥅')" title="goal net">🥅</a>
+	<a class="box" onClick="cp('⛳')" title="flag in hole">⛳</a>
+	<a class="box" onClick="cp('⛸️')" title="ice skate">⛸️</a>
+	<a class="box" onClick="cp('🎣')" title="fishing pole">🎣</a>
+	<a class="box" onClick="cp('🤿')" title="diving mask">🤿</a>
+	<a class="box" onClick="cp('🎽')" title="running shirt">🎽</a>
+	<a class="box" onClick="cp('🎿')" title="skis">🎿</a>
+	<a class="box" onClick="cp('🛷')" title="sled">🛷</a>
+	<a class="box" onClick="cp('🥌')" title="curling stone">🥌</a>
+	<div style="clear:left;"></div>
+	<h3 id="game">game</h3>
+	<a class="box" onClick="cp('🎯')" title="bullseye">🎯</a>
+	<a class="box" onClick="cp('🪀')" title="yo-yo">🪀</a>
+	<a class="box" onClick="cp('🪁')" title="kite">🪁</a>
+	<a class="box" onClick="cp('🔫')" title="water pistol">🔫</a>
+	<a class="box" onClick="cp('🎱')" title="pool 8 ball">🎱</a>
+	<a class="box" onClick="cp('🔮')" title="crystal ball">🔮</a>
+	<a class="box" onClick="cp('🪄')" title="magic wand">🪄</a>
+	<a class="box" onClick="cp('🎮')" title="video game">🎮</a>
+	<a class="box" onClick="cp('🕹️')" title="joystick">🕹️</a>
+	<a class="box" onClick="cp('🎰')" title="slot machine">🎰</a>
+	<a class="box" onClick="cp('🎲')" title="game die">🎲</a>
+	<a class="box" onClick="cp('🧩')" title="puzzle piece">🧩</a>
+	<a class="box" onClick="cp('🧸')" title="teddy bear">🧸</a>
+	<a class="box" onClick="cp('🪅')" title="piñata">🪅</a>
+	<a class="box" onClick="cp('🪩')" title="mirror ball">🪩</a>
+	<a class="box" onClick="cp('🪆')" title="nesting dolls">🪆</a>
+	<a class="box" onClick="cp('♠️')" title="spade suit">♠️</a>
+	<a class="box" onClick="cp('♥️')" title="heart suit">♥️</a>
+	<a class="box" onClick="cp('♦️')" title="diamond suit">♦️</a>
+	<a class="box" onClick="cp('♣️')" title="club suit">♣️</a>
+	<a class="box" onClick="cp('♟️')" title="chess pawn">♟️</a>
+	<a class="box" onClick="cp('🃏')" title="joker">🃏</a>
+	<a class="box" onClick="cp('🀄')" title="mahjong red dragon">🀄</a>
+	<a class="box" onClick="cp('🎴')" title="flower playing cards">🎴</a>
+	<div style="clear:left;"></div>
+	<h3 id="arts_crafts">arts &amp; crafts</h3>
+	<a class="box" onClick="cp('🎭')" title="performing arts">🎭</a>
+	<a class="box" onClick="cp('🖼️')" title="framed picture">🖼️</a>
+	<a class="box" onClick="cp('🎨')" title="artist palette">🎨</a>
+	<a class="box" onClick="cp('🧵')" title="thread">🧵</a>
+	<a class="box" onClick="cp('🪡')" title="sewing needle">🪡</a>
+	<a class="box" onClick="cp('🧶')" title="yarn">🧶</a>
+	<a class="box" onClick="cp('🪢')" title="knot">🪢</a>
+	<div style="clear:left;"></div>
+</div>
+<h2 id="Objects">Objects</h2>
+<div class="margined">
+	<h3 id="clothing">clothing</h3>
+	<a class="box" onClick="cp('👓')" title="glasses">👓</a>
+	<a class="box" onClick="cp('🕶️')" title="sunglasses">🕶️</a>
+	<a class="box" onClick="cp('🥽')" title="goggles">🥽</a>
+	<a class="box" onClick="cp('🥼')" title="lab coat">🥼</a>
+	<a class="box" onClick="cp('🦺')" title="safety vest">🦺</a>
+	<a class="box" onClick="cp('👔')" title="necktie">👔</a>
+	<a class="box" onClick="cp('👕')" title="t-shirt">👕</a>
+	<a class="box" onClick="cp('👖')" title="jeans">👖</a>
+	<a class="box" onClick="cp('🧣')" title="scarf">🧣</a>
+	<a class="box" onClick="cp('🧤')" title="gloves">🧤</a>
+	<a class="box" onClick="cp('🧥')" title="coat">🧥</a>
+	<a class="box" onClick="cp('🧦')" title="socks">🧦</a>
+	<a class="box" onClick="cp('👗')" title="dress">👗</a>
+	<a class="box" onClick="cp('👘')" title="kimono">👘</a>
+	<a class="box" onClick="cp('🥻')" title="sari">🥻</a>
+	<a class="box" onClick="cp('🩱')" title="one-piece swimsuit">🩱</a>
+	<a class="box" onClick="cp('🩲')" title="briefs">🩲</a>
+	<a class="box" onClick="cp('🩳')" title="shorts">🩳</a>
+	<a class="box" onClick="cp('👙')" title="bikini">👙</a>
+	<a class="box" onClick="cp('👚')" title="woman’s clothes">👚</a>
+	<a class="box" onClick="cp('🪭')" title="folding hand fan">🪭</a>
+	<a class="box" onClick="cp('👛')" title="purse">👛</a>
+	<a class="box" onClick="cp('👜')" title="handbag">👜</a>
+	<a class="box" onClick="cp('👝')" title="clutch bag">👝</a>
+	<a class="box" onClick="cp('🛍️')" title="shopping bags">🛍️</a>
+	<a class="box" onClick="cp('🎒')" title="backpack">🎒</a>
+	<a class="box" onClick="cp('🩴')" title="thong sandal">🩴</a>
+	<a class="box" onClick="cp('👞')" title="man’s shoe">👞</a>
+	<a class="box" onClick="cp('👟')" title="running shoe">👟</a>
+	<a class="box" onClick="cp('🥾')" title="hiking boot">🥾</a>
+	<a class="box" onClick="cp('🥿')" title="flat shoe">🥿</a>
+	<a class="box" onClick="cp('👠')" title="high-heeled shoe">👠</a>
+	<a class="box" onClick="cp('👡')" title="woman’s sandal">👡</a>
+	<a class="box" onClick="cp('🩰')" title="ballet shoes">🩰</a>
+	<a class="box" onClick="cp('👢')" title="woman’s boot">👢</a>
+	<a class="box" onClick="cp('🪮')" title="hair pick">🪮</a>
+	<a class="box" onClick="cp('👑')" title="crown">👑</a>
+	<a class="box" onClick="cp('👒')" title="woman’s hat">👒</a>
+	<a class="box" onClick="cp('🎩')" title="top hat">🎩</a>
+	<a class="box" onClick="cp('🎓')" title="graduation cap">🎓</a>
+	<a class="box" onClick="cp('🧢')" title="billed cap">🧢</a>
+	<a class="box" onClick="cp('🪖')" title="military helmet">🪖</a>
+	<a class="box" onClick="cp('⛑️')" title="rescue worker’s helmet">⛑️</a>
+	<a class="box" onClick="cp('📿')" title="prayer beads">📿</a>
+	<a class="box" onClick="cp('💄')" title="lipstick">💄</a>
+	<a class="box" onClick="cp('💍')" title="ring">💍</a>
+	<a class="box" onClick="cp('💎')" title="gem stone">💎</a>
+	<div style="clear:left;"></div>
+	<h3 id="sound">sound</h3>
+	<a class="box" onClick="cp('🔇')" title="muted speaker">🔇</a>
+	<a class="box" onClick="cp('🔈')" title="speaker low volume">🔈</a>
+	<a class="box" onClick="cp('🔉')" title="speaker medium volume">🔉</a>
+	<a class="box" onClick="cp('🔊')" title="speaker high volume">🔊</a>
+	<a class="box" onClick="cp('📢')" title="loudspeaker">📢</a>
+	<a class="box" onClick="cp('📣')" title="megaphone">📣</a>
+	<a class="box" onClick="cp('📯')" title="postal horn">📯</a>
+	<a class="box" onClick="cp('🔔')" title="bell">🔔</a>
+	<a class="box" onClick="cp('🔕')" title="bell with slash">🔕</a>
+	<div style="clear:left;"></div>
+	<h3 id="music">music</h3>
+	<a class="box" onClick="cp('🎼')" title="musical score">🎼</a>
+	<a class="box" onClick="cp('🎵')" title="musical note">🎵</a>
+	<a class="box" onClick="cp('🎶')" title="musical notes">🎶</a>
+	<a class="box" onClick="cp('🎙️')" title="studio microphone">🎙️</a>
+	<a class="box" onClick="cp('🎚️')" title="level slider">🎚️</a>
+	<a class="box" onClick="cp('🎛️')" title="control knobs">🎛️</a>
+	<a class="box" onClick="cp('🎤')" title="microphone">🎤</a>
+	<a class="box" onClick="cp('🎧')" title="headphone">🎧</a>
+	<a class="box" onClick="cp('📻')" title="radio">📻</a>
+	<div style="clear:left;"></div>
+	<h3 id="musical-instrument">musical-instrument</h3>
+	<a class="box" onClick="cp('🎷')" title="saxophone">🎷</a>
+	<a class="box" onClick="cp('🪗')" title="accordion">🪗</a>
+	<a class="box" onClick="cp('🎸')" title="guitar">🎸</a>
+	<a class="box" onClick="cp('🎹')" title="musical keyboard">🎹</a>
+	<a class="box" onClick="cp('🎺')" title="trumpet">🎺</a>
+	<a class="box" onClick="cp('🎻')" title="violin">🎻</a>
+	<a class="box" onClick="cp('🪕')" title="banjo">🪕</a>
+	<a class="box" onClick="cp('🥁')" title="drum">🥁</a>
+	<a class="box" onClick="cp('🪘')" title="long drum">🪘</a>
+	<a class="box" onClick="cp('🪇')" title="maracas">🪇</a>
+	<a class="box" onClick="cp('🪈')" title="flute">🪈</a>
+	<div style="clear:left;"></div>
+	<h3 id="phone">phone</h3>
+	<a class="box" onClick="cp('📱')" title="mobile phone">📱</a>
+	<a class="box" onClick="cp('📲')" title="mobile phone with arrow">📲</a>
+	<a class="box" onClick="cp('☎️')" title="telephone">☎️</a>
+	<a class="box" onClick="cp('📞')" title="telephone receiver">📞</a>
+	<a class="box" onClick="cp('📟')" title="pager">📟</a>
+	<a class="box" onClick="cp('📠')" title="fax machine">📠</a>
+	<div style="clear:left;"></div>
+	<h3 id="computer">computer</h3>
+	<a class="box" onClick="cp('🔋')" title="battery">🔋</a>
+	<a class="box" onClick="cp('🪫')" title="low battery">🪫</a>
+	<a class="box" onClick="cp('🔌')" title="electric plug">🔌</a>
+	<a class="box" onClick="cp('💻')" title="laptop">💻</a>
+	<a class="box" onClick="cp('🖥️')" title="desktop computer">🖥️</a>
+	<a class="box" onClick="cp('🖨️')" title="printer">🖨️</a>
+	<a class="box" onClick="cp('⌨️')" title="keyboard">⌨️</a>
+	<a class="box" onClick="cp('🖱️')" title="computer mouse">🖱️</a>
+	<a class="box" onClick="cp('🖲️')" title="trackball">🖲️</a>
+	<a class="box" onClick="cp('💽')" title="computer disk">💽</a>
+	<a class="box" onClick="cp('💾')" title="floppy disk">💾</a>
+	<a class="box" onClick="cp('💿')" title="optical disk">💿</a>
+	<a class="box" onClick="cp('📀')" title="dvd">📀</a>
+	<a class="box" onClick="cp('🧮')" title="abacus">🧮</a>
+	<div style="clear:left;"></div>
+	<h3 id="light_video">light &amp; video</h3>
+	<a class="box" onClick="cp('🎥')" title="movie camera">🎥</a>
+	<a class="box" onClick="cp('🎞️')" title="film frames">🎞️</a>
+	<a class="box" onClick="cp('📽️')" title="film projector">📽️</a>
+	<a class="box" onClick="cp('🎬')" title="clapper board">🎬</a>
+	<a class="box" onClick="cp('📺')" title="television">📺</a>
+	<a class="box" onClick="cp('📷')" title="camera">📷</a>
+	<a class="box" onClick="cp('📸')" title="camera with flash">📸</a>
+	<a class="box" onClick="cp('📹')" title="video camera">📹</a>
+	<a class="box" onClick="cp('📼')" title="videocassette">📼</a>
+	<a class="box" onClick="cp('🔍')" title="magnifying glass tilted left">🔍</a>
+	<a class="box" onClick="cp('🔎')" title="magnifying glass tilted right">🔎</a>
+	<a class="box" onClick="cp('🕯️')" title="candle">🕯️</a>
+	<a class="box" onClick="cp('💡')" title="light bulb">💡</a>
+	<a class="box" onClick="cp('🔦')" title="flashlight">🔦</a>
+	<a class="box" onClick="cp('🏮')" title="red paper lantern">🏮</a>
+	<a class="box" onClick="cp('🪔')" title="diya lamp">🪔</a>
+	<div style="clear:left;"></div>
+	<h3 id="book-paper">book-paper</h3>
+	<a class="box" onClick="cp('📔')" title="notebook with decorative cover">📔</a>
+	<a class="box" onClick="cp('📕')" title="closed book">📕</a>
+	<a class="box" onClick="cp('📖')" title="open book">📖</a>
+	<a class="box" onClick="cp('📗')" title="green book">📗</a>
+	<a class="box" onClick="cp('📘')" title="blue book">📘</a>
+	<a class="box" onClick="cp('📙')" title="orange book">📙</a>
+	<a class="box" onClick="cp('📚')" title="books">📚</a>
+	<a class="box" onClick="cp('📓')" title="notebook">📓</a>
+	<a class="box" onClick="cp('📒')" title="ledger">📒</a>
+	<a class="box" onClick="cp('📃')" title="page with curl">📃</a>
+	<a class="box" onClick="cp('📜')" title="scroll">📜</a>
+	<a class="box" onClick="cp('📄')" title="page facing up">📄</a>
+	<a class="box" onClick="cp('📰')" title="newspaper">📰</a>
+	<a class="box" onClick="cp('🗞️')" title="rolled-up newspaper">🗞️</a>
+	<a class="box" onClick="cp('📑')" title="bookmark tabs">📑</a>
+	<a class="box" onClick="cp('🔖')" title="bookmark">🔖</a>
+	<a class="box" onClick="cp('🏷️')" title="label">🏷️</a>
+	<div style="clear:left;"></div>
+	<h3 id="money">money</h3>
+	<a class="box" onClick="cp('💰')" title="money bag">💰</a>
+	<a class="box" onClick="cp('🪙')" title="coin">🪙</a>
+	<a class="box" onClick="cp('💴')" title="yen banknote">💴</a>
+	<a class="box" onClick="cp('💵')" title="dollar banknote">💵</a>
+	<a class="box" onClick="cp('💶')" title="euro banknote">💶</a>
+	<a class="box" onClick="cp('💷')" title="pound banknote">💷</a>
+	<a class="box" onClick="cp('💸')" title="money with wings">💸</a>
+	<a class="box" onClick="cp('💳')" title="credit card">💳</a>
+	<a class="box" onClick="cp('🧾')" title="receipt">🧾</a>
+	<a class="box" onClick="cp('💹')" title="chart increasing with yen">💹</a>
+	<div style="clear:left;"></div>
+	<h3 id="mail">mail</h3>
+	<a class="box" onClick="cp('✉️')" title="envelope">✉️</a>
+	<a class="box" onClick="cp('📧')" title="e-mail">📧</a>
+	<a class="box" onClick="cp('📨')" title="incoming envelope">📨</a>
+	<a class="box" onClick="cp('📩')" title="envelope with arrow">📩</a>
+	<a class="box" onClick="cp('📤')" title="outbox tray">📤</a>
+	<a class="box" onClick="cp('📥')" title="inbox tray">📥</a>
+	<a class="box" onClick="cp('📦')" title="package">📦</a>
+	<a class="box" onClick="cp('📫')" title="closed mailbox with raised flag">📫</a>
+	<a class="box" onClick="cp('📪')" title="closed mailbox with lowered flag">📪</a>
+	<a class="box" onClick="cp('📬')" title="open mailbox with raised flag">📬</a>
+	<a class="box" onClick="cp('📭')" title="open mailbox with lowered flag">📭</a>
+	<a class="box" onClick="cp('📮')" title="postbox">📮</a>
+	<a class="box" onClick="cp('🗳️')" title="ballot box with ballot">🗳️</a>
+	<div style="clear:left;"></div>
+	<h3 id="writing">writing</h3>
+	<a class="box" onClick="cp('✏️')" title="pencil">✏️</a>
+	<a class="box" onClick="cp('✒️')" title="black nib">✒️</a>
+	<a class="box" onClick="cp('🖋️')" title="fountain pen">🖋️</a>
+	<a class="box" onClick="cp('🖊️')" title="pen">🖊️</a>
+	<a class="box" onClick="cp('🖌️')" title="paintbrush">🖌️</a>
+	<a class="box" onClick="cp('🖍️')" title="crayon">🖍️</a>
+	<a class="box" onClick="cp('📝')" title="memo">📝</a>
+	<div style="clear:left;"></div>
+	<h3 id="office">office</h3>
+	<a class="box" onClick="cp('💼')" title="briefcase">💼</a>
+	<a class="box" onClick="cp('📁')" title="file folder">📁</a>
+	<a class="box" onClick="cp('📂')" title="open file folder">📂</a>
+	<a class="box" onClick="cp('🗂️')" title="card index dividers">🗂️</a>
+	<a class="box" onClick="cp('📅')" title="calendar">📅</a>
+	<a class="box" onClick="cp('📆')" title="tear-off calendar">📆</a>
+	<a class="box" onClick="cp('🗒️')" title="spiral notepad">🗒️</a>
+	<a class="box" onClick="cp('🗓️')" title="spiral calendar">🗓️</a>
+	<a class="box" onClick="cp('📇')" title="card index">📇</a>
+	<a class="box" onClick="cp('📈')" title="chart increasing">📈</a>
+	<a class="box" onClick="cp('📉')" title="chart decreasing">📉</a>
+	<a class="box" onClick="cp('📊')" title="bar chart">📊</a>
+	<a class="box" onClick="cp('📋')" title="clipboard">📋</a>
+	<a class="box" onClick="cp('📌')" title="pushpin">📌</a>
+	<a class="box" onClick="cp('📍')" title="round pushpin">📍</a>
+	<a class="box" onClick="cp('📎')" title="paperclip">📎</a>
+	<a class="box" onClick="cp('🖇️')" title="linked paperclips">🖇️</a>
+	<a class="box" onClick="cp('📏')" title="straight ruler">📏</a>
+	<a class="box" onClick="cp('📐')" title="triangular ruler">📐</a>
+	<a class="box" onClick="cp('✂️')" title="scissors">✂️</a>
+	<a class="box" onClick="cp('🗃️')" title="card file box">🗃️</a>
+	<a class="box" onClick="cp('🗄️')" title="file cabinet">🗄️</a>
+	<a class="box" onClick="cp('🗑️')" title="wastebasket">🗑️</a>
+	<div style="clear:left;"></div>
+	<h3 id="lock">lock</h3>
+	<a class="box" onClick="cp('🔒')" title="locked">🔒</a>
+	<a class="box" onClick="cp('🔓')" title="unlocked">🔓</a>
+	<a class="box" onClick="cp('🔏')" title="locked with pen">🔏</a>
+	<a class="box" onClick="cp('🔐')" title="locked with key">🔐</a>
+	<a class="box" onClick="cp('🔑')" title="key">🔑</a>
+	<a class="box" onClick="cp('🗝️')" title="old key">🗝️</a>
+	<div style="clear:left;"></div>
+	<h3 id="tool">tool</h3>
+	<a class="box" onClick="cp('🔨')" title="hammer">🔨</a>
+	<a class="box" onClick="cp('🪓')" title="axe">🪓</a>
+	<a class="box" onClick="cp('⛏️')" title="pick">⛏️</a>
+	<a class="box" onClick="cp('⚒️')" title="hammer and pick">⚒️</a>
+	<a class="box" onClick="cp('🛠️')" title="hammer and wrench">🛠️</a>
+	<a class="box" onClick="cp('🗡️')" title="dagger">🗡️</a>
+	<a class="box" onClick="cp('⚔️')" title="crossed swords">⚔️</a>
+	<a class="box" onClick="cp('💣')" title="bomb">💣</a>
+	<a class="box" onClick="cp('🪃')" title="boomerang">🪃</a>
+	<a class="box" onClick="cp('🏹')" title="bow and arrow">🏹</a>
+	<a class="box" onClick="cp('🛡️')" title="shield">🛡️</a>
+	<a class="box" onClick="cp('🪚')" title="carpentry saw">🪚</a>
+	<a class="box" onClick="cp('🔧')" title="wrench">🔧</a>
+	<a class="box" onClick="cp('🪛')" title="screwdriver">🪛</a>
+	<a class="box" onClick="cp('🔩')" title="nut and bolt">🔩</a>
+	<a class="box" onClick="cp('⚙️')" title="gear">⚙️</a>
+	<a class="box" onClick="cp('🗜️')" title="clamp">🗜️</a>
+	<a class="box" onClick="cp('⚖️')" title="balance scale">⚖️</a>
+	<a class="box" onClick="cp('🦯')" title="white cane">🦯</a>
+	<a class="box" onClick="cp('🔗')" title="link">🔗</a>
+	<a class="box" onClick="cp('⛓️‍💥')" title="broken chain">⛓️‍💥</a>
+	<a class="box" onClick="cp('⛓️')" title="chains">⛓️</a>
+	<a class="box" onClick="cp('🪝')" title="hook">🪝</a>
+	<a class="box" onClick="cp('🧰')" title="toolbox">🧰</a>
+	<a class="box" onClick="cp('🧲')" title="magnet">🧲</a>
+	<a class="box" onClick="cp('🪜')" title="ladder">🪜</a>
+	<div style="clear:left;"></div>
+	<h3 id="science">science</h3>
+	<a class="box" onClick="cp('⚗️')" title="alembic">⚗️</a>
+	<a class="box" onClick="cp('🧪')" title="test tube">🧪</a>
+	<a class="box" onClick="cp('🧫')" title="petri dish">🧫</a>
+	<a class="box" onClick="cp('🧬')" title="dna">🧬</a>
+	<a class="box" onClick="cp('🔬')" title="microscope">🔬</a>
+	<a class="box" onClick="cp('🔭')" title="telescope">🔭</a>
+	<a class="box" onClick="cp('📡')" title="satellite antenna">📡</a>
+	<div style="clear:left;"></div>
+	<h3 id="medical">medical</h3>
+	<a class="box" onClick="cp('💉')" title="syringe">💉</a>
+	<a class="box" onClick="cp('🩸')" title="drop of blood">🩸</a>
+	<a class="box" onClick="cp('💊')" title="pill">💊</a>
+	<a class="box" onClick="cp('🩹')" title="adhesive bandage">🩹</a>
+	<a class="box" onClick="cp('🩼')" title="crutch">🩼</a>
+	<a class="box" onClick="cp('🩺')" title="stethoscope">🩺</a>
+	<a class="box" onClick="cp('🩻')" title="x-ray">🩻</a>
+	<div style="clear:left;"></div>
+	<h3 id="household">household</h3>
+	<a class="box" onClick="cp('🚪')" title="door">🚪</a>
+	<a class="box" onClick="cp('🛗')" title="elevator">🛗</a>
+	<a class="box" onClick="cp('🪞')" title="mirror">🪞</a>
+	<a class="box" onClick="cp('🪟')" title="window">🪟</a>
+	<a class="box" onClick="cp('🛏️')" title="bed">🛏️</a>
+	<a class="box" onClick="cp('🛋️')" title="couch and lamp">🛋️</a>
+	<a class="box" onClick="cp('🪑')" title="chair">🪑</a>
+	<a class="box" onClick="cp('🚽')" title="toilet">🚽</a>
+	<a class="box" onClick="cp('🪠')" title="plunger">🪠</a>
+	<a class="box" onClick="cp('🚿')" title="shower">🚿</a>
+	<a class="box" onClick="cp('🛁')" title="bathtub">🛁</a>
+	<a class="box" onClick="cp('🪤')" title="mouse trap">🪤</a>
+	<a class="box" onClick="cp('🪒')" title="razor">🪒</a>
+	<a class="box" onClick="cp('🧴')" title="lotion bottle">🧴</a>
+	<a class="box" onClick="cp('🧷')" title="safety pin">🧷</a>
+	<a class="box" onClick="cp('🧹')" title="broom">🧹</a>
+	<a class="box" onClick="cp('🧺')" title="basket">🧺</a>
+	<a class="box" onClick="cp('🧻')" title="roll of paper">🧻</a>
+	<a class="box" onClick="cp('🪣')" title="bucket">🪣</a>
+	<a class="box" onClick="cp('🧼')" title="soap">🧼</a>
+	<a class="box" onClick="cp('🫧')" title="bubbles">🫧</a>
+	<a class="box" onClick="cp('🪥')" title="toothbrush">🪥</a>
+	<a class="box" onClick="cp('🧽')" title="sponge">🧽</a>
+	<a class="box" onClick="cp('🧯')" title="fire extinguisher">🧯</a>
+	<a class="box" onClick="cp('🛒')" title="shopping cart">🛒</a>
+	<div style="clear:left;"></div>
+	<h3 id="other-object">other-object</h3>
+	<a class="box" onClick="cp('🚬')" title="cigarette">🚬</a>
+	<a class="box" onClick="cp('⚰️')" title="coffin">⚰️</a>
+	<a class="box" onClick="cp('🪦')" title="headstone">🪦</a>
+	<a class="box" onClick="cp('⚱️')" title="funeral urn">⚱️</a>
+	<a class="box" onClick="cp('🧿')" title="nazar amulet">🧿</a>
+	<a class="box" onClick="cp('🪬')" title="hamsa">🪬</a>
+	<a class="box" onClick="cp('🗿')" title="moai">🗿</a>
+	<a class="box" onClick="cp('🪧')" title="placard">🪧</a>
+	<a class="box" onClick="cp('🪪')" title="identification card">🪪</a>
+	<div style="clear:left;"></div>
+</div>
+<h2 id="Symbols">Symbols</h2>
+<div class="margined">
+	<h3 id="transport-sign">transport-sign</h3>
+	<a class="box" onClick="cp('🏧')" title="ATM sign">🏧</a>
+	<a class="box" onClick="cp('🚮')" title="litter in bin sign">🚮</a>
+	<a class="box" onClick="cp('🚰')" title="potable water">🚰</a>
+	<a class="box" onClick="cp('♿')" title="wheelchair symbol">♿</a>
+	<a class="box" onClick="cp('🚹')" title="men’s room">🚹</a>
+	<a class="box" onClick="cp('🚺')" title="women’s room">🚺</a>
+	<a class="box" onClick="cp('🚻')" title="restroom">🚻</a>
+	<a class="box" onClick="cp('🚼')" title="baby symbol">🚼</a>
+	<a class="box" onClick="cp('🚾')" title="water closet">🚾</a>
+	<a class="box" onClick="cp('🛂')" title="passport control">🛂</a>
+	<a class="box" onClick="cp('🛃')" title="customs">🛃</a>
+	<a class="box" onClick="cp('🛄')" title="baggage claim">🛄</a>
+	<a class="box" onClick="cp('🛅')" title="left luggage">🛅</a>
+	<div style="clear:left;"></div>
+	<h3 id="warning">warning</h3>
+	<a class="box" onClick="cp('⚠️')" title="warning">⚠️</a>
+	<a class="box" onClick="cp('🚸')" title="children crossing">🚸</a>
+	<a class="box" onClick="cp('⛔')" title="no entry">⛔</a>
+	<a class="box" onClick="cp('🚫')" title="prohibited">🚫</a>
+	<a class="box" onClick="cp('🚳')" title="no bicycles">🚳</a>
+	<a class="box" onClick="cp('🚭')" title="no smoking">🚭</a>
+	<a class="box" onClick="cp('🚯')" title="no littering">🚯</a>
+	<a class="box" onClick="cp('🚱')" title="non-potable water">🚱</a>
+	<a class="box" onClick="cp('🚷')" title="no pedestrians">🚷</a>
+	<a class="box" onClick="cp('📵')" title="no mobile phones">📵</a>
+	<a class="box" onClick="cp('🔞')" title="no one under eighteen">🔞</a>
+	<a class="box" onClick="cp('☢️')" title="radioactive">☢️</a>
+	<a class="box" onClick="cp('☣️')" title="biohazard">☣️</a>
+	<div style="clear:left;"></div>
+	<h3 id="arrow">arrow</h3>
+	<a class="box" onClick="cp('⬆️')" title="up arrow">⬆️</a>
+	<a class="box" onClick="cp('↗️')" title="up-right arrow">↗️</a>
+	<a class="box" onClick="cp('➡️')" title="right arrow">➡️</a>
+	<a class="box" onClick="cp('↘️')" title="down-right arrow">↘️</a>
+	<a class="box" onClick="cp('⬇️')" title="down arrow">⬇️</a>
+	<a class="box" onClick="cp('↙️')" title="down-left arrow">↙️</a>
+	<a class="box" onClick="cp('⬅️')" title="left arrow">⬅️</a>
+	<a class="box" onClick="cp('↖️')" title="up-left arrow">↖️</a>
+	<a class="box" onClick="cp('↕️')" title="up-down arrow">↕️</a>
+	<a class="box" onClick="cp('↔️')" title="left-right arrow">↔️</a>
+	<a class="box" onClick="cp('↩️')" title="right arrow curving left">↩️</a>
+	<a class="box" onClick="cp('↪️')" title="left arrow curving right">↪️</a>
+	<a class="box" onClick="cp('⤴️')" title="right arrow curving up">⤴️</a>
+	<a class="box" onClick="cp('⤵️')" title="right arrow curving down">⤵️</a>
+	<a class="box" onClick="cp('🔃')" title="clockwise vertical arrows">🔃</a>
+	<a class="box" onClick="cp('🔄')" title="counterclockwise arrows button">🔄</a>
+	<a class="box" onClick="cp('🔙')" title="BACK arrow">🔙</a>
+	<a class="box" onClick="cp('🔚')" title="END arrow">🔚</a>
+	<a class="box" onClick="cp('🔛')" title="ON! arrow">🔛</a>
+	<a class="box" onClick="cp('🔜')" title="SOON arrow">🔜</a>
+	<a class="box" onClick="cp('🔝')" title="TOP arrow">🔝</a>
+	<div style="clear:left;"></div>
+	<h3 id="religion">religion</h3>
+	<a class="box" onClick="cp('🛐')" title="place of worship">🛐</a>
+	<a class="box" onClick="cp('⚛️')" title="atom symbol">⚛️</a>
+	<a class="box" onClick="cp('🕉️')" title="om">🕉️</a>
+	<a class="box" onClick="cp('✡️')" title="star of David">✡️</a>
+	<a class="box" onClick="cp('☸️')" title="wheel of dharma">☸️</a>
+	<a class="box" onClick="cp('☯️')" title="yin yang">☯️</a>
+	<a class="box" onClick="cp('✝️')" title="latin cross">✝️</a>
+	<a class="box" onClick="cp('☦️')" title="orthodox cross">☦️</a>
+	<a class="box" onClick="cp('☪️')" title="star and crescent">☪️</a>
+	<a class="box" onClick="cp('☮️')" title="peace symbol">☮️</a>
+	<a class="box" onClick="cp('🕎')" title="menorah">🕎</a>
+	<a class="box" onClick="cp('🔯')" title="dotted six-pointed star">🔯</a>
+	<a class="box" onClick="cp('🪯')" title="khanda">🪯</a>
+	<div style="clear:left;"></div>
+	<h3 id="zodiac">zodiac</h3>
+	<a class="box" onClick="cp('♈')" title="Aries">♈</a>
+	<a class="box" onClick="cp('♉')" title="Taurus">♉</a>
+	<a class="box" onClick="cp('♊')" title="Gemini">♊</a>
+	<a class="box" onClick="cp('♋')" title="Cancer">♋</a>
+	<a class="box" onClick="cp('♌')" title="Leo">♌</a>
+	<a class="box" onClick="cp('♍')" title="Virgo">♍</a>
+	<a class="box" onClick="cp('♎')" title="Libra">♎</a>
+	<a class="box" onClick="cp('♏')" title="Scorpio">♏</a>
+	<a class="box" onClick="cp('♐')" title="Sagittarius">♐</a>
+	<a class="box" onClick="cp('♑')" title="Capricorn">♑</a>
+	<a class="box" onClick="cp('♒')" title="Aquarius">♒</a>
+	<a class="box" onClick="cp('♓')" title="Pisces">♓</a>
+	<a class="box" onClick="cp('⛎')" title="Ophiuchus">⛎</a>
+	<div style="clear:left;"></div>
+	<h3 id="av-symbol">av-symbol</h3>
+	<a class="box" onClick="cp('🔀')" title="shuffle tracks button">🔀</a>
+	<a class="box" onClick="cp('🔁')" title="repeat button">🔁</a>
+	<a class="box" onClick="cp('🔂')" title="repeat single button">🔂</a>
+	<a class="box" onClick="cp('▶️')" title="play button">▶️</a>
+	<a class="box" onClick="cp('⏩')" title="fast-forward button">⏩</a>
+	<a class="box" onClick="cp('⏭️')" title="next track button">⏭️</a>
+	<a class="box" onClick="cp('⏯️')" title="play or pause button">⏯️</a>
+	<a class="box" onClick="cp('◀️')" title="reverse button">◀️</a>
+	<a class="box" onClick="cp('⏪')" title="fast reverse button">⏪</a>
+	<a class="box" onClick="cp('⏮️')" title="last track button">⏮️</a>
+	<a class="box" onClick="cp('🔼')" title="upwards button">🔼</a>
+	<a class="box" onClick="cp('⏫')" title="fast up button">⏫</a>
+	<a class="box" onClick="cp('🔽')" title="downwards button">🔽</a>
+	<a class="box" onClick="cp('⏬')" title="fast down button">⏬</a>
+	<a class="box" onClick="cp('⏸️')" title="pause button">⏸️</a>
+	<a class="box" onClick="cp('⏹️')" title="stop button">⏹️</a>
+	<a class="box" onClick="cp('⏺️')" title="record button">⏺️</a>
+	<a class="box" onClick="cp('⏏️')" title="eject button">⏏️</a>
+	<a class="box" onClick="cp('🎦')" title="cinema">🎦</a>
+	<a class="box" onClick="cp('🔅')" title="dim button">🔅</a>
+	<a class="box" onClick="cp('🔆')" title="bright button">🔆</a>
+	<a class="box" onClick="cp('📶')" title="antenna bars">📶</a>
+	<a class="box" onClick="cp('🛜')" title="wireless">🛜</a>
+	<a class="box" onClick="cp('📳')" title="vibration mode">📳</a>
+	<a class="box" onClick="cp('📴')" title="mobile phone off">📴</a>
+	<div style="clear:left;"></div>
+	<h3 id="gender">gender</h3>
+	<a class="box" onClick="cp('♀️')" title="female sign">♀️</a>
+	<a class="box" onClick="cp('♂️')" title="male sign">♂️</a>
+	<a class="box" onClick="cp('⚧️')" title="transgender symbol">⚧️</a>
+	<div style="clear:left;"></div>
+	<h3 id="math">math</h3>
+	<a class="box" onClick="cp('✖️')" title="multiply">✖️</a>
+	<a class="box" onClick="cp('➕')" title="plus">➕</a>
+	<a class="box" onClick="cp('➖')" title="minus">➖</a>
+	<a class="box" onClick="cp('➗')" title="divide">➗</a>
+	<a class="box" onClick="cp('🟰')" title="heavy equals sign">🟰</a>
+	<a class="box" onClick="cp('♾️')" title="infinity">♾️</a>
+	<div style="clear:left;"></div>
+	<h3 id="punctuation">punctuation</h3>
+	<a class="box" onClick="cp('‼️')" title="double exclamation mark">‼️</a>
+	<a class="box" onClick="cp('⁉️')" title="exclamation question mark">⁉️</a>
+	<a class="box" onClick="cp('❓')" title="red question mark">❓</a>
+	<a class="box" onClick="cp('❔')" title="white question mark">❔</a>
+	<a class="box" onClick="cp('❕')" title="white exclamation mark">❕</a>
+	<a class="box" onClick="cp('❗')" title="red exclamation mark">❗</a>
+	<a class="box" onClick="cp('〰️')" title="wavy dash">〰️</a>
+	<div style="clear:left;"></div>
+	<h3 id="currency">currency</h3>
+	<a class="box" onClick="cp('💱')" title="currency exchange">💱</a>
+	<a class="box" onClick="cp('💲')" title="heavy dollar sign">💲</a>
+	<div style="clear:left;"></div>
+	<h3 id="other-symbol">other-symbol</h3>
+	<a class="box" onClick="cp('⚕️')" title="medical symbol">⚕️</a>
+	<a class="box" onClick="cp('♻️')" title="recycling symbol">♻️</a>
+	<a class="box" onClick="cp('⚜️')" title="fleur-de-lis">⚜️</a>
+	<a class="box" onClick="cp('🔱')" title="trident emblem">🔱</a>
+	<a class="box" onClick="cp('📛')" title="name badge">📛</a>
+	<a class="box" onClick="cp('🔰')" title="Japanese symbol for beginner">🔰</a>
+	<a class="box" onClick="cp('⭕')" title="hollow red circle">⭕</a>
+	<a class="box" onClick="cp('✅')" title="check mark button">✅</a>
+	<a class="box" onClick="cp('☑️')" title="check box with check">☑️</a>
+	<a class="box" onClick="cp('✔️')" title="check mark">✔️</a>
+	<a class="box" onClick="cp('❌')" title="cross mark">❌</a>
+	<a class="box" onClick="cp('❎')" title="cross mark button">❎</a>
+	<a class="box" onClick="cp('➰')" title="curly loop">➰</a>
+	<a class="box" onClick="cp('➿')" title="double curly loop">➿</a>
+	<a class="box" onClick="cp('〽️')" title="part alternation mark">〽️</a>
+	<a class="box" onClick="cp('✳️')" title="eight-spoked asterisk">✳️</a>
+	<a class="box" onClick="cp('✴️')" title="eight-pointed star">✴️</a>
+	<a class="box" onClick="cp('❇️')" title="sparkle">❇️</a>
+	<a class="box" onClick="cp('©️')" title="copyright">©️</a>
+	<a class="box" onClick="cp('®️')" title="registered">®️</a>
+	<a class="box" onClick="cp('™️')" title="trade mark">™️</a>
+	<div style="clear:left;"></div>
+	<h3 id="keycap">keycap</h3>
+	<a class="box" onClick="cp('#️⃣')" title="keycap: #">#️⃣</a>
+	<a class="box" onClick="cp('*️⃣')" title="keycap: *">*️⃣</a>
+	<a class="box" onClick="cp('0️⃣')" title="keycap: 0">0️⃣</a>
+	<a class="box" onClick="cp('1️⃣')" title="keycap: 1">1️⃣</a>
+	<a class="box" onClick="cp('2️⃣')" title="keycap: 2">2️⃣</a>
+	<a class="box" onClick="cp('3️⃣')" title="keycap: 3">3️⃣</a>
+	<a class="box" onClick="cp('4️⃣')" title="keycap: 4">4️⃣</a>
+	<a class="box" onClick="cp('5️⃣')" title="keycap: 5">5️⃣</a>
+	<a class="box" onClick="cp('6️⃣')" title="keycap: 6">6️⃣</a>
+	<a class="box" onClick="cp('7️⃣')" title="keycap: 7">7️⃣</a>
+	<a class="box" onClick="cp('8️⃣')" title="keycap: 8">8️⃣</a>
+	<a class="box" onClick="cp('9️⃣')" title="keycap: 9">9️⃣</a>
+	<a class="box" onClick="cp('🔟')" title="keycap: 10">🔟</a>
+	<div style="clear:left;"></div>
+	<h3 id="alphanum">alphanum</h3>
+	<a class="box" onClick="cp('🔠')" title="input latin uppercase">🔠</a>
+	<a class="box" onClick="cp('🔡')" title="input latin lowercase">🔡</a>
+	<a class="box" onClick="cp('🔢')" title="input numbers">🔢</a>
+	<a class="box" onClick="cp('🔣')" title="input symbols">🔣</a>
+	<a class="box" onClick="cp('🔤')" title="input latin letters">🔤</a>
+	<a class="box" onClick="cp('🅰️')" title="A button (blood type)">🅰️</a>
+	<a class="box" onClick="cp('🆎')" title="AB button (blood type)">🆎</a>
+	<a class="box" onClick="cp('🅱️')" title="B button (blood type)">🅱️</a>
+	<a class="box" onClick="cp('🆑')" title="CL button">🆑</a>
+	<a class="box" onClick="cp('🆒')" title="COOL button">🆒</a>
+	<a class="box" onClick="cp('🆓')" title="FREE button">🆓</a>
+	<a class="box" onClick="cp('ℹ️')" title="information">ℹ️</a>
+	<a class="box" onClick="cp('🆔')" title="ID button">🆔</a>
+	<a class="box" onClick="cp('Ⓜ️')" title="circled M">Ⓜ️</a>
+	<a class="box" onClick="cp('🆕')" title="NEW button">🆕</a>
+	<a class="box" onClick="cp('🆖')" title="NG button">🆖</a>
+	<a class="box" onClick="cp('🅾️')" title="O button (blood type)">🅾️</a>
+	<a class="box" onClick="cp('🆗')" title="OK button">🆗</a>
+	<a class="box" onClick="cp('🅿️')" title="P button">🅿️</a>
+	<a class="box" onClick="cp('🆘')" title="SOS button">🆘</a>
+	<a class="box" onClick="cp('🆙')" title="UP! button">🆙</a>
+	<a class="box" onClick="cp('🆚')" title="VS button">🆚</a>
+	<a class="box" onClick="cp('🈁')" title="Japanese “here” button">🈁</a>
+	<a class="box" onClick="cp('🈂️')" title="Japanese “service charge” button">🈂️</a>
+	<a class="box" onClick="cp('🈷️')" title="Japanese “monthly amount” button">🈷️</a>
+	<a class="box" onClick="cp('🈶')" title="Japanese “not free of charge” button">🈶</a>
+	<a class="box" onClick="cp('🈯')" title="Japanese “reserved” button">🈯</a>
+	<a class="box" onClick="cp('🉐')" title="Japanese “bargain” button">🉐</a>
+	<a class="box" onClick="cp('🈹')" title="Japanese “discount” button">🈹</a>
+	<a class="box" onClick="cp('🈚')" title="Japanese “free of charge” button">🈚</a>
+	<a class="box" onClick="cp('🈲')" title="Japanese “prohibited” button">🈲</a>
+	<a class="box" onClick="cp('🉑')" title="Japanese “acceptable” button">🉑</a>
+	<a class="box" onClick="cp('🈸')" title="Japanese “application” button">🈸</a>
+	<a class="box" onClick="cp('🈴')" title="Japanese “passing grade” button">🈴</a>
+	<a class="box" onClick="cp('🈳')" title="Japanese “vacancy” button">🈳</a>
+	<a class="box" onClick="cp('㊗️')" title="Japanese “congratulations” button">㊗️</a>
+	<a class="box" onClick="cp('㊙️')" title="Japanese “secret” button">㊙️</a>
+	<a class="box" onClick="cp('🈺')" title="Japanese “open for business” button">🈺</a>
+	<a class="box" onClick="cp('🈵')" title="Japanese “no vacancy” button">🈵</a>
+	<div style="clear:left;"></div>
+	<h3 id="geometric">geometric</h3>
+	<a class="box" onClick="cp('🔴')" title="red circle">🔴</a>
+	<a class="box" onClick="cp('🟠')" title="orange circle">🟠</a>
+	<a class="box" onClick="cp('🟡')" title="yellow circle">🟡</a>
+	<a class="box" onClick="cp('🟢')" title="green circle">🟢</a>
+	<a class="box" onClick="cp('🔵')" title="blue circle">🔵</a>
+	<a class="box" onClick="cp('🟣')" title="purple circle">🟣</a>
+	<a class="box" onClick="cp('🟤')" title="brown circle">🟤</a>
+	<a class="box" onClick="cp('⚫')" title="black circle">⚫</a>
+	<a class="box" onClick="cp('⚪')" title="white circle">⚪</a>
+	<a class="box" onClick="cp('🟥')" title="red square">🟥</a>
+	<a class="box" onClick="cp('🟧')" title="orange square">🟧</a>
+	<a class="box" onClick="cp('🟨')" title="yellow square">🟨</a>
+	<a class="box" onClick="cp('🟩')" title="green square">🟩</a>
+	<a class="box" onClick="cp('🟦')" title="blue square">🟦</a>
+	<a class="box" onClick="cp('🟪')" title="purple square">🟪</a>
+	<a class="box" onClick="cp('🟫')" title="brown square">🟫</a>
+	<a class="box" onClick="cp('⬛')" title="black large square">⬛</a>
+	<a class="box" onClick="cp('⬜')" title="white large square">⬜</a>
+	<a class="box" onClick="cp('◼️')" title="black medium square">◼️</a>
+	<a class="box" onClick="cp('◻️')" title="white medium square">◻️</a>
+	<a class="box" onClick="cp('◾')" title="black medium-small square">◾</a>
+	<a class="box" onClick="cp('◽')" title="white medium-small square">◽</a>
+	<a class="box" onClick="cp('▪️')" title="black small square">▪️</a>
+	<a class="box" onClick="cp('▫️')" title="white small square">▫️</a>
+	<a class="box" onClick="cp('🔶')" title="large orange diamond">🔶</a>
+	<a class="box" onClick="cp('🔷')" title="large blue diamond">🔷</a>
+	<a class="box" onClick="cp('🔸')" title="small orange diamond">🔸</a>
+	<a class="box" onClick="cp('🔹')" title="small blue diamond">🔹</a>
+	<a class="box" onClick="cp('🔺')" title="red triangle pointed up">🔺</a>
+	<a class="box" onClick="cp('🔻')" title="red triangle pointed down">🔻</a>
+	<a class="box" onClick="cp('💠')" title="diamond with a dot">💠</a>
+	<a class="box" onClick="cp('🔘')" title="radio button">🔘</a>
+	<a class="box" onClick="cp('🔳')" title="white square button">🔳</a>
+	<a class="box" onClick="cp('🔲')" title="black square button">🔲</a>
+	<div style="clear:left;"></div>
+</div>
+<h2 id="Flags">Flags</h2>
+<div class="margined">
+	<h3 id="flag">flag</h3>
+	<a class="box" onClick="cp('🏁')" title="chequered flag">🏁</a>
+	<a class="box" onClick="cp('🚩')" title="triangular flag">🚩</a>
+	<a class="box" onClick="cp('🎌')" title="crossed flags">🎌</a>
+	<a class="box" onClick="cp('🏴')" title="black flag">🏴</a>
+	<a class="box" onClick="cp('🏳️')" title="white flag">🏳️</a>
+	<a class="box" onClick="cp('🏳️‍🌈')" title="rainbow flag">🏳️‍🌈</a>
+	<a class="box" onClick="cp('🏳️‍⚧️')" title="transgender flag">🏳️‍⚧️</a>
+	<a class="box" onClick="cp('🏴‍☠️')" title="pirate flag">🏴‍☠️</a>
+	<div style="clear:left;"></div>
+	<h3 id="country-flag">country-flag</h3>
+	<a class="box" onClick="cp('🇦🇨')" title="flag: Ascension Island">🇦🇨</a>
+	<a class="box" onClick="cp('🇦🇩')" title="flag: Andorra">🇦🇩</a>
+	<a class="box" onClick="cp('🇦🇪')" title="flag: United Arab Emirates">🇦🇪</a>
+	<a class="box" onClick="cp('🇦🇫')" title="flag: Afghanistan">🇦🇫</a>
+	<a class="box" onClick="cp('🇦🇬')" title="flag: Antigua & Barbuda">🇦🇬</a>
+	<a class="box" onClick="cp('🇦🇮')" title="flag: Anguilla">🇦🇮</a>
+	<a class="box" onClick="cp('🇦🇱')" title="flag: Albania">🇦🇱</a>
+	<a class="box" onClick="cp('🇦🇲')" title="flag: Armenia">🇦🇲</a>
+	<a class="box" onClick="cp('🇦🇴')" title="flag: Angola">🇦🇴</a>
+	<a class="box" onClick="cp('🇦🇶')" title="flag: Antarctica">🇦🇶</a>
+	<a class="box" onClick="cp('🇦🇷')" title="flag: Argentina">🇦🇷</a>
+	<a class="box" onClick="cp('🇦🇸')" title="flag: American Samoa">🇦🇸</a>
+	<a class="box" onClick="cp('🇦🇹')" title="flag: Austria">🇦🇹</a>
+	<a class="box" onClick="cp('🇦🇺')" title="flag: Australia">🇦🇺</a>
+	<a class="box" onClick="cp('🇦🇼')" title="flag: Aruba">🇦🇼</a>
+	<a class="box" onClick="cp('🇦🇽')" title="flag: Åland Islands">🇦🇽</a>
+	<a class="box" onClick="cp('🇦🇿')" title="flag: Azerbaijan">🇦🇿</a>
+	<a class="box" onClick="cp('🇧🇦')" title="flag: Bosnia & Herzegovina">🇧🇦</a>
+	<a class="box" onClick="cp('🇧🇧')" title="flag: Barbados">🇧🇧</a>
+	<a class="box" onClick="cp('🇧🇩')" title="flag: Bangladesh">🇧🇩</a>
+	<a class="box" onClick="cp('🇧🇪')" title="flag: Belgium">🇧🇪</a>
+	<a class="box" onClick="cp('🇧🇫')" title="flag: Burkina Faso">🇧🇫</a>
+	<a class="box" onClick="cp('🇧🇬')" title="flag: Bulgaria">🇧🇬</a>
+	<a class="box" onClick="cp('🇧🇭')" title="flag: Bahrain">🇧🇭</a>
+	<a class="box" onClick="cp('🇧🇮')" title="flag: Burundi">🇧🇮</a>
+	<a class="box" onClick="cp('🇧🇯')" title="flag: Benin">🇧🇯</a>
+	<a class="box" onClick="cp('🇧🇱')" title="flag: St. Barthélemy">🇧🇱</a>
+	<a class="box" onClick="cp('🇧🇲')" title="flag: Bermuda">🇧🇲</a>
+	<a class="box" onClick="cp('🇧🇳')" title="flag: Brunei">🇧🇳</a>
+	<a class="box" onClick="cp('🇧🇴')" title="flag: Bolivia">🇧🇴</a>
+	<a class="box" onClick="cp('🇧🇶')" title="flag: Caribbean Netherlands">🇧🇶</a>
+	<a class="box" onClick="cp('🇧🇷')" title="flag: Brazil">🇧🇷</a>
+	<a class="box" onClick="cp('🇧🇸')" title="flag: Bahamas">🇧🇸</a>
+	<a class="box" onClick="cp('🇧🇹')" title="flag: Bhutan">🇧🇹</a>
+	<a class="box" onClick="cp('🇧🇻')" title="flag: Bouvet Island">🇧🇻</a>
+	<a class="box" onClick="cp('🇧🇼')" title="flag: Botswana">🇧🇼</a>
+	<a class="box" onClick="cp('🇧🇾')" title="flag: Belarus">🇧🇾</a>
+	<a class="box" onClick="cp('🇧🇿')" title="flag: Belize">🇧🇿</a>
+	<a class="box" onClick="cp('🇨🇦')" title="flag: Canada">🇨🇦</a>
+	<a class="box" onClick="cp('🇨🇨')" title="flag: Cocos (Keeling) Islands">🇨🇨</a>
+	<a class="box" onClick="cp('🇨🇩')" title="flag: Congo - Kinshasa">🇨🇩</a>
+	<a class="box" onClick="cp('🇨🇫')" title="flag: Central African Republic">🇨🇫</a>
+	<a class="box" onClick="cp('🇨🇬')" title="flag: Congo - Brazzaville">🇨🇬</a>
+	<a class="box" onClick="cp('🇨🇭')" title="flag: Switzerland">🇨🇭</a>
+	<a class="box" onClick="cp('🇨🇮')" title="flag: Côte d’Ivoire">🇨🇮</a>
+	<a class="box" onClick="cp('🇨🇰')" title="flag: Cook Islands">🇨🇰</a>
+	<a class="box" onClick="cp('🇨🇱')" title="flag: Chile">🇨🇱</a>
+	<a class="box" onClick="cp('🇨🇲')" title="flag: Cameroon">🇨🇲</a>
+	<a class="box" onClick="cp('🇨🇳')" title="flag: China">🇨🇳</a>
+	<a class="box" onClick="cp('🇨🇴')" title="flag: Colombia">🇨🇴</a>
+	<a class="box" onClick="cp('🇨🇵')" title="flag: Clipperton Island">🇨🇵</a>
+	<a class="box" onClick="cp('🇨🇷')" title="flag: Costa Rica">🇨🇷</a>
+	<a class="box" onClick="cp('🇨🇺')" title="flag: Cuba">🇨🇺</a>
+	<a class="box" onClick="cp('🇨🇻')" title="flag: Cape Verde">🇨🇻</a>
+	<a class="box" onClick="cp('🇨🇼')" title="flag: Curaçao">🇨🇼</a>
+	<a class="box" onClick="cp('🇨🇽')" title="flag: Christmas Island">🇨🇽</a>
+	<a class="box" onClick="cp('🇨🇾')" title="flag: Cyprus">🇨🇾</a>
+	<a class="box" onClick="cp('🇨🇿')" title="flag: Czechia">🇨🇿</a>
+	<a class="box" onClick="cp('🇩🇪')" title="flag: Germany">🇩🇪</a>
+	<a class="box" onClick="cp('🇩🇬')" title="flag: Diego Garcia">🇩🇬</a>
+	<a class="box" onClick="cp('🇩🇯')" title="flag: Djibouti">🇩🇯</a>
+	<a class="box" onClick="cp('🇩🇰')" title="flag: Denmark">🇩🇰</a>
+	<a class="box" onClick="cp('🇩🇲')" title="flag: Dominica">🇩🇲</a>
+	<a class="box" onClick="cp('🇩🇴')" title="flag: Dominican Republic">🇩🇴</a>
+	<a class="box" onClick="cp('🇩🇿')" title="flag: Algeria">🇩🇿</a>
+	<a class="box" onClick="cp('🇪🇦')" title="flag: Ceuta & Melilla">🇪🇦</a>
+	<a class="box" onClick="cp('🇪🇨')" title="flag: Ecuador">🇪🇨</a>
+	<a class="box" onClick="cp('🇪🇪')" title="flag: Estonia">🇪🇪</a>
+	<a class="box" onClick="cp('🇪🇬')" title="flag: Egypt">🇪🇬</a>
+	<a class="box" onClick="cp('🇪🇭')" title="flag: Western Sahara">🇪🇭</a>
+	<a class="box" onClick="cp('🇪🇷')" title="flag: Eritrea">🇪🇷</a>
+	<a class="box" onClick="cp('🇪🇸')" title="flag: Spain">🇪🇸</a>
+	<a class="box" onClick="cp('🇪🇹')" title="flag: Ethiopia">🇪🇹</a>
+	<a class="box" onClick="cp('🇪🇺')" title="flag: European Union">🇪🇺</a>
+	<a class="box" onClick="cp('🇫🇮')" title="flag: Finland">🇫🇮</a>
+	<a class="box" onClick="cp('🇫🇯')" title="flag: Fiji">🇫🇯</a>
+	<a class="box" onClick="cp('🇫🇰')" title="flag: Falkland Islands">🇫🇰</a>
+	<a class="box" onClick="cp('🇫🇲')" title="flag: Micronesia">🇫🇲</a>
+	<a class="box" onClick="cp('🇫🇴')" title="flag: Faroe Islands">🇫🇴</a>
+	<a class="box" onClick="cp('🇫🇷')" title="flag: France">🇫🇷</a>
+	<a class="box" onClick="cp('🇬🇦')" title="flag: Gabon">🇬🇦</a>
+	<a class="box" onClick="cp('🇬🇧')" title="flag: United Kingdom">🇬🇧</a>
+	<a class="box" onClick="cp('🇬🇩')" title="flag: Grenada">🇬🇩</a>
+	<a class="box" onClick="cp('🇬🇪')" title="flag: Georgia">🇬🇪</a>
+	<a class="box" onClick="cp('🇬🇫')" title="flag: French Guiana">🇬🇫</a>
+	<a class="box" onClick="cp('🇬🇬')" title="flag: Guernsey">🇬🇬</a>
+	<a class="box" onClick="cp('🇬🇭')" title="flag: Ghana">🇬🇭</a>
+	<a class="box" onClick="cp('🇬🇮')" title="flag: Gibraltar">🇬🇮</a>
+	<a class="box" onClick="cp('🇬🇱')" title="flag: Greenland">🇬🇱</a>
+	<a class="box" onClick="cp('🇬🇲')" title="flag: Gambia">🇬🇲</a>
+	<a class="box" onClick="cp('🇬🇳')" title="flag: Guinea">🇬🇳</a>
+	<a class="box" onClick="cp('🇬🇵')" title="flag: Guadeloupe">🇬🇵</a>
+	<a class="box" onClick="cp('🇬🇶')" title="flag: Equatorial Guinea">🇬🇶</a>
+	<a class="box" onClick="cp('🇬🇷')" title="flag: Greece">🇬🇷</a>
+	<a class="box" onClick="cp('🇬🇸')" title="flag: South Georgia & South Sandwich Islands">🇬🇸</a>
+	<a class="box" onClick="cp('🇬🇹')" title="flag: Guatemala">🇬🇹</a>
+	<a class="box" onClick="cp('🇬🇺')" title="flag: Guam">🇬🇺</a>
+	<a class="box" onClick="cp('🇬🇼')" title="flag: Guinea-Bissau">🇬🇼</a>
+	<a class="box" onClick="cp('🇬🇾')" title="flag: Guyana">🇬🇾</a>
+	<a class="box" onClick="cp('🇭🇰')" title="flag: Hong Kong SAR China">🇭🇰</a>
+	<a class="box" onClick="cp('🇭🇲')" title="flag: Heard & McDonald Islands">🇭🇲</a>
+	<a class="box" onClick="cp('🇭🇳')" title="flag: Honduras">🇭🇳</a>
+	<a class="box" onClick="cp('🇭🇷')" title="flag: Croatia">🇭🇷</a>
+	<a class="box" onClick="cp('🇭🇹')" title="flag: Haiti">🇭🇹</a>
+	<a class="box" onClick="cp('🇭🇺')" title="flag: Hungary">🇭🇺</a>
+	<a class="box" onClick="cp('🇮🇨')" title="flag: Canary Islands">🇮🇨</a>
+	<a class="box" onClick="cp('🇮🇩')" title="flag: Indonesia">🇮🇩</a>
+	<a class="box" onClick="cp('🇮🇪')" title="flag: Ireland">🇮🇪</a>
+	<a class="box" onClick="cp('🇮🇱')" title="flag: Israel">🇮🇱</a>
+	<a class="box" onClick="cp('🇮🇲')" title="flag: Isle of Man">🇮🇲</a>
+	<a class="box" onClick="cp('🇮🇳')" title="flag: India">🇮🇳</a>
+	<a class="box" onClick="cp('🇮🇴')" title="flag: British Indian Ocean Territory">🇮🇴</a>
+	<a class="box" onClick="cp('🇮🇶')" title="flag: Iraq">🇮🇶</a>
+	<a class="box" onClick="cp('🇮🇷')" title="flag: Iran">🇮🇷</a>
+	<a class="box" onClick="cp('🇮🇸')" title="flag: Iceland">🇮🇸</a>
+	<a class="box" onClick="cp('🇮🇹')" title="flag: Italy">🇮🇹</a>
+	<a class="box" onClick="cp('🇯🇪')" title="flag: Jersey">🇯🇪</a>
+	<a class="box" onClick="cp('🇯🇲')" title="flag: Jamaica">🇯🇲</a>
+	<a class="box" onClick="cp('🇯🇴')" title="flag: Jordan">🇯🇴</a>
+	<a class="box" onClick="cp('🇯🇵')" title="flag: Japan">🇯🇵</a>
+	<a class="box" onClick="cp('🇰🇪')" title="flag: Kenya">🇰🇪</a>
+	<a class="box" onClick="cp('🇰🇬')" title="flag: Kyrgyzstan">🇰🇬</a>
+	<a class="box" onClick="cp('🇰🇭')" title="flag: Cambodia">🇰🇭</a>
+	<a class="box" onClick="cp('🇰🇮')" title="flag: Kiribati">🇰🇮</a>
+	<a class="box" onClick="cp('🇰🇲')" title="flag: Comoros">🇰🇲</a>
+	<a class="box" onClick="cp('🇰🇳')" title="flag: St. Kitts & Nevis">🇰🇳</a>
+	<a class="box" onClick="cp('🇰🇵')" title="flag: North Korea">🇰🇵</a>
+	<a class="box" onClick="cp('🇰🇷')" title="flag: South Korea">🇰🇷</a>
+	<a class="box" onClick="cp('🇰🇼')" title="flag: Kuwait">🇰🇼</a>
+	<a class="box" onClick="cp('🇰🇾')" title="flag: Cayman Islands">🇰🇾</a>
+	<a class="box" onClick="cp('🇰🇿')" title="flag: Kazakhstan">🇰🇿</a>
+	<a class="box" onClick="cp('🇱🇦')" title="flag: Laos">🇱🇦</a>
+	<a class="box" onClick="cp('🇱🇧')" title="flag: Lebanon">🇱🇧</a>
+	<a class="box" onClick="cp('🇱🇨')" title="flag: St. Lucia">🇱🇨</a>
+	<a class="box" onClick="cp('🇱🇮')" title="flag: Liechtenstein">🇱🇮</a>
+	<a class="box" onClick="cp('🇱🇰')" title="flag: Sri Lanka">🇱🇰</a>
+	<a class="box" onClick="cp('🇱🇷')" title="flag: Liberia">🇱🇷</a>
+	<a class="box" onClick="cp('🇱🇸')" title="flag: Lesotho">🇱🇸</a>
+	<a class="box" onClick="cp('🇱🇹')" title="flag: Lithuania">🇱🇹</a>
+	<a class="box" onClick="cp('🇱🇺')" title="flag: Luxembourg">🇱🇺</a>
+	<a class="box" onClick="cp('🇱🇻')" title="flag: Latvia">🇱🇻</a>
+	<a class="box" onClick="cp('🇱🇾')" title="flag: Libya">🇱🇾</a>
+	<a class="box" onClick="cp('🇲🇦')" title="flag: Morocco">🇲🇦</a>
+	<a class="box" onClick="cp('🇲🇨')" title="flag: Monaco">🇲🇨</a>
+	<a class="box" onClick="cp('🇲🇩')" title="flag: Moldova">🇲🇩</a>
+	<a class="box" onClick="cp('🇲🇪')" title="flag: Montenegro">🇲🇪</a>
+	<a class="box" onClick="cp('🇲🇫')" title="flag: St. Martin">🇲🇫</a>
+	<a class="box" onClick="cp('🇲🇬')" title="flag: Madagascar">🇲🇬</a>
+	<a class="box" onClick="cp('🇲🇭')" title="flag: Marshall Islands">🇲🇭</a>
+	<a class="box" onClick="cp('🇲🇰')" title="flag: North Macedonia">🇲🇰</a>
+	<a class="box" onClick="cp('🇲🇱')" title="flag: Mali">🇲🇱</a>
+	<a class="box" onClick="cp('🇲🇲')" title="flag: Myanmar (Burma)">🇲🇲</a>
+	<a class="box" onClick="cp('🇲🇳')" title="flag: Mongolia">🇲🇳</a>
+	<a class="box" onClick="cp('🇲🇴')" title="flag: Macao SAR China">🇲🇴</a>
+	<a class="box" onClick="cp('🇲🇵')" title="flag: Northern Mariana Islands">🇲🇵</a>
+	<a class="box" onClick="cp('🇲🇶')" title="flag: Martinique">🇲🇶</a>
+	<a class="box" onClick="cp('🇲🇷')" title="flag: Mauritania">🇲🇷</a>
+	<a class="box" onClick="cp('🇲🇸')" title="flag: Montserrat">🇲🇸</a>
+	<a class="box" onClick="cp('🇲🇹')" title="flag: Malta">🇲🇹</a>
+	<a class="box" onClick="cp('🇲🇺')" title="flag: Mauritius">🇲🇺</a>
+	<a class="box" onClick="cp('🇲🇻')" title="flag: Maldives">🇲🇻</a>
+	<a class="box" onClick="cp('🇲🇼')" title="flag: Malawi">🇲🇼</a>
+	<a class="box" onClick="cp('🇲🇽')" title="flag: Mexico">🇲🇽</a>
+	<a class="box" onClick="cp('🇲🇾')" title="flag: Malaysia">🇲🇾</a>
+	<a class="box" onClick="cp('🇲🇿')" title="flag: Mozambique">🇲🇿</a>
+	<a class="box" onClick="cp('🇳🇦')" title="flag: Namibia">🇳🇦</a>
+	<a class="box" onClick="cp('🇳🇨')" title="flag: New Caledonia">🇳🇨</a>
+	<a class="box" onClick="cp('🇳🇪')" title="flag: Niger">🇳🇪</a>
+	<a class="box" onClick="cp('🇳🇫')" title="flag: Norfolk Island">🇳🇫</a>
+	<a class="box" onClick="cp('🇳🇬')" title="flag: Nigeria">🇳🇬</a>
+	<a class="box" onClick="cp('🇳🇮')" title="flag: Nicaragua">🇳🇮</a>
+	<a class="box" onClick="cp('🇳🇱')" title="flag: Netherlands">🇳🇱</a>
+	<a class="box" onClick="cp('🇳🇴')" title="flag: Norway">🇳🇴</a>
+	<a class="box" onClick="cp('🇳🇵')" title="flag: Nepal">🇳🇵</a>
+	<a class="box" onClick="cp('🇳🇷')" title="flag: Nauru">🇳🇷</a>
+	<a class="box" onClick="cp('🇳🇺')" title="flag: Niue">🇳🇺</a>
+	<a class="box" onClick="cp('🇳🇿')" title="flag: New Zealand">🇳🇿</a>
+	<a class="box" onClick="cp('🇴🇲')" title="flag: Oman">🇴🇲</a>
+	<a class="box" onClick="cp('🇵🇦')" title="flag: Panama">🇵🇦</a>
+	<a class="box" onClick="cp('🇵🇪')" title="flag: Peru">🇵🇪</a>
+	<a class="box" onClick="cp('🇵🇫')" title="flag: French Polynesia">🇵🇫</a>
+	<a class="box" onClick="cp('🇵🇬')" title="flag: Papua New Guinea">🇵🇬</a>
+	<a class="box" onClick="cp('🇵🇭')" title="flag: Philippines">🇵🇭</a>
+	<a class="box" onClick="cp('🇵🇰')" title="flag: Pakistan">🇵🇰</a>
+	<a class="box" onClick="cp('🇵🇱')" title="flag: Poland">🇵🇱</a>
+	<a class="box" onClick="cp('🇵🇲')" title="flag: St. Pierre & Miquelon">🇵🇲</a>
+	<a class="box" onClick="cp('🇵🇳')" title="flag: Pitcairn Islands">🇵🇳</a>
+	<a class="box" onClick="cp('🇵🇷')" title="flag: Puerto Rico">🇵🇷</a>
+	<a class="box" onClick="cp('🇵🇸')" title="flag: Palestinian Territories">🇵🇸</a>
+	<a class="box" onClick="cp('🇵🇹')" title="flag: Portugal">🇵🇹</a>
+	<a class="box" onClick="cp('🇵🇼')" title="flag: Palau">🇵🇼</a>
+	<a class="box" onClick="cp('🇵🇾')" title="flag: Paraguay">🇵🇾</a>
+	<a class="box" onClick="cp('🇶🇦')" title="flag: Qatar">🇶🇦</a>
+	<a class="box" onClick="cp('🇷🇪')" title="flag: Réunion">🇷🇪</a>
+	<a class="box" onClick="cp('🇷🇴')" title="flag: Romania">🇷🇴</a>
+	<a class="box" onClick="cp('🇷🇸')" title="flag: Serbia">🇷🇸</a>
+	<a class="box" onClick="cp('🇷🇺')" title="flag: Russia">🇷🇺</a>
+	<a class="box" onClick="cp('🇷🇼')" title="flag: Rwanda">🇷🇼</a>
+	<a class="box" onClick="cp('🇸🇦')" title="flag: Saudi Arabia">🇸🇦</a>
+	<a class="box" onClick="cp('🇸🇧')" title="flag: Solomon Islands">🇸🇧</a>
+	<a class="box" onClick="cp('🇸🇨')" title="flag: Seychelles">🇸🇨</a>
+	<a class="box" onClick="cp('🇸🇩')" title="flag: Sudan">🇸🇩</a>
+	<a class="box" onClick="cp('🇸🇪')" title="flag: Sweden">🇸🇪</a>
+	<a class="box" onClick="cp('🇸🇬')" title="flag: Singapore">🇸🇬</a>
+	<a class="box" onClick="cp('🇸🇭')" title="flag: St. Helena">🇸🇭</a>
+	<a class="box" onClick="cp('🇸🇮')" title="flag: Slovenia">🇸🇮</a>
+	<a class="box" onClick="cp('🇸🇯')" title="flag: Svalbard & Jan Mayen">🇸🇯</a>
+	<a class="box" onClick="cp('🇸🇰')" title="flag: Slovakia">🇸🇰</a>
+	<a class="box" onClick="cp('🇸🇱')" title="flag: Sierra Leone">🇸🇱</a>
+	<a class="box" onClick="cp('🇸🇲')" title="flag: San Marino">🇸🇲</a>
+	<a class="box" onClick="cp('🇸🇳')" title="flag: Senegal">🇸🇳</a>
+	<a class="box" onClick="cp('🇸🇴')" title="flag: Somalia">🇸🇴</a>
+	<a class="box" onClick="cp('🇸🇷')" title="flag: Suriname">🇸🇷</a>
+	<a class="box" onClick="cp('🇸🇸')" title="flag: South Sudan">🇸🇸</a>
+	<a class="box" onClick="cp('🇸🇹')" title="flag: São Tomé & Príncipe">🇸🇹</a>
+	<a class="box" onClick="cp('🇸🇻')" title="flag: El Salvador">🇸🇻</a>
+	<a class="box" onClick="cp('🇸🇽')" title="flag: Sint Maarten">🇸🇽</a>
+	<a class="box" onClick="cp('🇸🇾')" title="flag: Syria">🇸🇾</a>
+	<a class="box" onClick="cp('🇸🇿')" title="flag: Eswatini">🇸🇿</a>
+	<a class="box" onClick="cp('🇹🇦')" title="flag: Tristan da Cunha">🇹🇦</a>
+	<a class="box" onClick="cp('🇹🇨')" title="flag: Turks & Caicos Islands">🇹🇨</a>
+	<a class="box" onClick="cp('🇹🇩')" title="flag: Chad">🇹🇩</a>
+	<a class="box" onClick="cp('🇹🇫')" title="flag: French Southern Territories">🇹🇫</a>
+	<a class="box" onClick="cp('🇹🇬')" title="flag: Togo">🇹🇬</a>
+	<a class="box" onClick="cp('🇹🇭')" title="flag: Thailand">🇹🇭</a>
+	<a class="box" onClick="cp('🇹🇯')" title="flag: Tajikistan">🇹🇯</a>
+	<a class="box" onClick="cp('🇹🇰')" title="flag: Tokelau">🇹🇰</a>
+	<a class="box" onClick="cp('🇹🇱')" title="flag: Timor-Leste">🇹🇱</a>
+	<a class="box" onClick="cp('🇹🇲')" title="flag: Turkmenistan">🇹🇲</a>
+	<a class="box" onClick="cp('🇹🇳')" title="flag: Tunisia">🇹🇳</a>
+	<a class="box" onClick="cp('🇹🇴')" title="flag: Tonga">🇹🇴</a>
+	<a class="box" onClick="cp('🇹🇷')" title="flag: Türkiye">🇹🇷</a>
+	<a class="box" onClick="cp('🇹🇹')" title="flag: Trinidad & Tobago">🇹🇹</a>
+	<a class="box" onClick="cp('🇹🇻')" title="flag: Tuvalu">🇹🇻</a>
+	<a class="box" onClick="cp('🇹🇼')" title="flag: Taiwan">🇹🇼</a>
+	<a class="box" onClick="cp('🇹🇿')" title="flag: Tanzania">🇹🇿</a>
+	<a class="box" onClick="cp('🇺🇦')" title="flag: Ukraine">🇺🇦</a>
+	<a class="box" onClick="cp('🇺🇬')" title="flag: Uganda">🇺🇬</a>
+	<a class="box" onClick="cp('🇺🇲')" title="flag: U.S. Outlying Islands">🇺🇲</a>
+	<a class="box" onClick="cp('🇺🇳')" title="flag: United Nations">🇺🇳</a>
+	<a class="box" onClick="cp('🇺🇸')" title="flag: United States">🇺🇸</a>
+	<a class="box" onClick="cp('🇺🇾')" title="flag: Uruguay">🇺🇾</a>
+	<a class="box" onClick="cp('🇺🇿')" title="flag: Uzbekistan">🇺🇿</a>
+	<a class="box" onClick="cp('🇻🇦')" title="flag: Vatican City">🇻🇦</a>
+	<a class="box" onClick="cp('🇻🇨')" title="flag: St. Vincent & Grenadines">🇻🇨</a>
+	<a class="box" onClick="cp('🇻🇪')" title="flag: Venezuela">🇻🇪</a>
+	<a class="box" onClick="cp('🇻🇬')" title="flag: British Virgin Islands">🇻🇬</a>
+	<a class="box" onClick="cp('🇻🇮')" title="flag: U.S. Virgin Islands">🇻🇮</a>
+	<a class="box" onClick="cp('🇻🇳')" title="flag: Vietnam">🇻🇳</a>
+	<a class="box" onClick="cp('🇻🇺')" title="flag: Vanuatu">🇻🇺</a>
+	<a class="box" onClick="cp('🇼🇫')" title="flag: Wallis & Futuna">🇼🇫</a>
+	<a class="box" onClick="cp('🇼🇸')" title="flag: Samoa">🇼🇸</a>
+	<a class="box" onClick="cp('🇽🇰')" title="flag: Kosovo">🇽🇰</a>
+	<a class="box" onClick="cp('🇾🇪')" title="flag: Yemen">🇾🇪</a>
+	<a class="box" onClick="cp('🇾🇹')" title="flag: Mayotte">🇾🇹</a>
+	<a class="box" onClick="cp('🇿🇦')" title="flag: South Africa">🇿🇦</a>
+	<a class="box" onClick="cp('🇿🇲')" title="flag: Zambia">🇿🇲</a>
+	<a class="box" onClick="cp('🇿🇼')" title="flag: Zimbabwe">🇿🇼</a>
+	<div style="clear:left;"></div>
+	<h3 id="subdivision-flag">subdivision-flag</h3>
+	<a class="box" onClick="cp('🏴󠁧󠁢󠁥󠁮󠁧󠁿')" title="flag: England">🏴󠁧󠁢󠁥󠁮󠁧󠁿</a>
+	<a class="box" onClick="cp('🏴󠁧󠁢󠁳󠁣󠁴󠁿')" title="flag: Scotland">🏴󠁧󠁢󠁳󠁣󠁴󠁿</a>
+	<a class="box" onClick="cp('🏴󠁧󠁢󠁷󠁬󠁳󠁿')" title="flag: Wales">🏴󠁧󠁢󠁷󠁬󠁳󠁿</a>
+	<div style="clear:left;"></div>
+</div>
+	<!--src/src/body/emdata.v15.1.app.x ) END -->
+	</div>
+
+	<!-- No appendix -->
+	<!-- No version-box -->
+
+	<br>
+									<!--src/src/pt/footer.app.x BEGIN ( -->
+	<div style="font-size: 80%; text-align: center">
+		Copyright &copy; 2017-2024 Emojipicker.com
+		<a href="disclaimer.html"		class="disclaimer">Disclaimer</a>
+		<a href="privacypolicy.html"	class="disclaimer">Privacy Policy</a>
+	</div>
+	<!--src/src/pt/footer.app.x ) END -->
+</div><!-- wholearea -->
+
+</body>
+</html>
