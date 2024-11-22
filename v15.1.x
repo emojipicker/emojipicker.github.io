@@ -1,326 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<link rel="canonical" href="https://emojipicker.com/v16.0.html">
-		<meta charset="utf-8">
-	<title>🙂 Emoji Picker 🚀</title>
-	<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1">
-	<meta name="description" content="Emoji Picker 🚀☕🙂❤💞 Find Unicode 16.0 Emojis quickly and copy to clipboard! 🙂❤💞💯📘⚽🍊🤗😅🎃😻👢☂🌸⛄⭐🙈🍍☕🚚🏰👣">
-	<meta name="keywords"
-		content="emoji, picker, emojipicker, unicode, 16.0, 15.1, chooser, selector, list, copy, smiley, emoticon, face, symbol">
-	<!-- <link rel="icon" href="/favicon.ico" /> -->
-		<style>
-		.verbtn			{ }
-		table,th,tr,td	{	padding:			0px;
-							border:				0px;
-							border-spacing:		0px;
-						}
-		body			{
-							margin-left:		0px;
-							margin-right:		0px;
-							padding-left:		0px;
-							padding-right:		0px;
-							background-color:	#fcfcfc;
-						}
-		.margined_hdr	{
-							margin:				10px;
-						}
-		.margined		{
-							margin:				10px;
-						}
-		.wholearea		{
-							margin:				0px;
-							padding:			0px;
-						}
-		.wholearea		{	line-height: 		1em;	font-family:	sans-serif;	font-family: "Segoe UI Emoji"; }
-		.titlearea		{	line-height: 		1.4em;	font-family:	sans-serif; font-family: "Segoe UI Emoji"; }
-		.hbar_area		{	line-height: 		1em;	font-family:	sans-serif; font-family: "Segoe UI Emoji"; }
-		.xcopyarea		{	line-height: 		1.2em;	font-family:	sans-serif; font-family: "Segoe UI Emoji"; }
-		.appendix		{	line-height:		30px;	font-family:	sans-serif; font-family: "Segoe UI Emoji"; }
-		h2				{	padding-left:		10px;	font-family:	serif;		font-family: "Segoe UI Emoji"; }
-		h3				{								font-family:	sans-serif; font-family: "Segoe UI Emoji"; }
-		.keypadarea		{															}
-
-		.hbar_table		{	background-color:	#64f;
-							position:			fixed;
-							top:				0px;
-							left:				0px;
-
-							width:				100%;
-							height:				60px;
-							border:				1px solid #64f;
-							border-spacing:		0px;
-
-							margin:				0px;
-							padding:			0px;
-							padding-left:		4px;
-							padding-right:		4px;
-						}
-		.xcopyarea		{
-							box-sizing:			border-box;
-							outline:			none;
-							font-family:		sans-serif;	font-family: "Segoe UI Emoji";
-							font-size:			20px;
-
-							width:				100%;
-							height:				56px;
-							border:				0px;
-							border:				1px solid #64f;
-							border:				1px solid black;
-							border:				0px;
-							border-spacing:		0px;
-
-							margin:				0px;
-							margin-left:		0px;
-							margin-right:		0px;
-							padding:			0px;
-						}
-
-		.xcopyarea:focus
-						{
-							background-color:	lightblue;
-						}
-
-		.xbutton		{
-							line-height:		1;
-						/*	line-spacing:		0;	*/
-
-							height:				54px;
-
-							margin:				0px;
-							margin-right:		2px;
-							margin-top:			0px;
-						}
-		.box,
-		.margined a,
-		.margined span
-						{
-							float:				left;
-
-							line-height:		1;
-						/*	line-spacing:		0;	*/
-
-							height:				30px;
-							height:				50px;
-						}
-		.box, .xbutton,
-		.margined a,
-		.margined span
-						{
-							box-sizing:			border-box;
-
-							font-family:		"Segoe UI Emoji";
-
-						    cursor:				pointer;
-						    text-decoration:	none;
-
-						    background-color:	#eeeeee;
-						    color:				black;
-
-						    text-align:			center;
-							vertical-align:		middle;
-						    font-size:			24px;
-
-						    border:				1px solid #000000;
-						    margin:				0px 0px 0px 0px;
-						    padding:			5px 5px 5px 5px;
-
-						    border:				1px solid #aaa;
-						    padding:			10px 5px;
-						}
-		.box:hover, .xbutton:hover,
-		.margined a:hover,
-		.margined span:hover
-						{
-							background-color: #ffffff
-						}
-		.box:active, .xbutton:active,
-		.margined a:active,
-		.margined span:active
-						{
-							background-color:	#eeeeee;
-							box-shadow:			0 4px #666;
-							transform:			translateY(-4px);
-						}
-
-		cl				{
-							clear:				left;
-						}
-
-		.xbar			{	display:			table;
-							box-sizing:			border-box;
-
-							background-color:	#64f;
-
-							position:			fixed;
-							top:				0px;
-							left:				0px;
-
-							width:				100%;
-							height:				60px;
-							margin:				0px;
-							border:				0px;
-							border-spacing:		0px;
-							padding:			2px 1px 2px 1px;
-						}
-		.underxbar		{
-							height:				60px;
-						}
-		.xcella,
-		.xcellb,
-		.xcellc,
-		.xcelld			{
-							box-sizing:			border-box;
-							display:			table-cell;
-							line-height:		1;
-						/*	line-spacing:		0;	*/
-
-							background-color:	#64f;
-
-							text-align:			center;
-							vertical-align:		middle;
-
-							margin:				0px;
-							border:				0px;
-							border-spacing:		0px;
-							padding:			0px 0px 0px 0px;
-						}
-		.xcella			{	width:	45px;	padding:	0px 2px 0px 3px;	}
-		.xcellb			{		 			padding:	0px 0px 0px 0px;	background-color: white; }
-		.xcellc			{	width:	46px;	padding:	0px 2px 0px 2px;	}
-		.xcelld			{	width:	70px;	padding:	0px 5px 0px 0px;	}
-
-		/* -------------------------------------------------*/
-		/* CATEGORY JUMP BUTTON (INDEX)						*/
-		/* -------------------------------------------------*/
-		.margined_hdr > span
-		/* .topbtn */
-						{
-							font-family:		"Segoe UI Emoji";
-							text-decoration:	none;
-						    cursor:				pointer;
-							font-size:			32px;
-
-							box-sizing:			border-box;
-
-							line-height:		1.5; /* 2017-12-10 */
-						/*	height:				46px; */
-							width:				auto;
-
-							margin-bottom:		3px;
-							padding-left:		3px; /* 2017-12-10 */
-							padding-right:		3px; /* 2017-12-10 */
-
-							background-color:	#e1e1e1; /* 2017-12-10 */
-							border:				1px solid #adadad;  /* 2017-12-10 */
-							box-shadow:			0 4px 6px 0 rgba(0, 0, 0, 0.2);
-						}
-
-		/* -------------------------------------------------*/
-		/* CATEGORY HEADERS									*/
-		/* -------------------------------------------------*/
-		/* MAJOR CATEGORY */
-		#Smileys_People		{	background-color:	#63a;		}
-		#Smileys_People		{	background-color:	#25f;		}
-		#Animals_Nature		{	background-color:	green;		}
-		#Food_Drink			{	background-color:	orangered;	}
-		#Travel_Places		{	background-color:	#27e;		}
-		#Activities			{	background-color:	#f44;		}
-		#Objects			{	background-color:	#222;		}
-		#Symbols			{	background-color:	#666;		}
-		h2					{
-								font-family:		serif;
-
-								color:				white;
-								background-color:	blue;
-
-								left:				0;
-								text-align:			center;
-								text-align:			left;
-
-								margin-top:			10px;
-								padding-top:		8px;
-								padding-bottom:		8px;
-								margin-bottom:		0px;
-							}
-		/* SUBCATEGORY */
-		h3					{ 
-								margin-top:			10px;
-								padding-top:		0px;
-								padding-bottom:		0px;
-								margin-bottom:		4px;
-							}
-
-	</style>
-			<!-- 2021-08-05 update -->
-	<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7724255735811745"
-		crossorigin="anonymous">
-	</script>
-		<script>
-		function cp(txt)
-		{
-			if (! navigator.userAgent.match (/ipad|ipod|iphone/i))
-			{
-				var			a					= document.createElement ('textarea');
-				a.style.position				= 'fixed';
-				a.style.left					= '-100%';
-				a.value							= txt;
-				a.selectionStart				= 0;
-				a.selectionEnd					= a.value.length;
-
-				document.body.appendChild		(a);
-				copy_element_to_clip			(a);
-				document.body.removeChild		(a);
-			}
-
-			// Add emoji to box
-			var				e					= document.getElementById ('copybuf');
-			e.value								+= txt;
-		}
-		function copy_element_to_clip(box)
-		{
-			box.readOnly						= true;
-			box.select							( );
-			document.execCommand				('copy');
-			box.readOnly						= false;
-		}
-		function areacopy_sub(erase_sw)
-		{
-			var 	a 							= document.activeElement;
-			var 	box							= document.getElementById ('copybuf');
-			copy_element_to_clip				(box);
-			a.focus								( );
-			if (erase_sw)
-			{
-				box.value						= '';
-			}
-		}
-		function areaerase()
-		{
-			areacopy_sub						(true);	// erase = true
-		}
-		function areacopy()
-		{
-			areacopy_sub						(false);	// erase = false
-		}
-		function jmpl(location)
-		{
-			var		old_name					= document.getElementById (location).getAttribute('name');
-			document.getElementById				(location).setAttribute('name', location);
-			window.location.hash				= location;
-			var		ret							= window.scrollBy (0, -62);
-			document.getElementById				(location).setAttribute('name', old_name);
-		}
-		function jmphome()
-		{
-			window.location.hash				= '';
-		    document.body.scrollTop				= 0; // For Chrome, Safari and Opera
-		    document.documentElement.scrollTop	= 0; // For IE and Firefox
-		}
-	</script>
-</head>
-<body>
-	<!-- v16.0.x -->
+<!-- v15.1.x -->
 <div class="wholearea">
 	<div class="titlearea">
 		<div class="underxbar">
@@ -339,7 +17,7 @@
 		</tr>
 	</table>
 																		<H1>😃 Emoji Picker 🚀</H1>
-			Emoji 16.0															<br><br>
+			Emoji 15.1															<br><br>
 									<em>💭❤💞💯📘🎹⚽🍊😅🎃😻👢☂🌸⛄⭐🙈🍍☕🚚🏰👣</em>
 <!-- Thanks for visiting 😊 -->
 <br>
@@ -465,7 +143,6 @@ Find your Emojis and copy them to clipboard!
 	<span onClick="cp('😪')" title="sleepy face">😪</span>
 	<span onClick="cp('🤤')" title="drooling face">🤤</span>
 	<span onClick="cp('😴')" title="sleeping face">😴</span>
-	<span onClick="cp('🫩')" title="face with bags under eyes">🫩</span>
 	<div style="clear:left;"></div>
 	<h3 id="face-unwell">face-unwell</h3>
 	<span onClick="cp('😷')" title="face with medical mask">😷</span>
@@ -1806,12 +1483,12 @@ Find your Emojis and copy them to clipboard!
 	<span onClick="cp('🤶🏽')" title="Mrs. Claus: medium skin tone">🤶🏽</span>
 	<span onClick="cp('🤶🏾')" title="Mrs. Claus: medium-dark skin tone">🤶🏾</span>
 	<span onClick="cp('🤶🏿')" title="Mrs. Claus: dark skin tone">🤶🏿</span>
-	<span onClick="cp('🧑‍🎄')" title="Mx Claus">🧑‍🎄</span>
-	<span onClick="cp('🧑🏻‍🎄')" title="Mx Claus: light skin tone">🧑🏻‍🎄</span>
-	<span onClick="cp('🧑🏼‍🎄')" title="Mx Claus: medium-light skin tone">🧑🏼‍🎄</span>
-	<span onClick="cp('🧑🏽‍🎄')" title="Mx Claus: medium skin tone">🧑🏽‍🎄</span>
-	<span onClick="cp('🧑🏾‍🎄')" title="Mx Claus: medium-dark skin tone">🧑🏾‍🎄</span>
-	<span onClick="cp('🧑🏿‍🎄')" title="Mx Claus: dark skin tone">🧑🏿‍🎄</span>
+	<span onClick="cp('🧑‍🎄')" title="mx claus">🧑‍🎄</span>
+	<span onClick="cp('🧑🏻‍🎄')" title="mx claus: light skin tone">🧑🏻‍🎄</span>
+	<span onClick="cp('🧑🏼‍🎄')" title="mx claus: medium-light skin tone">🧑🏼‍🎄</span>
+	<span onClick="cp('🧑🏽‍🎄')" title="mx claus: medium skin tone">🧑🏽‍🎄</span>
+	<span onClick="cp('🧑🏾‍🎄')" title="mx claus: medium-dark skin tone">🧑🏾‍🎄</span>
+	<span onClick="cp('🧑🏿‍🎄')" title="mx claus: dark skin tone">🧑🏿‍🎄</span>
 	<span onClick="cp('🦸')" title="superhero">🦸</span>
 	<span onClick="cp('🦸🏻')" title="superhero: light skin tone">🦸🏻</span>
 	<span onClick="cp('🦸🏼')" title="superhero: medium-light skin tone">🦸🏼</span>
@@ -2892,7 +2569,6 @@ Find your Emojis and copy them to clipboard!
 	<span onClick="cp('🧑‍🧒')" title="family: adult, child">🧑‍🧒</span>
 	<span onClick="cp('🧑‍🧒‍🧒')" title="family: adult, child, child">🧑‍🧒‍🧒</span>
 	<span onClick="cp('👣')" title="footprints">👣</span>
-	<span onClick="cp('🫆')" title="fingerprint">🫆</span>
 	<div style="clear:left;"></div>
 </div>
 <h2 id="Component">Component</h2>
@@ -3031,11 +2707,6 @@ Find your Emojis and copy them to clipboard!
 	<span onClick="cp('🐚')" title="spiral shell">🐚</span>
 	<span onClick="cp('🪸')" title="coral">🪸</span>
 	<span onClick="cp('🪼')" title="jellyfish">🪼</span>
-	<span onClick="cp('🦀')" title="crab">🦀</span>
-	<span onClick="cp('🦞')" title="lobster">🦞</span>
-	<span onClick="cp('🦐')" title="shrimp">🦐</span>
-	<span onClick="cp('🦑')" title="squid">🦑</span>
-	<span onClick="cp('🦪')" title="oyster">🦪</span>
 	<div style="clear:left;"></div>
 	<h3 id="animal-bug">animal-bug</h3>
 	<span onClick="cp('🐌')" title="snail">🐌</span>
@@ -3086,7 +2757,6 @@ Find your Emojis and copy them to clipboard!
 	<span onClick="cp('🪹')" title="empty nest">🪹</span>
 	<span onClick="cp('🪺')" title="nest with eggs">🪺</span>
 	<span onClick="cp('🍄')" title="mushroom">🍄</span>
-	<span onClick="cp('🪾')" title="leafless tree">🪾</span>
 	<div style="clear:left;"></div>
 </div>
 <h2 id="Food_Drink">Food &amp; Drink</h2>
@@ -3132,7 +2802,6 @@ Find your Emojis and copy them to clipboard!
 	<span onClick="cp('🫚')" title="ginger root">🫚</span>
 	<span onClick="cp('🫛')" title="pea pod">🫛</span>
 	<span onClick="cp('🍄‍🟫')" title="brown mushroom">🍄‍🟫</span>
-	<span onClick="cp('🫜')" title="root vegetable">🫜</span>
 	<div style="clear:left;"></div>
 	<h3 id="food-prepared">food-prepared</h3>
 	<span onClick="cp('🍞')" title="bread">🍞</span>
@@ -3188,6 +2857,13 @@ Find your Emojis and copy them to clipboard!
 	<span onClick="cp('🥟')" title="dumpling">🥟</span>
 	<span onClick="cp('🥠')" title="fortune cookie">🥠</span>
 	<span onClick="cp('🥡')" title="takeout box">🥡</span>
+	<div style="clear:left;"></div>
+	<h3 id="food-marine">food-marine</h3>
+	<span onClick="cp('🦀')" title="crab">🦀</span>
+	<span onClick="cp('🦞')" title="lobster">🦞</span>
+	<span onClick="cp('🦐')" title="shrimp">🦐</span>
+	<span onClick="cp('🦑')" title="squid">🦑</span>
+	<span onClick="cp('🦪')" title="oyster">🦪</span>
 	<div style="clear:left;"></div>
 	<h3 id="food-sweet">food-sweet</h3>
 	<span onClick="cp('🍦')" title="soft ice cream">🍦</span>
@@ -3663,7 +3339,6 @@ Find your Emojis and copy them to clipboard!
 	<span onClick="cp('🪘')" title="long drum">🪘</span>
 	<span onClick="cp('🪇')" title="maracas">🪇</span>
 	<span onClick="cp('🪈')" title="flute">🪈</span>
-	<span onClick="cp('🪉')" title="harp">🪉</span>
 	<div style="clear:left;"></div>
 	<h3 id="phone">phone</h3>
 	<span onClick="cp('📱')" title="mobile phone">📱</span>
@@ -3822,7 +3497,6 @@ Find your Emojis and copy them to clipboard!
 	<span onClick="cp('🧰')" title="toolbox">🧰</span>
 	<span onClick="cp('🧲')" title="magnet">🧲</span>
 	<span onClick="cp('🪜')" title="ladder">🪜</span>
-	<span onClick="cp('🪏')" title="shovel">🪏</span>
 	<div style="clear:left;"></div>
 	<h3 id="science">science</h3>
 	<span onClick="cp('⚗️')" title="alembic">⚗️</span>
@@ -4041,7 +3715,6 @@ Find your Emojis and copy them to clipboard!
 	<span onClick="cp('©️')" title="copyright">©️</span>
 	<span onClick="cp('®️')" title="registered">®️</span>
 	<span onClick="cp('™️')" title="trade mark">™️</span>
-	<span onClick="cp('🫟')" title="splatter">🫟</span>
 	<div style="clear:left;"></div>
 	<h3 id="keycap">keycap</h3>
 	<span onClick="cp('#️⃣')" title="keycap: #">#️⃣</span>
@@ -4200,7 +3873,6 @@ Find your Emojis and copy them to clipboard!
 	<span onClick="cp('🇨🇳')" title="flag: China">🇨🇳</span>
 	<span onClick="cp('🇨🇴')" title="flag: Colombia">🇨🇴</span>
 	<span onClick="cp('🇨🇵')" title="flag: Clipperton Island">🇨🇵</span>
-	<span onClick="cp('🇨🇶')" title="flag: Sark">🇨🇶</span>
 	<span onClick="cp('🇨🇷')" title="flag: Costa Rica">🇨🇷</span>
 	<span onClick="cp('🇨🇺')" title="flag: Cuba">🇨🇺</span>
 	<span onClick="cp('🇨🇻')" title="flag: Cape Verde">🇨🇻</span>
@@ -4592,5 +4264,3 @@ Find your Emojis and copy them to clipboard!
 		<a href="privacypolicy.html"	class="disclaimer">Privacy Policy</a>
 	</div>
 </div><!-- wholearea -->
-</body>
-</html>
