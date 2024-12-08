@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-	<url><loc>https://emojipicker.com/index.html</loc>	</url>
+	<url><loc>https://emojipicker.com/</loc>			</url>
 	<url><loc>https://emojipicker.com/v16.0.html</loc>	</url>
 	<url><loc>https://emojipicker.com/v15.1.html</loc>	</url>
 	<url><loc>https://emojipicker.com/v13.1.html</loc>	</url>
