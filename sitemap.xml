@@ -1,5 +1,10 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-	<url><loc>https://emojipicker.com/</loc>			</url>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset	xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+		xmlns:image="https://www.google.com/schemas/sitemap-image/1.1"
+		xmlns:video="https://www.google.com/schemas/sitemap-video/1.1">
+	<url><loc>https://emojipicker.com/</loc>
+		<lastmod>2025-11-14</lastmod>
+		<priority>1.0</priority>
+	</url>
 </urlset>
 
